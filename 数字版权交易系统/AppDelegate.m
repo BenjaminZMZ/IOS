@@ -7,6 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import "RootTabBarController.h"
+#import "DiscoverMusicViewController.h"
+#import "MyMusicViewController.h"
+#import "AccountViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +21,31 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor whiteColor];
+    
+    UINavigationController *navDiscoverMusicVC = [[UINavigationController alloc] initWithRootViewController:[[DiscoverMusicViewController alloc] init]];
+    navDiscoverMusicVC.tabBarItem.image = [UIImage imageNamed:@"cm2_btm_icn_discovery_prs"];
+    navDiscoverMusicVC.tabBarItem.title = @"发现音乐";
+    
+    UINavigationController *navMyMusicVC = [[UINavigationController alloc] initWithRootViewController:[[MyMusicViewController alloc] init]];
+    navMyMusicVC.tabBarItem.image = [UIImage imageNamed:@"cm2_btm_icn_music_prs"];
+    navMyMusicVC.tabBarItem.title = @"我的音乐";
+    
+    UINavigationController *navAccountVC = [[UINavigationController alloc] initWithRootViewController:[[AccountViewController alloc] init]];
+    navAccountVC.tabBarItem.image = [UIImage imageNamed:@"cm2_btm_icn_account_prs"];
+    navAccountVC.tabBarItem.title = @"帐号";
+    
+    RootTabBarController *rootVC = [[RootTabBarController alloc] init];
+    rootVC.viewControllers = @[navDiscoverMusicVC, navMyMusicVC, navAccountVC];
+    rootVC.tabBar.barTintColor = [UIColor blackColor];
+    rootVC.tabBar.tintColor = [UIColor whiteColor];
+    
+    self.window.rootViewController = rootVC;
+    [self.window makeKeyAndVisible];
+    
+    
+    
 	return YES;
 }
 

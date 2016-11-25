@@ -9,10 +9,13 @@
 /* Begin PBXBuildFile section */
 		302A40A51DC87D26002812FB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 302A40A41DC87D26002812FB /* main.m */; };
 		302A40A81DC87D26002812FB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 302A40A71DC87D26002812FB /* AppDelegate.m */; };
-		302A40AB1DC87D26002812FB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 302A40AA1DC87D26002812FB /* ViewController.m */; };
 		302A40AE1DC87D26002812FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 302A40AC1DC87D26002812FB /* Main.storyboard */; };
 		302A40B01DC87D26002812FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 302A40AF1DC87D26002812FB /* Assets.xcassets */; };
 		302A40B31DC87D26002812FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 302A40B11DC87D26002812FB /* LaunchScreen.storyboard */; };
+		3040B3641DE848AF008C4E89 /* RootTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3040B3631DE848AF008C4E89 /* RootTabBarController.m */; };
+		3040B3671DE84A24008C4E89 /* DiscoverMusicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3040B3661DE84A24008C4E89 /* DiscoverMusicViewController.m */; };
+		3040B36A1DE84A35008C4E89 /* MyMusicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3040B3691DE84A35008C4E89 /* MyMusicViewController.m */; };
+		3040B3701DE852FB008C4E89 /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3040B36F1DE852FB008C4E89 /* AccountViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,12 +23,19 @@
 		302A40A41DC87D26002812FB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		302A40A61DC87D26002812FB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		302A40A71DC87D26002812FB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		302A40A91DC87D26002812FB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		302A40AA1DC87D26002812FB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		302A40AD1DC87D26002812FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		302A40AF1DC87D26002812FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		302A40B21DC87D26002812FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		302A40B41DC87D26002812FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3040B3621DE848AF008C4E89 /* RootTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootTabBarController.h; sourceTree = "<group>"; };
+		3040B3631DE848AF008C4E89 /* RootTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootTabBarController.m; sourceTree = "<group>"; };
+		3040B3651DE84A24008C4E89 /* DiscoverMusicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverMusicViewController.h; sourceTree = "<group>"; };
+		3040B3661DE84A24008C4E89 /* DiscoverMusicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverMusicViewController.m; sourceTree = "<group>"; };
+		3040B3681DE84A35008C4E89 /* MyMusicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMusicViewController.h; sourceTree = "<group>"; };
+		3040B3691DE84A35008C4E89 /* MyMusicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMusicViewController.m; sourceTree = "<group>"; };
+		3040B36E1DE852FB008C4E89 /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
+		3040B36F1DE852FB008C4E89 /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
+		3040B3721DE853B3008C4E89 /* Macro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Macro.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,15 +68,22 @@
 		302A40A21DC87D26002812FB /* 数字版权交易系统 */ = {
 			isa = PBXGroup;
 			children = (
+				302A40A31DC87D26002812FB /* Supporting Files */,
 				302A40A61DC87D26002812FB /* AppDelegate.h */,
 				302A40A71DC87D26002812FB /* AppDelegate.m */,
-				302A40A91DC87D26002812FB /* ViewController.h */,
-				302A40AA1DC87D26002812FB /* ViewController.m */,
 				302A40AC1DC87D26002812FB /* Main.storyboard */,
 				302A40AF1DC87D26002812FB /* Assets.xcassets */,
 				302A40B11DC87D26002812FB /* LaunchScreen.storyboard */,
 				302A40B41DC87D26002812FB /* Info.plist */,
-				302A40A31DC87D26002812FB /* Supporting Files */,
+				3040B3621DE848AF008C4E89 /* RootTabBarController.h */,
+				3040B3631DE848AF008C4E89 /* RootTabBarController.m */,
+				3040B3651DE84A24008C4E89 /* DiscoverMusicViewController.h */,
+				3040B3661DE84A24008C4E89 /* DiscoverMusicViewController.m */,
+				3040B3681DE84A35008C4E89 /* MyMusicViewController.h */,
+				3040B3691DE84A35008C4E89 /* MyMusicViewController.m */,
+				3040B36E1DE852FB008C4E89 /* AccountViewController.h */,
+				3040B36F1DE852FB008C4E89 /* AccountViewController.m */,
+				3040B3711DE85380008C4E89 /* Helper */,
 			);
 			path = "数字版权交易系统";
 			sourceTree = "<group>";
@@ -77,6 +94,14 @@
 				302A40A41DC87D26002812FB /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3040B3711DE85380008C4E89 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				3040B3721DE853B3008C4E89 /* Macro.h */,
+			);
+			name = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,9 +176,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				302A40AB1DC87D26002812FB /* ViewController.m in Sources */,
+				3040B3641DE848AF008C4E89 /* RootTabBarController.m in Sources */,
 				302A40A81DC87D26002812FB /* AppDelegate.m in Sources */,
+				3040B36A1DE84A35008C4E89 /* MyMusicViewController.m in Sources */,
 				302A40A51DC87D26002812FB /* main.m in Sources */,
+				3040B3701DE852FB008C4E89 /* AccountViewController.m in Sources */,
+				3040B3671DE84A24008C4E89 /* DiscoverMusicViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +338,7 @@
 				302A40B91DC87D26002812FB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
