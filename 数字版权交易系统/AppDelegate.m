@@ -27,6 +27,8 @@
     UINavigationController *navDiscoverMusicVC = [[UINavigationController alloc] initWithRootViewController:[[DiscoverMusicViewController alloc] init]];
     navDiscoverMusicVC.tabBarItem.image = [UIImage imageNamed:@"cm2_btm_icn_discovery_prs"];
     navDiscoverMusicVC.tabBarItem.title = @"发现音乐";
+    //navDiscoverMusicVC.tabBarItem.titlePositionAdjustment = UIOffsetMake(0, 0);
+    //navDiscoverMusicVC.tabBarItem.imageInsets = UIEdgeInsetsMake(-20, -20, -20, -20);
     
     UINavigationController *navMyMusicVC = [[UINavigationController alloc] initWithRootViewController:[[MyMusicViewController alloc] init]];
     navMyMusicVC.tabBarItem.image = [UIImage imageNamed:@"cm2_btm_icn_music_prs"];

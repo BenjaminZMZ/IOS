@@ -16,9 +16,19 @@
 		3040B3671DE84A24008C4E89 /* DiscoverMusicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3040B3661DE84A24008C4E89 /* DiscoverMusicViewController.m */; };
 		3040B36A1DE84A35008C4E89 /* MyMusicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3040B3691DE84A35008C4E89 /* MyMusicViewController.m */; };
 		3040B3701DE852FB008C4E89 /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3040B36F1DE852FB008C4E89 /* AccountViewController.m */; };
+		3040B37B1DEB0B5A008C4E89 /* PlayingBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3040B37A1DEB0B5A008C4E89 /* PlayingBarItem.m */; };
+		3040B3801DEBFBB2008C4E89 /* AccountHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3040B37F1DEBFBB2008C4E89 /* AccountHeaderView.m */; };
+		3040B3831DEBFED7008C4E89 /* HeaderCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3040B3821DEBFED7008C4E89 /* HeaderCollectionViewCell.m */; };
+		3040B3861DEC013A008C4E89 /* UIView+FrameProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3040B3851DEC013A008C4E89 /* UIView+FrameProcessor.m */; };
+		3040B3891DEC2185008C4E89 /* CategoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3040B3881DEC2185008C4E89 /* CategoryCollectionViewCell.m */; };
+		3040B38C1DEC4824008C4E89 /* AccountHeaderViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3040B38B1DEC4824008C4E89 /* AccountHeaderViewFlowLayout.m */; };
+		3040B38F1DEC491F008C4E89 /* DecorationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3040B38E1DEC491F008C4E89 /* DecorationView.m */; };
+		3040B3931DED19DF008C4E89 /* PlayingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3040B3921DED19DF008C4E89 /* PlayingViewController.m */; };
+		A16A66BF0C6E67E9BF902A6A /* libPods-数字版权交易系统.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F580DFAB5FFFE7526A8AFCB8 /* libPods-数字版权交易系统.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0036DD958D818C30E773AD34 /* Pods-数字版权交易系统.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-数字版权交易系统.release.xcconfig"; path = "Pods/Target Support Files/Pods-数字版权交易系统/Pods-数字版权交易系统.release.xcconfig"; sourceTree = "<group>"; };
 		302A40A01DC87D26002812FB /* 数字版权交易系统.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "数字版权交易系统.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		302A40A41DC87D26002812FB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		302A40A61DC87D26002812FB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -36,6 +46,24 @@
 		3040B36E1DE852FB008C4E89 /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
 		3040B36F1DE852FB008C4E89 /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
 		3040B3721DE853B3008C4E89 /* Macro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Macro.h; sourceTree = "<group>"; };
+		3040B3791DEB0B5A008C4E89 /* PlayingBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingBarItem.h; sourceTree = "<group>"; };
+		3040B37A1DEB0B5A008C4E89 /* PlayingBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingBarItem.m; sourceTree = "<group>"; };
+		3040B37E1DEBFBB2008C4E89 /* AccountHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountHeaderView.h; sourceTree = "<group>"; };
+		3040B37F1DEBFBB2008C4E89 /* AccountHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountHeaderView.m; sourceTree = "<group>"; };
+		3040B3811DEBFED7008C4E89 /* HeaderCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderCollectionViewCell.h; sourceTree = "<group>"; };
+		3040B3821DEBFED7008C4E89 /* HeaderCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderCollectionViewCell.m; sourceTree = "<group>"; };
+		3040B3841DEC013A008C4E89 /* UIView+FrameProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FrameProcessor.h"; sourceTree = "<group>"; };
+		3040B3851DEC013A008C4E89 /* UIView+FrameProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FrameProcessor.m"; sourceTree = "<group>"; };
+		3040B3871DEC2185008C4E89 /* CategoryCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryCollectionViewCell.h; sourceTree = "<group>"; };
+		3040B3881DEC2185008C4E89 /* CategoryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryCollectionViewCell.m; sourceTree = "<group>"; };
+		3040B38A1DEC4824008C4E89 /* AccountHeaderViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountHeaderViewFlowLayout.h; sourceTree = "<group>"; };
+		3040B38B1DEC4824008C4E89 /* AccountHeaderViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountHeaderViewFlowLayout.m; sourceTree = "<group>"; };
+		3040B38D1DEC491F008C4E89 /* DecorationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecorationView.h; sourceTree = "<group>"; };
+		3040B38E1DEC491F008C4E89 /* DecorationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DecorationView.m; sourceTree = "<group>"; };
+		3040B3911DED19DF008C4E89 /* PlayingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingViewController.h; sourceTree = "<group>"; };
+		3040B3921DED19DF008C4E89 /* PlayingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingViewController.m; sourceTree = "<group>"; };
+		A674B33CEF3F17C5D862B11F /* Pods-数字版权交易系统.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-数字版权交易系统.debug.xcconfig"; path = "Pods/Target Support Files/Pods-数字版权交易系统/Pods-数字版权交易系统.debug.xcconfig"; sourceTree = "<group>"; };
+		F580DFAB5FFFE7526A8AFCB8 /* libPods-数字版权交易系统.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-数字版权交易系统.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,17 +71,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A16A66BF0C6E67E9BF902A6A /* libPods-数字版权交易系统.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E8644B743509DDFACCA71E8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A674B33CEF3F17C5D862B11F /* Pods-数字版权交易系统.debug.xcconfig */,
+				0036DD958D818C30E773AD34 /* Pods-数字版权交易系统.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		302A40971DC87D26002812FB = {
 			isa = PBXGroup;
 			children = (
 				302A40A21DC87D26002812FB /* 数字版权交易系统 */,
 				302A40A11DC87D26002812FB /* Products */,
+				2E8644B743509DDFACCA71E8 /* Pods */,
+				79C3B2AD27BB939F62FC0BD8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -68,6 +108,9 @@
 		302A40A21DC87D26002812FB /* 数字版权交易系统 */ = {
 			isa = PBXGroup;
 			children = (
+				3040B3901DED199E008C4E89 /* PlayingViewController */,
+				3040B37D1DEBFAFB008C4E89 /* Account */,
+				3040B37C1DEB0F4C008C4E89 /* RootViewControllers */,
 				302A40A31DC87D26002812FB /* Supporting Files */,
 				302A40A61DC87D26002812FB /* AppDelegate.h */,
 				302A40A71DC87D26002812FB /* AppDelegate.m */,
@@ -75,14 +118,6 @@
 				302A40AF1DC87D26002812FB /* Assets.xcassets */,
 				302A40B11DC87D26002812FB /* LaunchScreen.storyboard */,
 				302A40B41DC87D26002812FB /* Info.plist */,
-				3040B3621DE848AF008C4E89 /* RootTabBarController.h */,
-				3040B3631DE848AF008C4E89 /* RootTabBarController.m */,
-				3040B3651DE84A24008C4E89 /* DiscoverMusicViewController.h */,
-				3040B3661DE84A24008C4E89 /* DiscoverMusicViewController.m */,
-				3040B3681DE84A35008C4E89 /* MyMusicViewController.h */,
-				3040B3691DE84A35008C4E89 /* MyMusicViewController.m */,
-				3040B36E1DE852FB008C4E89 /* AccountViewController.h */,
-				3040B36F1DE852FB008C4E89 /* AccountViewController.m */,
 				3040B3711DE85380008C4E89 /* Helper */,
 			);
 			path = "数字版权交易系统";
@@ -100,8 +135,61 @@
 			isa = PBXGroup;
 			children = (
 				3040B3721DE853B3008C4E89 /* Macro.h */,
+				3040B3841DEC013A008C4E89 /* UIView+FrameProcessor.h */,
+				3040B3851DEC013A008C4E89 /* UIView+FrameProcessor.m */,
 			);
 			name = Helper;
+			sourceTree = "<group>";
+		};
+		3040B37C1DEB0F4C008C4E89 /* RootViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3040B3621DE848AF008C4E89 /* RootTabBarController.h */,
+				3040B3631DE848AF008C4E89 /* RootTabBarController.m */,
+				3040B3651DE84A24008C4E89 /* DiscoverMusicViewController.h */,
+				3040B3661DE84A24008C4E89 /* DiscoverMusicViewController.m */,
+				3040B3681DE84A35008C4E89 /* MyMusicViewController.h */,
+				3040B3691DE84A35008C4E89 /* MyMusicViewController.m */,
+				3040B36E1DE852FB008C4E89 /* AccountViewController.h */,
+				3040B36F1DE852FB008C4E89 /* AccountViewController.m */,
+				3040B3791DEB0B5A008C4E89 /* PlayingBarItem.h */,
+				3040B37A1DEB0B5A008C4E89 /* PlayingBarItem.m */,
+				3040B3911DED19DF008C4E89 /* PlayingViewController.h */,
+				3040B3921DED19DF008C4E89 /* PlayingViewController.m */,
+			);
+			name = RootViewControllers;
+			sourceTree = "<group>";
+		};
+		3040B37D1DEBFAFB008C4E89 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				3040B37E1DEBFBB2008C4E89 /* AccountHeaderView.h */,
+				3040B37F1DEBFBB2008C4E89 /* AccountHeaderView.m */,
+				3040B3811DEBFED7008C4E89 /* HeaderCollectionViewCell.h */,
+				3040B3821DEBFED7008C4E89 /* HeaderCollectionViewCell.m */,
+				3040B3871DEC2185008C4E89 /* CategoryCollectionViewCell.h */,
+				3040B3881DEC2185008C4E89 /* CategoryCollectionViewCell.m */,
+				3040B38A1DEC4824008C4E89 /* AccountHeaderViewFlowLayout.h */,
+				3040B38B1DEC4824008C4E89 /* AccountHeaderViewFlowLayout.m */,
+				3040B38D1DEC491F008C4E89 /* DecorationView.h */,
+				3040B38E1DEC491F008C4E89 /* DecorationView.m */,
+			);
+			name = Account;
+			sourceTree = "<group>";
+		};
+		3040B3901DED199E008C4E89 /* PlayingViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = PlayingViewController;
+			sourceTree = "<group>";
+		};
+		79C3B2AD27BB939F62FC0BD8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F580DFAB5FFFE7526A8AFCB8 /* libPods-数字版权交易系统.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -111,9 +199,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 302A40B71DC87D26002812FB /* Build configuration list for PBXNativeTarget "数字版权交易系统" */;
 			buildPhases = (
+				9C204A775396686F43389C79 /* [CP] Check Pods Manifest.lock */,
 				302A409C1DC87D26002812FB /* Sources */,
 				302A409D1DC87D26002812FB /* Frameworks */,
 				302A409E1DC87D26002812FB /* Resources */,
+				E71A12A1D6C74A1825F153EF /* [CP] Embed Pods Frameworks */,
+				0278E1EE3AF0E2BA7B246872 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -171,6 +262,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0278E1EE3AF0E2BA7B246872 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-数字版权交易系统/Pods-数字版权交易系统-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9C204A775396686F43389C79 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E71A12A1D6C74A1825F153EF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-数字版权交易系统/Pods-数字版权交易系统-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		302A409C1DC87D26002812FB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -178,10 +317,18 @@
 			files = (
 				3040B3641DE848AF008C4E89 /* RootTabBarController.m in Sources */,
 				302A40A81DC87D26002812FB /* AppDelegate.m in Sources */,
+				3040B3891DEC2185008C4E89 /* CategoryCollectionViewCell.m in Sources */,
 				3040B36A1DE84A35008C4E89 /* MyMusicViewController.m in Sources */,
+				3040B3861DEC013A008C4E89 /* UIView+FrameProcessor.m in Sources */,
 				302A40A51DC87D26002812FB /* main.m in Sources */,
 				3040B3701DE852FB008C4E89 /* AccountViewController.m in Sources */,
+				3040B3931DED19DF008C4E89 /* PlayingViewController.m in Sources */,
+				3040B3831DEBFED7008C4E89 /* HeaderCollectionViewCell.m in Sources */,
 				3040B3671DE84A24008C4E89 /* DiscoverMusicViewController.m in Sources */,
+				3040B37B1DEB0B5A008C4E89 /* PlayingBarItem.m in Sources */,
+				3040B38F1DEC491F008C4E89 /* DecorationView.m in Sources */,
+				3040B3801DEBFBB2008C4E89 /* AccountHeaderView.m in Sources */,
+				3040B38C1DEC4824008C4E89 /* AccountHeaderViewFlowLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,24 +444,26 @@
 		};
 		302A40B81DC87D26002812FB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A674B33CEF3F17C5D862B11F /* Pods-数字版权交易系统.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = BM66D6ANYU;
 				INFOPLIST_FILE = "数字版权交易系统/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.zdrjxy.drm.--------";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zdrjxy.drm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
 		302A40B91DC87D26002812FB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0036DD958D818C30E773AD34 /* Pods-数字版权交易系统.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = BM66D6ANYU;
 				INFOPLIST_FILE = "数字版权交易系统/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.zdrjxy.drm.--------";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zdrjxy.drm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

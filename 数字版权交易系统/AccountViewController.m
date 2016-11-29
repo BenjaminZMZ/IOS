@@ -7,23 +7,57 @@
 //
 
 #import "AccountViewController.h"
+#import "PlayingViewController.h"
+#import "PlayingBarItem.h"
+#import "AccountHeaderViewFlowLayout.h"
+#import "HeaderCollectionViewCell.h"
+#import "CategoryCollectionViewCell.h"
+
 #import "Macro.h"
 
-@interface AccountViewController ()
+#define HeaderViewHeight 140
+#define LastFooterHeight 250
+static NSString * const HeaderCollectionViewCellReuseIdentifier = @"HeaderCollectionViewCellReuseIdentifier";
+static NSString * const CategoryCollectionViewCellReuseIdentifier = @"CategoryCollectionViewCellReuseIdentifier";
+
+@interface AccountViewController () <UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, PlayingBarItemDelegate>
+
+@property (nonatomic) UITableView *tableView;
+@property (nonatomic) UICollectionView *headerView;
 
 @end
 
 @implementation AccountViewController
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSLog(@"%s", __FUNCTION__);
+    //self.navigationItem.rightBarButtonItem = [PlayingBarItem sharedInstance];
+    self.navigationItem.rightBarButtonItem = [PlayingBarItem sharedInstance];
+    self.navigationItem.rightBarButtonItem = nil;
+    self.navigationItem.rightBarButtonItem = [PlayingBarItem sharedInstance];
+    [PlayingBarItem sharedInstance].delegate = self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationController.navigationBar.barTintColor = THEME_COLOR_RED;
-    self.navigationController.navigationBar.translucent = NO;
-    self.navigationItem.title = @"帐号";
-    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:NAVBAR_TINT_COLOR, NSForegroundColorAttributeName, nil];
-    self.navigationController.navigationBar.titleTextAttributes = dict;
+    NSLog(@"%s", __FUNCTION__);
+    [self configureNavigationBar];
+    [self.view addSubview:self.tableView];
     
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    NSLog(@"%s", __FUNCTION__);
+}
+
+- (void)viewWillLayoutSubviews
+{
+    NSLog(@"%s", __FUNCTION__);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -31,14 +65,186 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)configureNavigationBar
+{
+    self.navigationController.navigationBar.barTintColor = THEME_COLOR_RED;
+    self.navigationController.navigationBar.translucent = NO;
+    self.navigationItem.title = @"帐号";
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:NAVBAR_TINT_COLOR, NSForegroundColorAttributeName, nil];
+    self.navigationController.navigationBar.titleTextAttributes = dict;
+    
+    //self.navigationItem.rightBarButtonItem = [PlayingBarItem playingBarItem];
+    //self.navigationItem.rightBarButtonItem = [PlayingBarItem sharedInstance];
+
 }
-*/
+
+#pragma mark - UITableViewDataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 4;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (section == 1)
+        return 2;
+    else
+        return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    if (cell == nil)
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    if (indexPath.section == 0 && indexPath.row == 0)
+    {
+        cell.imageView.image = [UIImage imageNamed:@"cm2_set_icn_time"];
+        cell.textLabel.text = @"我的消息";
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+    if (indexPath.section == 1 && indexPath.row == 0)
+    {
+        cell.imageView.image = [UIImage imageNamed:@"cm2_set_icn_time"];
+        cell.textLabel.text = @"夜间模式";
+        cell.accessoryView = [[UISwitch alloc] init];
+    }
+    if (indexPath.section == 1 && indexPath.row == 1)
+    {
+        cell.imageView.image = [UIImage imageNamed:@"cm2_set_icn_time"];
+        cell.textLabel.text = @"定时关闭";
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+    if (indexPath.section == 2 && indexPath.row == 0)
+    {
+        cell.imageView.image = [UIImage imageNamed:@"cm2_set_icn_time"];
+        cell.textLabel.text = @"成为歌手";
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+    if (indexPath.section == 3 && indexPath.row == 0)
+    {
+        cell.imageView.image = [UIImage imageNamed:@"cm2_set_icn_time"];
+        cell.textLabel.text = @"关于";
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+    //cell.layer.borderColor = (__bridge CGColorRef _Nullable)([UIColor clearColor]);
+
+    cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section == 0)
+        return 10;
+    return 8;
+    //return 0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    if (section == 3)
+        return 5;
+    return 0;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark - UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 2;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    if (section == 0) return 1;
+    return 4;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGSize size = ((UICollectionViewFlowLayout *)collectionViewLayout).itemSize;
+    if (indexPath.section == 0)
+        size = CGSizeMake(kScreenWidth, HeaderViewHeight - size.height);
+    return size;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0)
+    {
+        HeaderCollectionViewCell *headerCell = (HeaderCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:HeaderCollectionViewCellReuseIdentifier forIndexPath:indexPath];
+        headerCell.userName = @"紫电清霜";
+        return headerCell;
+    }
+    CategoryCollectionViewCell *categoryCell = (CategoryCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CategoryCollectionViewCellReuseIdentifier forIndexPath:indexPath];
+    switch (indexPath.item) {
+        case 0:
+            categoryCell.text = @"动态";
+            categoryCell.detailText = @"0";
+            break;
+        case 1:
+            categoryCell.text = @"关注";
+            categoryCell.detailText = @"5";
+            break;
+        case 2:
+            categoryCell.text = @"粉丝";
+            categoryCell.detailText = @"3";
+            break;
+        case 3:
+            categoryCell.text = nil;
+            categoryCell.detailText = @"我的资料";
+            break;
+        default:
+            break;
+    }
+    return categoryCell;
+}
+
+#pragma mark - Accessor Methods
+- (UITableView *)tableView
+{
+    if (_tableView == nil)
+    {
+        _tableView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStyleGrouped];
+        _tableView.sectionFooterHeight = 1;
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        _tableView.tableHeaderView = self.headerView;
+        UIView *footerView = [[UIView alloc] init];
+        //footerView.backgroundColor = [UIColor blueColor];
+        //_tableView.tableFooterView = footerView;
+        //_tableView.backgroundColor = backgroundColorWhite;
+        //_tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    }
+    
+    return _tableView;
+}
+
+- (UICollectionView *)headerView
+{
+    if (_headerView == nil)
+    {
+        _headerView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, HeaderViewHeight) collectionViewLayout:[[AccountHeaderViewFlowLayout alloc] init]];
+        [_headerView registerClass:[HeaderCollectionViewCell class] forCellWithReuseIdentifier:HeaderCollectionViewCellReuseIdentifier];
+        [_headerView registerClass:[CategoryCollectionViewCell class] forCellWithReuseIdentifier:CategoryCollectionViewCellReuseIdentifier];
+        _headerView.delegate = self;
+        _headerView.dataSource = self;
+        _headerView.backgroundColor = [UIColor whiteColor];
+    }
+    
+    return _headerView;
+}
+
+#pragma mark - PlayingBarItemDelegate
+- (void)playingBarItemTapped
+{
+    [self.navigationController pushViewController:[[PlayingViewController alloc] init] animated:YES];
+}
 
 @end
