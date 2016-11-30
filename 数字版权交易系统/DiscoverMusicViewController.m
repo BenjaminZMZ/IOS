@@ -25,7 +25,8 @@
     self.navigationItem.rightBarButtonItem = [PlayingBarItem sharedInstance];
     [PlayingBarItem sharedInstance].delegate = self;
     NSLog(@"%s", __FUNCTION__);
-    //self.tabBarController.tabBar.hidden = NO;
+    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.translucent = NO;
 }
 
 - (void)viewDidLoad {

@@ -38,6 +38,8 @@ static NSString * const CategoryCollectionViewCellReuseIdentifier = @"CategoryCo
     self.navigationItem.rightBarButtonItem = nil;
     self.navigationItem.rightBarButtonItem = [PlayingBarItem sharedInstance];
     [PlayingBarItem sharedInstance].delegate = self;
+    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.translucent = NO;
 }
 
 - (void)viewDidLoad {
@@ -69,6 +71,7 @@ static NSString * const CategoryCollectionViewCellReuseIdentifier = @"CategoryCo
 - (void)configureNavigationBar
 {
     self.navigationController.navigationBar.barTintColor = THEME_COLOR_RED;
+    self.navigationController.navigationBar.tintColor = NAVBAR_TINT_COLOR;
     self.navigationController.navigationBar.translucent = NO;
     self.navigationItem.title = @"帐号";
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:NAVBAR_TINT_COLOR, NSForegroundColorAttributeName, nil];
@@ -244,7 +247,9 @@ static NSString * const CategoryCollectionViewCellReuseIdentifier = @"CategoryCo
 #pragma mark - PlayingBarItemDelegate
 - (void)playingBarItemTapped
 {
-    [self.navigationController pushViewController:[[PlayingViewController alloc] init] animated:YES];
+    PlayingViewController *controller = [[PlayingViewController alloc] init];
+    controller.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 @end

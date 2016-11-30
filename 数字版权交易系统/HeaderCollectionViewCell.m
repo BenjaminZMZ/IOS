@@ -53,7 +53,9 @@
         _avatarImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"avatar_default"]];
         CGFloat unitLength = self.bounds.size.height / 5;
         _avatarImageView.frame = CGRectMake(unitLength, unitLength, 3 * unitLength, 3 * unitLength);
+        _avatarImageView.backgroundColor = [UIColor darkGrayColor];
         _avatarImageView.layer.cornerRadius = _avatarImageView.width / 2;
+        _avatarImageView.clipsToBounds = YES;
     }
     
     return _avatarImageView;
