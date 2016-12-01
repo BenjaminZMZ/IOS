@@ -8,10 +8,13 @@
 
 #import "MyMusicViewController.h"
 #import "PlayingViewController.h"
+#import "FakeNavigationBar.h"
 #import "PlayingBarItem.h"
 #import "Macro.h"
 
 @interface MyMusicViewController ()<PlayingBarItemDelegate>
+
+@property (nonatomic) FakeNavigationBar *fakeBar;
 
 @end
 
@@ -25,13 +28,11 @@
 //        NSLog(@"%@", [self.navigationItem.rightBarButtonItem class]);
 //    self.navigationItem.rightBarButtonItem = nil;
 //    self.navigationItem.rightBarButtonItem = [PlayingBarItem sharedInstance];
-    self.navigationItem.rightBarButtonItem = [PlayingBarItem sharedInstance];
-    self.navigationItem.rightBarButtonItem = nil;
-    self.navigationItem.rightBarButtonItem = [PlayingBarItem sharedInstance];
+    self.fakeBar.fakeRightBarButtonItem = [PlayingBarItem sharedInstance];
+    self.fakeBar.fakeRightBarButtonItem = nil;
+    self.fakeBar.fakeRightBarButtonItem = [PlayingBarItem sharedInstance];
     [PlayingBarItem sharedInstance].delegate = self;
     NSLog(@"%s", __FUNCTION__);
-    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.translucent = NO;
 }
 
 - (void)viewDidLoad {
@@ -81,15 +82,21 @@
 
 - (void)configureNavigationBar
 {
-    self.navigationController.navigationBar.barTintColor = THEME_COLOR_RED;
-    self.navigationController.navigationBar.tintColor = NAVBAR_TINT_COLOR;
-    self.navigationController.navigationBar.translucent = NO;
-    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:NAVBAR_TINT_COLOR, NSForegroundColorAttributeName, nil];
-    self.navigationController.navigationBar.titleTextAttributes = dict;
-    self.navigationItem.title = @"我的音乐";
+//    self.navigationController.navigationBar.barTintColor = THEME_COLOR_RED;
+//    self.navigationController.navigationBar.tintColor = NAVBAR_TINT_COLOR;
+//    self.navigationController.navigationBar.translucent = NO;
+//    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:NAVBAR_TINT_COLOR, NSForegroundColorAttributeName, nil];
+//    self.navigationController.navigationBar.titleTextAttributes = dict;
+//    self.navigationItem.title = @"我的音乐";
     
-    //self.navigationItem.rightBarButtonItem = [PlayingBarItem playingBarItem];
-    //self.navigationItem.rightBarButtonItem = [PlayingBarItem sharedInstance];
+    self.fakeBar.fakeBarTintColor = THEME_COLOR_RED;
+    self.fakeBar.fakeTintColor = NAVBAR_TINT_COLOR;
+    self.fakeBar.fakeTranslucent = NO;
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:NAVBAR_TINT_COLOR, NSForegroundColorAttributeName, nil];
+    self.fakeBar.fakeTitleTextAttributes = dict;
+    self.fakeBar.fakeTitle = @"我的音乐";
+    [self.navigationController setNavigationBarHidden:YES];
+    [self.view addSubview:self.fakeBar];
 }
 
 #pragma mark - PlayingBarItemDelegate
@@ -98,6 +105,17 @@
     PlayingViewController *controller = [[PlayingViewController alloc] init];
     controller.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:controller animated:YES];
+}
+
+#pragma mark - Accessor Methods
+- (FakeNavigationBar *)fakeBar
+{
+    if (_fakeBar == nil)
+    {
+        _fakeBar = [[FakeNavigationBar alloc] init];
+    }
+    
+    return _fakeBar;
 }
 
 @end

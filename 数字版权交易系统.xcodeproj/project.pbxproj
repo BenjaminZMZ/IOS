@@ -12,6 +12,7 @@
 		302A40AE1DC87D26002812FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 302A40AC1DC87D26002812FB /* Main.storyboard */; };
 		302A40B01DC87D26002812FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 302A40AF1DC87D26002812FB /* Assets.xcassets */; };
 		302A40B31DC87D26002812FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 302A40B11DC87D26002812FB /* LaunchScreen.storyboard */; };
+		303226B21DEF05FC00B966EF /* FakeNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 303226B11DEF05FC00B966EF /* FakeNavigationBar.m */; };
 		3040B3641DE848AF008C4E89 /* RootTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3040B3631DE848AF008C4E89 /* RootTabBarController.m */; };
 		3040B3671DE84A24008C4E89 /* DiscoverMusicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3040B3661DE84A24008C4E89 /* DiscoverMusicViewController.m */; };
 		3040B36A1DE84A35008C4E89 /* MyMusicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3040B3691DE84A35008C4E89 /* MyMusicViewController.m */; };
@@ -38,6 +39,8 @@
 		302A40AF1DC87D26002812FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		302A40B21DC87D26002812FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		302A40B41DC87D26002812FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		303226B01DEF05FC00B966EF /* FakeNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FakeNavigationBar.h; sourceTree = "<group>"; };
+		303226B11DEF05FC00B966EF /* FakeNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FakeNavigationBar.m; sourceTree = "<group>"; };
 		3040B3621DE848AF008C4E89 /* RootTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootTabBarController.h; sourceTree = "<group>"; };
 		3040B3631DE848AF008C4E89 /* RootTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootTabBarController.m; sourceTree = "<group>"; };
 		3040B3651DE84A24008C4E89 /* DiscoverMusicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverMusicViewController.h; sourceTree = "<group>"; };
@@ -159,6 +162,8 @@
 				3040B37A1DEB0B5A008C4E89 /* PlayingBarItem.m */,
 				3040B3911DED19DF008C4E89 /* PlayingViewController.h */,
 				3040B3921DED19DF008C4E89 /* PlayingViewController.m */,
+				303226B01DEF05FC00B966EF /* FakeNavigationBar.h */,
+				303226B11DEF05FC00B966EF /* FakeNavigationBar.m */,
 			);
 			name = RootViewControllers;
 			sourceTree = "<group>";
@@ -330,6 +335,7 @@
 				3040B3931DED19DF008C4E89 /* PlayingViewController.m in Sources */,
 				3040B3961DEE68B1008C4E89 /* RecordView.m in Sources */,
 				3040B3831DEBFED7008C4E89 /* HeaderCollectionViewCell.m in Sources */,
+				303226B21DEF05FC00B966EF /* FakeNavigationBar.m in Sources */,
 				3040B3671DE84A24008C4E89 /* DiscoverMusicViewController.m in Sources */,
 				3040B37B1DEB0B5A008C4E89 /* PlayingBarItem.m in Sources */,
 				3040B38F1DEC491F008C4E89 /* DecorationView.m in Sources */,

@@ -15,6 +15,9 @@
 #define kScreenWidth [[UIScreen mainScreen] bounds].size.width
 #define kScreenHeight [[UIScreen mainScreen] bounds].size.height
 
+#define kNavigationBarHeight 44
+#define kStatusBarHeight 20
+
 #define backgroundColorWhite [UIColor colorWithWhite:0.90 alpha:1.000]
 
 #endif /* Macro_h */

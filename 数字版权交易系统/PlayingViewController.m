@@ -9,10 +9,13 @@
 #import "PlayingViewController.h"
 #import "RecordView.h"
 #import "Masonry.h"
+#import "FakeNavigationBar.h"
 #import "UIView+FrameProcessor.h"
 #import "Macro.h"
 
 @interface PlayingViewController ()
+
+@property (nonatomic) FakeNavigationBar *fakeBar;
 
 @property (nonatomic) UIImageView *recordImageView;
 @property (nonatomic) UIImageView *recordNeddleView;
@@ -44,19 +47,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     //将translucent设为YES，使edgesForExtendedLayout设为UIRectEdgeAll
-    self.navigationController.navigationBar.translucent = YES;
-    
-    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+//    self.navigationController.navigationBar.translucent = YES;
+//    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+    [self configureNavigationBar];
+    self.navigationController.interactivePopGestureRecognizer.delegate = (id<UIGestureRecognizerDelegate>)self;
     [self configureViews];
     NSLog(@"%s", __FUNCTION__);
-    //[self.navigationController.viewControllers]
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.translucent = YES;
+//    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+//    self.navigationController.navigationBar.translucent = YES;
     NSLog(@"%s", __FUNCTION__);
 }
 
@@ -70,16 +73,29 @@
 {
     [super viewWillDisappear:animated];
     NSLog(@"%s", __FUNCTION__);
+    //[self.navigationController setNavigationBarHidden:NO];
 }
 
 
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-//    self.navigationController.tabBarController.tabBar.hidden = YES;
-//    NSLog(@"%d", self.navigationController.tabBarController.tabBar.hidden);
-//    self.navigationController.tabBarController.tabBar.hidden = NO;
     NSLog(@"%s", __FUNCTION__);
+}
+
+- (void)configureNavigationBar
+{
+    [self.navigationController setNavigationBarHidden:YES];
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"cm2_topbar_icn_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backItemTapped)];
+    self.fakeBar.fakeLeftBarButtonItem = backItem;
+    self.fakeBar.tintColor = NAVBAR_TINT_COLOR;
+    [self.fakeBar setTransparent:YES];
+    [self.view addSubview:self.fakeBar];
+}
+
+- (void)backItemTapped
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)configureViews
@@ -460,6 +476,16 @@
     }
     
     return _visualEffectView;
+}
+
+- (FakeNavigationBar *)fakeBar
+{
+    if (_fakeBar == nil)
+    {
+        _fakeBar = [[FakeNavigationBar alloc] init];
+    }
+    
+    return _fakeBar;
 }
 
 @end

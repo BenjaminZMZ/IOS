@@ -9,9 +9,12 @@
 #import "AccountViewController.h"
 #import "PlayingViewController.h"
 #import "PlayingBarItem.h"
+#import "FakeNavigationBar.h"
 #import "AccountHeaderViewFlowLayout.h"
 #import "HeaderCollectionViewCell.h"
 #import "CategoryCollectionViewCell.h"
+#import "Masonry.h"
+#import "UIView+FrameProcessor.h"
 
 #import "Macro.h"
 
@@ -25,6 +28,8 @@ static NSString * const CategoryCollectionViewCellReuseIdentifier = @"CategoryCo
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) UICollectionView *headerView;
 
+@property (nonatomic) FakeNavigationBar *fakeBar;
+
 @end
 
 @implementation AccountViewController
@@ -34,12 +39,10 @@ static NSString * const CategoryCollectionViewCellReuseIdentifier = @"CategoryCo
     [super viewWillAppear:animated];
     NSLog(@"%s", __FUNCTION__);
     //self.navigationItem.rightBarButtonItem = [PlayingBarItem sharedInstance];
-    self.navigationItem.rightBarButtonItem = [PlayingBarItem sharedInstance];
-    self.navigationItem.rightBarButtonItem = nil;
-    self.navigationItem.rightBarButtonItem = [PlayingBarItem sharedInstance];
+    self.fakeBar.fakeRightBarButtonItem = [PlayingBarItem sharedInstance];
+    self.fakeBar.fakeRightBarButtonItem = nil;
+    self.fakeBar.fakeRightBarButtonItem = [PlayingBarItem sharedInstance];
     [PlayingBarItem sharedInstance].delegate = self;
-    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.translucent = NO;
 }
 
 - (void)viewDidLoad {
@@ -48,6 +51,10 @@ static NSString * const CategoryCollectionViewCellReuseIdentifier = @"CategoryCo
     NSLog(@"%s", __FUNCTION__);
     [self configureNavigationBar];
     [self.view addSubview:self.tableView];
+    self.tableView.y = kNavigationBarHeight + kStatusBarHeight;
+//    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make){
+//        make.top.equalTo(self.view.mas_top).offset(kNavigationBarHeight + kStatusBarHeight);
+//    }];
     
 }
 
@@ -70,15 +77,21 @@ static NSString * const CategoryCollectionViewCellReuseIdentifier = @"CategoryCo
 
 - (void)configureNavigationBar
 {
-    self.navigationController.navigationBar.barTintColor = THEME_COLOR_RED;
-    self.navigationController.navigationBar.tintColor = NAVBAR_TINT_COLOR;
-    self.navigationController.navigationBar.translucent = NO;
-    self.navigationItem.title = @"帐号";
-    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:NAVBAR_TINT_COLOR, NSForegroundColorAttributeName, nil];
-    self.navigationController.navigationBar.titleTextAttributes = dict;
+//    self.navigationController.navigationBar.barTintColor = THEME_COLOR_RED;
+//    self.navigationController.navigationBar.tintColor = NAVBAR_TINT_COLOR;
+//    self.navigationController.navigationBar.translucent = NO;
+//    self.navigationItem.title = @"帐号";
+//    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:NAVBAR_TINT_COLOR, NSForegroundColorAttributeName, nil];
+//    self.navigationController.navigationBar.titleTextAttributes = dict;
     
-    //self.navigationItem.rightBarButtonItem = [PlayingBarItem playingBarItem];
-    //self.navigationItem.rightBarButtonItem = [PlayingBarItem sharedInstance];
+    self.fakeBar.fakeBarTintColor = THEME_COLOR_RED;
+    self.fakeBar.tintColor = NAVBAR_TINT_COLOR;
+    self.fakeBar.fakeTranslucent = NO;
+    self.fakeBar.fakeTitle = @"帐号";
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:NAVBAR_TINT_COLOR, NSForegroundColorAttributeName, nil];
+    self.fakeBar.fakeTitleTextAttributes = dict;
+    [self.navigationController setNavigationBarHidden:YES];
+    [self.view addSubview:self.fakeBar];
 
 }
 
@@ -242,6 +255,16 @@ static NSString * const CategoryCollectionViewCellReuseIdentifier = @"CategoryCo
     }
     
     return _headerView;
+}
+
+- (FakeNavigationBar *)fakeBar
+{
+    if (_fakeBar == nil)
+    {
+        _fakeBar = [[FakeNavigationBar alloc] init];
+    }
+    
+    return _fakeBar;
 }
 
 #pragma mark - PlayingBarItemDelegate
