@@ -11,7 +11,9 @@
 #import "Masonry.h"
 #import "FakeNavigationBar.h"
 #import "UIView+FrameProcessor.h"
+#import "Track.h"
 #import "Macro.h"
+#import "MusicEntity.h"
 
 @interface PlayingViewController ()
 
@@ -31,9 +33,11 @@
 @property (nonatomic) UIButton *nextMusicButton;
 @property (nonatomic) UIButton *tooglePlayPauseButton;
 @property (nonatomic) UIButton *musicListButton;
-
 @property (nonatomic) UIImageView *backgroundImageView;
 @property (nonatomic) UIVisualEffectView *visualEffectView;
+
+@property (nonatomic) BOOL isPlaying;
+
 
 @end
 
@@ -43,6 +47,19 @@
 
 @implementation PlayingViewController
 
++ (instancetype)sharedInstance
+{
+    static PlayingViewController *sharedPlayingVC;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedPlayingVC = [[PlayingViewController alloc] init];
+        sharedPlayingVC.streamer = [[DOUAudioStreamer alloc] init];
+        sharedPlayingVC.isPlaying = NO;
+    });
+    
+    return sharedPlayingVC;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -50,16 +67,19 @@
 //    self.navigationController.navigationBar.translucent = YES;
 //    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
     [self configureNavigationBar];
-    self.navigationController.interactivePopGestureRecognizer.delegate = (id<UIGestureRecognizerDelegate>)self;
     [self configureViews];
+    //self.currentIndex = 0;
     NSLog(@"%s", __FUNCTION__);
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-//    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
-//    self.navigationController.navigationBar.translucent = YES;
+    self.navigationController.interactivePopGestureRecognizer.delegate = (id<UIGestureRecognizerDelegate>)self;
+    
+    if (self.dontReloadMusic && self.streamer)
+        return;
+    [self createStreamer];
     NSLog(@"%s", __FUNCTION__);
 }
 
@@ -175,26 +195,6 @@
         make.width.equalTo(@(40));
         make.height.equalTo(@(40));
     }];
-    //NSLog(@"moreButton centerX: %f", self.moreButton.center.x);
-//
-//    [self.view addSubview:self.beginTimeLabel];
-//    [self.view addSubview:self.musicSlider];
-//    [self.view addSubview:self.endTimeLabel];
-//    space = kScreenWidth / 20;
-////    y = kScreenHeight - distanceToBottom2;
-//    [self.beginTimeLabel mas_makeConstraints:^(MASConstraintMaker *make){
-//        make.centerX.equalTo(self.view.mas_left).with.offset(space);
-//        make.centerY.equalTo(self.view.mas_bottom).with.offset(offsetY2);
-//    }];
-//    [self.endTimeLabel mas_makeConstraints:^(MASConstraintMaker *make){
-//        make.centerX.equalTo(self.view.mas_right).with.offset(-space);
-//        make.centerY.equalTo(self.view.mas_bottom).with.offset(offsetY2);
-//    }];
-//    [self.musicSlider mas_makeConstraints:^(MASConstraintMaker *make){
-//        make.centerX.equalTo(self.view.mas_centerX);
-//        make.centerY.equalTo(self.view.mas_bottom).with.offset(offsetY2);
-//        make.width.equalTo(@(0.9 * (kScreenWidth - 4 * space)));
-//    }];
 
     [self.view addSubview:self.tooglePlayModeButton];
     [self.view addSubview:self.previousMusicButton];
@@ -241,15 +241,38 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma play music
+- (void)createStreamer
+{
+    Track *track = [[Track alloc] init];//((MusicEntity *)(self.musicEntities[self.currentIndex])).fileName
+    NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:((MusicEntity *)(self.musicEntities[self.currentIndex])).fileName ofType:@"mp3"];
+    NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
+    track.audioFileURL = fileURL;
+    _streamer = nil;
+    _streamer = [DOUAudioStreamer streamerWithAudioFile:track];
+    [_streamer play];
+    [self tooglePlayPause];
 }
-*/
+
+- (void)tooglePlayPause
+{
+    if (!self.isPlaying)
+    {
+        [self.tooglePlayPauseButton setImage:[UIImage imageNamed:@"cm2_fm_btn_pause"] forState:UIControlStateNormal];
+        [_streamer play];
+        self.isPlaying = YES;
+    }
+    else
+    {
+        [self.tooglePlayPauseButton setImage:[UIImage imageNamed:@"cm2_fm_btn_play"] forState:UIControlStateNormal];
+        [_streamer pause];
+        self.isPlaying = NO;
+    }
+    
+    
+}
+
 
 #pragma mark - Accessor Methods
 - (UIImageView *)recordImageView
@@ -389,7 +412,7 @@
     if (_tooglePlayModeButton == nil)
     {
         _tooglePlayModeButton = [[UIButton alloc] init];
-        UIImage *musicListImage = [UIImage imageNamed:@"cm2_icn_list"];
+        UIImage *musicListImage = [UIImage imageNamed:@"cm2_icn_loop"];
         //_tooglePlayModeButton.imageView.image = musicListImage;
         [_tooglePlayModeButton setImage:musicListImage forState:UIControlStateNormal];
         _tooglePlayModeButton.size = musicListImage.size;
@@ -437,6 +460,7 @@
         UIImage *tooglePlayPauseImage = [UIImage imageNamed:@"cm2_fm_btn_play"];
         [_tooglePlayPauseButton setImage:tooglePlayPauseImage forState:UIControlStateNormal];
         _tooglePlayPauseButton.size = tooglePlayPauseImage.size;
+        [_tooglePlayPauseButton addTarget:self action:@selector(tooglePlayPause) forControlEvents:UIControlEventTouchUpInside];
     }
     
     return _tooglePlayPauseButton;
@@ -487,5 +511,6 @@
     
     return _fakeBar;
 }
+
 
 @end

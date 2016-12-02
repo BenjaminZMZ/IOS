@@ -270,9 +270,11 @@ static NSString * const CategoryCollectionViewCellReuseIdentifier = @"CategoryCo
 #pragma mark - PlayingBarItemDelegate
 - (void)playingBarItemTapped
 {
-    PlayingViewController *controller = [[PlayingViewController alloc] init];
-    controller.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:controller animated:YES];
+    PlayingViewController *playingVC = [PlayingViewController sharedInstance];
+    if (playingVC.musicEntities.count == 0) return;
+    playingVC.hidesBottomBarWhenPushed = YES;
+    playingVC.dontReloadMusic = YES;
+    [self.navigationController pushViewController:playingVC animated:YES];
 }
 
 @end

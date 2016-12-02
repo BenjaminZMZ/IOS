@@ -7,97 +7,316 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		16954C1328C469ACEBAC7AE72B51C06C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2A6FF208CEC4C2861F1E9D42D651453 /* Foundation.framework */; };
-		2905381350CEFFBFFA9BC8B5D027F190 /* MASConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 3162AC8E29FA7F3BF0D8641F7F4D9B60 /* MASConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2979E54C4AFD27076576E82ADEED2F00 /* NSLayoutConstraint+MASDebugAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E158FC65C5404E098F16E26F478DA504 /* NSLayoutConstraint+MASDebugAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		331718BFB4A91CFFE026492905231562 /* ViewController+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = FA891F8E85C079B4FB101DDD5BC7A477 /* ViewController+MASAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		335DCBC17D2469F228020EF6C7B41F7C /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = F8AB44751192F0AA8DA5F75A06138D15 /* MASConstraintMaker.m */; };
-		3F63C119F95A6735AE627BBB1BEBC4B1 /* MASViewAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = 915A6FF0E04F5A5C0ACDE0E32BD2F193 /* MASViewAttribute.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		432BD50F1E699EDF2EA007E850FFCEF7 /* View+MASShorthandAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A9F610CB90E57B81F8F7DCA2176E0FD /* View+MASShorthandAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5457FCC2699281B5A4203BA1559F593F /* NSArray+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8229525E7067F22D3977D2628DF5F2C3 /* NSArray+MASAdditions.m */; };
-		6F728DFB30D75C9CBA181CC9719AE89B /* Pods-数字版权交易系统-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E305642429C46F73C698BEBDEE7B51E4 /* Pods-数字版权交易系统-dummy.m */; };
-		81403CAF6C4C1D3DC8B199289C3A6F59 /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FCC2A09AC3DCD0E4A3D268DAABC5135 /* View+MASAdditions.m */; };
-		81599471BAB0420D54E1ADF8507A5113 /* Masonry-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5A231E76AF7DC6CB887B5B2C522A7A /* Masonry-dummy.m */; };
-		9205037BA8C22574B33FC96C5EA829A3 /* Masonry.h in Headers */ = {isa = PBXBuildFile; fileRef = EC0384F145CF471A951BA8E9486AD626 /* Masonry.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		99D8C610BC84BE231C5D3D280F3B12AF /* MASCompositeConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 475326F2A929CD1AFFB74850961F32C0 /* MASCompositeConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A44AF130E4C5313CD193D9BF68853026 /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F28AEAAF722BC62BF5B37D6663BBC2 /* MASViewAttribute.m */; };
-		A7D31BD1F3AD4ED4612467FAD332F388 /* NSArray+MASShorthandAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = FBE23E70FF64ACC81816A368E171B903 /* NSArray+MASShorthandAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AF4E7187E09A5AF3A0758991203153DC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E86668F20F252C440D1015B816BE59C5 /* UIKit.framework */; };
-		AF62B956405F7734F5A9B8F3FD4B1B96 /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 25CED739CF35B6D0A1D95AE17D712A7F /* ViewController+MASAdditions.m */; };
-		B2B7C90BA9C4DBD9851C75AC801B0E8E /* MASConstraint+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 22E2395DA2EBCF6241A0DA0E1859FF45 /* MASConstraint+Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BCD4B362C6194513150915437754E2D4 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = D5EC6EDDDD3E503C5B2E967D3FEECFEB /* MASCompositeConstraint.m */; };
-		BDD210D7537DD15CFE59AE126005E5F8 /* MASLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 807FFD255E8235D5B42FE078299B5F1B /* MASLayoutConstraint.m */; };
-		BE024118D329F8F566BD1811A1DC16CB /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F937BDEB8DF93A08D20C5355C0FDB5C /* MASConstraint.m */; };
-		C6EE194D232E9FE87097C0F1DF91B9FA /* MASLayoutConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = B48867DE203BCF3BB3DFCAB8FDC7516B /* MASLayoutConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D3D9F12613E23AD64C1FA5F7081A3668 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C762C4F3A304C10AF7EBEA6AAA8508A0 /* NSLayoutConstraint+MASDebugAdditions.m */; };
-		DD1F717B0527C71229B3339324E35E55 /* View+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E7E17DB5590A8C4D9625D67E6FBD243 /* View+MASAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DE31B168D9197213CEB7B90E3ADEB4CC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2A6FF208CEC4C2861F1E9D42D651453 /* Foundation.framework */; };
-		E6B49FBCE3957DB67F691ACCC4CAF4BE /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C02266037F030E22468AC86802DB57 /* MASViewConstraint.m */; };
-		EB02AEF303313F801392DE8D90AFF0F7 /* MASViewConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 043FB94CF93050E20D8E4C071ACFA5D2 /* MASViewConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EC6CCC98505D2067BC98B4E6223C9DF8 /* MASConstraintMaker.h in Headers */ = {isa = PBXBuildFile; fileRef = 780A86CEB0A0131C88BE12414D500734 /* MASConstraintMaker.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD39EBE3398E1A99965AC003B273450D /* NSArray+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B179F4D3D34A3CE25A698B8D9AC9D6C2 /* NSArray+MASAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FF682E8B083BAEBBDF38C52D89D45E37 /* MASUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 1321572A3ED9C894C94A131BE29B81B2 /* MASUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		02688A3AC1104171ADD7048DD3787CFA /* DOUAudioEventLoop.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C53F05CE69ED9E9C6DD3B1C723E7795 /* DOUAudioEventLoop.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		04128B0E53194DE3C5164AC6DFC3D2F7 /* DOUAudioStreamer+Options.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E89BF7E0AD1EFAC95FE48B188F185CF /* DOUAudioStreamer+Options.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		04A4FE6BC333B1FC7D35EADA8F59FAD6 /* MTLJSONAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF73E9DEF801E4FEE4410F0543D8F7E /* MTLJSONAdapter.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		0563227B6D480B862CA5EF8C36DF51A4 /* MTLModel+NSCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 637C60933BE54846BF07C4C663EBD9DE /* MTLModel+NSCoding.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		05B638931DCA43D4FFA6B2D2A86115D7 /* DOUEAGLView.h in Headers */ = {isa = PBXBuildFile; fileRef = FFA4549B03B4EFA20ECBC92ACAA9249C /* DOUEAGLView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		06B93267BE4B80B2B4B91E5EFCE386D2 /* MTLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB4B12E9416051B6B5CAC145E1B6EF3 /* MTLModel.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		0AC78DD9AAAA1CCE7D0ACABEB36775FB /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 602A9DF751B8D992352E40E3D94651AF /* OpenGLES.framework */; };
+		0CCB6B307EBF17E2D0E3A6AD52F6F51E /* EXTScope.h in Headers */ = {isa = PBXBuildFile; fileRef = 1B6C2035496AA08F23EFA12EA4B8C4BB /* EXTScope.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		10502E01B8C2B1E1F37B392A064DEDE2 /* DOUAudioFilePreprocessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 342F52DE038A939573CD3393588D9DCC /* DOUAudioFilePreprocessor.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		17A59C9B4F5727FAF9E3A6D92A9FFABD /* EXTRuntimeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E4822028ABC08AB2E540FEC0CA18D7 /* EXTRuntimeExtensions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		19980BF298B835DFA7A00EF7EF0FB691 /* DOUAudioFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 53BC0BBAF4FEDE9C32C040944B3E3F10 /* DOUAudioFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		19D81E345715F41ED29349DBFF389D55 /* NSDictionary+MTLMappingAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = EFA3D1CC8A3C0EC8A97A5E375A7D812A /* NSDictionary+MTLMappingAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1BF9FCDC89DD1C7EF39D0437799C5A46 /* DOUAudioRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5176D3CA3B1E961384DC51D4965B2C16 /* DOUAudioRenderer.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		2017E47DA83874EDEB9EF451AE4CA83C /* DOUAudioFrequencyAnalyzer.h in Headers */ = {isa = PBXBuildFile; fileRef = 0C32A4117294301A028A8C0A4442C781 /* DOUAudioFrequencyAnalyzer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		218E64C304FFBB084429E262097BF331 /* DOUAudioStreamer_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = AA1F730BC821FCCB55152575625BCC86 /* DOUAudioStreamer_Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		281C9550741C50DA99A3F55EC37A01F1 /* DOUAudioSpatialAnalyzer.h in Headers */ = {isa = PBXBuildFile; fileRef = D4625358DCE9DBF84DFF2B356B7A876F /* DOUAudioSpatialAnalyzer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2905381350CEFFBFFA9BC8B5D027F190 /* MASConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CF9AD38A41103A49C9559C9D67022DF /* MASConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2979E54C4AFD27076576E82ADEED2F00 /* NSLayoutConstraint+MASDebugAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B87A1E9F3657DE72E1FE3AC9ABE9B1AD /* NSLayoutConstraint+MASDebugAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2B91954D1D8469415E1164E83DD3D3F1 /* NSValueTransformer+MTLInversionAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 9CBEE799BE6CC58762928DE84B384065 /* NSValueTransformer+MTLInversionAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2D097F9B47E61A2F9ED4053728DA7AE6 /* NSDictionary+MTLJSONKeyPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B70125CF173E6E072CB910EB3027F13 /* NSDictionary+MTLJSONKeyPath.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		2EF2857A858C62CE1C2F203A0FD70E10 /* DOUAudioBase.h in Headers */ = {isa = PBXBuildFile; fileRef = E3FCF78C988ABD5B5E714FF691006F89 /* DOUAudioBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3122D0AA7789106A4DAB1D9C3BA0F9A8 /* DOUAudioStreamer+Options.h in Headers */ = {isa = PBXBuildFile; fileRef = CA1E4742CA855A3A16378579BA11F88D /* DOUAudioStreamer+Options.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		31FA7C846806699503E820967ACD3C0B /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB02A1A93A13066851CDDE80190232F3 /* MediaPlayer.framework */; };
+		331718BFB4A91CFFE026492905231562 /* ViewController+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2505C796FA7904CB1B52C95CB286DD47 /* ViewController+MASAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		335DCBC17D2469F228020EF6C7B41F7C /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC91180588515563CA1EDA4953A8456 /* MASConstraintMaker.m */; };
+		38A7CC4F2BC041042712A5FA1BD2CB2F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F414309243F3EC2746420255473B3F61 /* QuartzCore.framework */; };
+		3A4684ED0157A10C50B6EE8DDE32C914 /* DOUAudioAnalyzer+Default.h in Headers */ = {isa = PBXBuildFile; fileRef = 090C5C3C0ADA4CA55FFAAE9A892483FD /* DOUAudioAnalyzer+Default.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A514B1E6F5A34F4F2DD745C18F2FC63 /* DOUAudioRenderer.h in Headers */ = {isa = PBXBuildFile; fileRef = 67C518B6DF418600248231DD2F28F484 /* DOUAudioRenderer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3C43032339841F7D1D94EF12903A2272 /* MTLJSONAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = B427550D7B9D0EAB52CEE0442EF0EC55 /* MTLJSONAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3F63C119F95A6735AE627BBB1BEBC4B1 /* MASViewAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = 67E4F8F96FB3EB22AC1D027DD9B6D3F0 /* MASViewAttribute.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		41C46F19A2CE1E29840F226638A10678 /* metamacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DB2E539185D023A8F6025C7FCE4F3B /* metamacros.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		432BD50F1E699EDF2EA007E850FFCEF7 /* View+MASShorthandAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = A7929711F4CE9D44A8C1E5C1C017DAD4 /* View+MASShorthandAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		495E27E8D0F85F4008E237D0F29EA8AC /* NSError+MTLModelException.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E48BE2A7B49CC4921D795BB6D53555F /* NSError+MTLModelException.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4980C203311F9A91EF1A1FCAEC09EBD2 /* EXTRuntimeExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = B4D38B3C93F837989D3118CA8FF246F3 /* EXTRuntimeExtensions.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		4B80195CC9E343CFBEF93240532BAD43 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69EC5B043B180004CB82910D275F7B4F /* MobileCoreServices.framework */; };
+		4BABB4C716353500FDF75187D35DAACF /* MTLModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 86C0D926D2004D192F930CF4A11F9A40 /* MTLModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		515B8D3A3DAB237434480661D93D0E27 /* DOUAudioAnalyzer+Default.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5310D2A21DAE8C107CEFED2099A96E /* DOUAudioAnalyzer+Default.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		51D82E935F209D702C5A0F923AED3E68 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDE488529BA126F31AC3D9FC975BF8D8 /* Foundation.framework */; };
+		52B96AC796E60DBF61A11151FD25CEE8 /* NSObject+MTLComparisonAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 4BC83BD25355FB60C7DC1917FF3777DD /* NSObject+MTLComparisonAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		542A74473DEBCC4A4A8EFD7219D2957B /* MTLValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 00CA216B12FBEA312288518214C2AE52 /* MTLValueTransformer.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		5457FCC2699281B5A4203BA1559F593F /* NSArray+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8764DFA8F1A29E4A2EC709CF769AEDD8 /* NSArray+MASAdditions.m */; };
+		569E6AA601234C855548AEA15EF491B7 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F53D103BD1EAD3EC49C8D935067E8FD7 /* CoreAudio.framework */; };
+		5C89AAAFA66048023D99CD773AC769E5 /* DOUAudioPlaybackItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBF544478D4B2F2ECF895237D73466 /* DOUAudioPlaybackItem.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		607BCD6EB3DADAAEA14B97A122A916FC /* DOUAudioAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 674E97C98832AB3C500A8431F5DFB7A1 /* DOUAudioAnalyzer.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		6672A2EFC9413A1DE45CAF0A950CCAAE /* MTLTransformerErrorHandling.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE2BD13AD313BB410912CA7F44FFE04 /* MTLTransformerErrorHandling.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		669FAFC1DA77D8FF3171FA45F80A0AB8 /* Mantle-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DCDB574692C117520A53700945580698 /* Mantle-dummy.m */; };
+		6B45ADBBD4925214FD239E8C25214C87 /* NSDictionary+MTLManipulationAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FA1CE3B6E523201F27B0A9CDA677762 /* NSDictionary+MTLManipulationAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6B6012E259B1804C7CC8D36A07252B07 /* NSError+MTLModelException.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1ABFA94EB9720F21855301097E12A2 /* NSError+MTLModelException.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		7632A90850BF21261FD1585914D71E98 /* NSObject+MTLComparisonAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDECD88C94AF89F98A3BB777B28CA62 /* NSObject+MTLComparisonAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		77E78FB2117200F1DAD425BA6C004D9A /* DOUAudioFileProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A385028EB3A19D566E9034FE511F1FD /* DOUAudioFileProvider.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		784E07C8B9704257D10696DD47E2A3B4 /* NSValueTransformer+MTLPredefinedTransformerAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B012D8C85C3B486FF4DC81C9728FB6E1 /* NSValueTransformer+MTLPredefinedTransformerAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7B0CBF4EBD30C92AEE692533E181F7BD /* DOUAudioFilePreprocessor.h in Headers */ = {isa = PBXBuildFile; fileRef = A9956690E701DE2A476891E2632FF561 /* DOUAudioFilePreprocessor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7E5C71195CF0F35F44FDA4D355CFE73C /* NSArray+MTLManipulationAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D26667060C43B784E0C23C53455A09 /* NSArray+MTLManipulationAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		81403CAF6C4C1D3DC8B199289C3A6F59 /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 557227FB9C2F288320CA2D1F44F7F0B4 /* View+MASAdditions.m */; };
+		81599471BAB0420D54E1ADF8507A5113 /* Masonry-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CFFF47C36CAE9BD5BCDA207B24591CD0 /* Masonry-dummy.m */; };
+		825DAFCB8DBF26AF38B4ACD5DF927D02 /* Pods-数字版权交易系统-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E305642429C46F73C698BEBDEE7B51E4 /* Pods-数字版权交易系统-dummy.m */; };
+		8A958560C6BB6168CF41BD59588ABEA6 /* DOUAudioStreamer.h in Headers */ = {isa = PBXBuildFile; fileRef = A9582C895226BA4583E8ACAFD7A37B23 /* DOUAudioStreamer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9205037BA8C22574B33FC96C5EA829A3 /* Masonry.h in Headers */ = {isa = PBXBuildFile; fileRef = 552FCCFA999B7524C10DA9A58F8AF041 /* Masonry.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		944BC5B32BE8AFDE9A1E1B88C7F7E86D /* NSDictionary+MTLManipulationAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B3C4E45F1A9ACC93049ACD09983858C /* NSDictionary+MTLManipulationAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		9543DC81B3F035E8C5768FB50B7146F1 /* MTLModel+NSCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D827C26124D1BBD3395777365095633 /* MTLModel+NSCoding.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		96A9238D869289C03F849575D109CF22 /* NSData+DOUMappedFile.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BCAF79BB933D5C268A65902AD3C707 /* NSData+DOUMappedFile.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		99D8C610BC84BE231C5D3D280F3B12AF /* MASCompositeConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D2920B340FA1274A5D6984AE1AEED9D /* MASCompositeConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9AA464DB367DB91F7F79DA339BC3C170 /* DOUAudioStreamer-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C7AF44E9A977590AC658D1B69428E057 /* DOUAudioStreamer-dummy.m */; };
+		9BB66BC3A3E2C0AB0BA3ACE98373EF30 /* MTLReflection.h in Headers */ = {isa = PBXBuildFile; fileRef = E8E50349031A6A230BA8605E47331EA0 /* MTLReflection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9E313EBFF35F7598A0E727EABA0ECA90 /* DOUAudioEventLoop.m in Sources */ = {isa = PBXBuildFile; fileRef = 043F588A48CF2018B62C32997B7AF420 /* DOUAudioEventLoop.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		A44AF130E4C5313CD193D9BF68853026 /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = E65919BF7A37CF3B508F1BE2DF1B6E6B /* MASViewAttribute.m */; };
+		A59DA6402E69C4BC3F19AA198068D6B1 /* DOUEAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46887A936E5557711EFD539AA9956557 /* DOUEAGLView.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		A7D31BD1F3AD4ED4612467FAD332F388 /* NSArray+MASShorthandAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = A54D941D9394E12161437F9BDD0A7687 /* NSArray+MASShorthandAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AD0B55020BE616605CAF305E7902A016 /* DOUAudioFileProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C1F75EF6F4FFC3BEA7F354166C92547 /* DOUAudioFileProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AF4E7187E09A5AF3A0758991203153DC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D4E8C3F455C35A60AB6E5D54A06D809 /* UIKit.framework */; };
+		AF62B956405F7734F5A9B8F3FD4B1B96 /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EE5C8CC871BD2CA4788D0DDAC4F7D0 /* ViewController+MASAdditions.m */; };
+		B2B7C90BA9C4DBD9851C75AC801B0E8E /* MASConstraint+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 6607594369D9AC781899BB5D41AC1667 /* MASConstraint+Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B2D4FA96F36032A793FABB1B3AC04376 /* DOUAudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A8960193A7A426020224CE7958C5F1 /* DOUAudioStreamer.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		B6E1E26869BC3BFBEAD1B6F35F5A670D /* NSValueTransformer+MTLInversionAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A1F87900540C7B515527A2B3399FE8E4 /* NSValueTransformer+MTLInversionAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		BA77A67C22A6E7719679A40B26193CCE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDE488529BA126F31AC3D9FC975BF8D8 /* Foundation.framework */; };
+		BAE29EFF696E9062CE0DFB3887FF9806 /* EXTScope.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C8B9D2603EE87E9937A949C3782A468 /* EXTScope.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		BB78302DC7CB7B6612A654392BA232F4 /* DOUAudioSpatialAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = DF944EC20EEB61EE277CC76D8FA0C1A6 /* DOUAudioSpatialAnalyzer.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		BCD4B362C6194513150915437754E2D4 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF085F15637C3BAFF25D254F79A2B2F /* MASCompositeConstraint.m */; };
+		BD488B298157D668C004B59167FEC251 /* DOUMPMediaLibraryAssetLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = E94E3801C745EC1D2CB1D032516F04E5 /* DOUMPMediaLibraryAssetLoader.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		BDD210D7537DD15CFE59AE126005E5F8 /* MASLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = B4301393C913F61EB91F6EB37F1B1D88 /* MASLayoutConstraint.m */; };
+		BDFF01E29219DCC25BCA914631475815 /* DOUAudioLPCM.m in Sources */ = {isa = PBXBuildFile; fileRef = DD43CD73C2770FF91539032292657B27 /* DOUAudioLPCM.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		BE024118D329F8F566BD1811A1DC16CB /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D723E5A31653412EEEAB99ECF87FC32 /* MASConstraint.m */; };
+		C0B7827E6FEB64AEA58656D1DE343E63 /* NSDictionary+MTLMappingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C42669EB218055450F4866146815FC68 /* NSDictionary+MTLMappingAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		C25EBB7B652B85828281DEF0CBA6C9E3 /* DOUAudioAnalyzer_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = F1EE1C3D64E47B35B1D99EAE23D56148 /* DOUAudioAnalyzer_Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C41D6DC16BB3583049D50710CD9D160B /* DOUSimpleHTTPRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C76C62C22C6ADC108669E4A5527DC51 /* DOUSimpleHTTPRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C483169672651CBF5C5E59F5B2E3C1A5 /* DOUAudioDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = BD51FC2EFF60F0E9A14F0C492E0E54BB /* DOUAudioDecoder.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		C6EE194D232E9FE87097C0F1DF91B9FA /* MASLayoutConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = B579DDBE5E0807701659A96F8D63D278 /* MASLayoutConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CB6711B5093C6B6C594943A608907071 /* DOUAudioVisualizer.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5D1F9EE8EFAF8BC89FE297A00FAE92 /* DOUAudioVisualizer.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		CBB2036D8F67093FFD19CAEFD65599B3 /* DOUMPMediaLibraryAssetLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 017C21A67211C3FAC64E3E6BCE5216FD /* DOUMPMediaLibraryAssetLoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CFBD269078732F653128E28C3FE7DC1B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B6B0A524BE49030BC2416E6173C9542 /* AVFoundation.framework */; };
+		D1A08D7B676CB358664FE1A7EE3472E3 /* NSArray+MTLManipulationAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 35E14CA4A227C9230D1B840E9410DF87 /* NSArray+MTLManipulationAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3D9F12613E23AD64C1FA5F7081A3668 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F2B640DC756FC2CF131E1AED4FC7EC4 /* NSLayoutConstraint+MASDebugAdditions.m */; };
+		D91E60246FC8DBE1ED99FADE1524F58A /* DOUSimpleHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A216E46CFCF0F8F299F805588914DBC /* DOUSimpleHTTPRequest.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		DA76BB21D1FE399EEA1FFD8DA7D249DA /* DOUAudioAnalyzer.h in Headers */ = {isa = PBXBuildFile; fileRef = 72A8DB920E189DBEF56E3AEE86E079B7 /* DOUAudioAnalyzer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD1F717B0527C71229B3339324E35E55 /* View+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 6848DEE203ACA9494D320FBCF59FFBA2 /* View+MASAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD856498EFDEF474BEDBA2ED0F5211EB /* DOUAudioDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 00705DE64BF48441A79EC97F140491D8 /* DOUAudioDecoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DE31B168D9197213CEB7B90E3ADEB4CC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDE488529BA126F31AC3D9FC975BF8D8 /* Foundation.framework */; };
+		E1EA75FDD2FA058C6C43239B3D33E084 /* NSData+DOUMappedFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C2887344E84F76DDEBD4176AA342954 /* NSData+DOUMappedFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E6B49FBCE3957DB67F691ACCC4CAF4BE /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = DBD3BAD2B3F2DE00060F7D4203F36D38 /* MASViewConstraint.m */; };
+		E72FE1FA640F108A9769E9661E34F3BF /* NSDictionary+MTLJSONKeyPath.h in Headers */ = {isa = PBXBuildFile; fileRef = FF93C89F56287A999408D48DCA120E8B /* NSDictionary+MTLJSONKeyPath.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E858268814D1A5EC2F7BC3542EB834CF /* DOUAudioLPCM.h in Headers */ = {isa = PBXBuildFile; fileRef = C16B8B3282A3134B671F932692A901F8 /* DOUAudioLPCM.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EB02AEF303313F801392DE8D90AFF0F7 /* MASViewConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FDEC1DC37B9981FEABF1863BB67D2AA /* MASViewConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EB2EEA8892612C75B617E841B965E3A0 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FABB0EADC3AC6E244F93DB9983EB0D4 /* Accelerate.framework */; };
+		EC6CCC98505D2067BC98B4E6223C9DF8 /* MASConstraintMaker.h in Headers */ = {isa = PBXBuildFile; fileRef = BAAE48E53898F59167E950D775C160C0 /* MASConstraintMaker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EEF2248467AB8464AB72CB730C7FE178 /* NSValueTransformer+MTLPredefinedTransformerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D808E0F1F077672D7D83AD56233D47 /* NSValueTransformer+MTLPredefinedTransformerAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		F0D2DF741E4223975FD166C5C101479F /* MTLValueTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 034E315A6AB47900672A4BB33DE5D553 /* MTLValueTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F752B63B4E925CD5EF4562F3922DB9A9 /* DOUAudioPlaybackItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CAA04BF45E81BB363790446B97B7C6A /* DOUAudioPlaybackItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F7B7585021FEDC680689A7B49F8BA3ED /* MTLTransformerErrorHandling.h in Headers */ = {isa = PBXBuildFile; fileRef = AE85A2856725511F3E7E9F588C4879F2 /* MTLTransformerErrorHandling.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F8FF07D76760D6A2FF269061E11A8B31 /* EXTKeyPathCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B0F945B4C4EC3506F4F50EDF523344F /* EXTKeyPathCoding.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		FABE202EF519CA939E0F85EAA4435DFB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDE488529BA126F31AC3D9FC975BF8D8 /* Foundation.framework */; };
+		FC1B9333FA4F13DF59E29B99B149F1E9 /* DOUAudioVisualizer.h in Headers */ = {isa = PBXBuildFile; fileRef = 9742699B5D40CCE5E70893A9B8CF5ADE /* DOUAudioVisualizer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FD008E0D9346BC4D2287B50719AA829E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FB1CED953A142EB155DD8E9C3D80215 /* CFNetwork.framework */; };
+		FD39EBE3398E1A99965AC003B273450D /* NSArray+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 571EA3E498E9D2D1B79BEE5486B35D49 /* NSArray+MASAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FD913ECF18E91FD4D8EE34BA8170DB4F /* MTLReflection.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FDA8A8A8B22154D6F0FAA42209F90F0 /* MTLReflection.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		FE20DE3DDB2A9BB792B0A1F287551DDB /* DOUAudioFrequencyAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 44128E369D01259383A503E0F4B56C29 /* DOUAudioFrequencyAnalyzer.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		FEC787F5585081E25DEE0E3B3769ED13 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 868FB237829B6E83E09CEA008457361E /* AudioToolbox.framework */; };
+		FF3D94F730A96F1B9FAF43E8DB68E702 /* Mantle.h in Headers */ = {isa = PBXBuildFile; fileRef = AFAC52E23DB3140AD03D9D398C744ED9 /* Mantle.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FF682E8B083BAEBBDF38C52D89D45E37 /* MASUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 19186BD1D28BCEDC9D4AA513580BE348 /* MASUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		959811F5A8266A12C8A083ED300E7E01 /* PBXContainerItemProxy */ = {
+		136D969C9C16650683A08DC9DD28EFF3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 426BC4549A625B5E1E4200D5261A98BF;
+			remoteInfo = Mantle;
+		};
+		34FD120103DD63CBB20F2CDC07E4B30A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 53480ED0BE09FF49E34B1702D485CAAB;
 			remoteInfo = Masonry;
 		};
+		A25C2D1CAFDE8EB302B0F6927848910E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D26A6D000EA63A2C3BBCF016605D3D4E;
+			remoteInfo = DOUAudioStreamer;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		043FB94CF93050E20D8E4C071ACFA5D2 /* MASViewConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASViewConstraint.h; path = Masonry/MASViewConstraint.h; sourceTree = "<group>"; };
-		1321572A3ED9C894C94A131BE29B81B2 /* MASUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASUtilities.h; path = Masonry/MASUtilities.h; sourceTree = "<group>"; };
+		00705DE64BF48441A79EC97F140491D8 /* DOUAudioDecoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DOUAudioDecoder.h; path = src/DOUAudioDecoder.h; sourceTree = "<group>"; };
+		00CA216B12FBEA312288518214C2AE52 /* MTLValueTransformer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTLValueTransformer.m; path = Mantle/MTLValueTransformer.m; sourceTree = "<group>"; };
+		017C21A67211C3FAC64E3E6BCE5216FD /* DOUMPMediaLibraryAssetLoader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DOUMPMediaLibraryAssetLoader.h; path = src/DOUMPMediaLibraryAssetLoader.h; sourceTree = "<group>"; };
+		034E315A6AB47900672A4BB33DE5D553 /* MTLValueTransformer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTLValueTransformer.h; path = Mantle/MTLValueTransformer.h; sourceTree = "<group>"; };
+		043F588A48CF2018B62C32997B7AF420 /* DOUAudioEventLoop.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DOUAudioEventLoop.m; path = src/DOUAudioEventLoop.m; sourceTree = "<group>"; };
+		090C5C3C0ADA4CA55FFAAE9A892483FD /* DOUAudioAnalyzer+Default.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "DOUAudioAnalyzer+Default.h"; path = "src/DOUAudioAnalyzer+Default.h"; sourceTree = "<group>"; };
+		0C32A4117294301A028A8C0A4442C781 /* DOUAudioFrequencyAnalyzer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DOUAudioFrequencyAnalyzer.h; path = src/DOUAudioFrequencyAnalyzer.h; sourceTree = "<group>"; };
+		0C8B9D2603EE87E9937A949C3782A468 /* EXTScope.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EXTScope.m; path = Mantle/extobjc/EXTScope.m; sourceTree = "<group>"; };
+		0CDECD88C94AF89F98A3BB777B28CA62 /* NSObject+MTLComparisonAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+MTLComparisonAdditions.m"; path = "Mantle/NSObject+MTLComparisonAdditions.m"; sourceTree = "<group>"; };
+		12A8960193A7A426020224CE7958C5F1 /* DOUAudioStreamer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DOUAudioStreamer.m; path = src/DOUAudioStreamer.m; sourceTree = "<group>"; };
+		12D26667060C43B784E0C23C53455A09 /* NSArray+MTLManipulationAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+MTLManipulationAdditions.m"; path = "Mantle/NSArray+MTLManipulationAdditions.m"; sourceTree = "<group>"; };
 		16A00B545D49E0AEC6962DB7DD2BDA1F /* Pods-数字版权交易系统.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-数字版权交易系统.debug.xcconfig"; sourceTree = "<group>"; };
-		1A5C22B3E618E188827ADA1B58FB46BE /* libPods-数字版权交易系统.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-数字版权交易系统.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		22E2395DA2EBCF6241A0DA0E1859FF45 /* MASConstraint+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MASConstraint+Private.h"; path = "Masonry/MASConstraint+Private.h"; sourceTree = "<group>"; };
-		25CED739CF35B6D0A1D95AE17D712A7F /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "ViewController+MASAdditions.m"; path = "Masonry/ViewController+MASAdditions.m"; sourceTree = "<group>"; };
-		2FCC2A09AC3DCD0E4A3D268DAABC5135 /* View+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "View+MASAdditions.m"; path = "Masonry/View+MASAdditions.m"; sourceTree = "<group>"; };
-		3162AC8E29FA7F3BF0D8641F7F4D9B60 /* MASConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASConstraint.h; path = Masonry/MASConstraint.h; sourceTree = "<group>"; };
-		475326F2A929CD1AFFB74850961F32C0 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASCompositeConstraint.h; path = Masonry/MASCompositeConstraint.h; sourceTree = "<group>"; };
+		19186BD1D28BCEDC9D4AA513580BE348 /* MASUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASUtilities.h; path = Masonry/MASUtilities.h; sourceTree = "<group>"; };
+		1AAB4B90243D1E8B2BF7DCA0F89D75E2 /* Mantle-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Mantle-prefix.pch"; sourceTree = "<group>"; };
+		1B6C2035496AA08F23EFA12EA4B8C4BB /* EXTScope.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EXTScope.h; path = Mantle/extobjc/EXTScope.h; sourceTree = "<group>"; };
+		1CF9AD38A41103A49C9559C9D67022DF /* MASConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASConstraint.h; path = Masonry/MASConstraint.h; sourceTree = "<group>"; };
+		1D2920B340FA1274A5D6984AE1AEED9D /* MASCompositeConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASCompositeConstraint.h; path = Masonry/MASCompositeConstraint.h; sourceTree = "<group>"; };
+		1D4E8C3F455C35A60AB6E5D54A06D809 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		1F2B640DC756FC2CF131E1AED4FC7EC4 /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSLayoutConstraint+MASDebugAdditions.m"; path = "Masonry/NSLayoutConstraint+MASDebugAdditions.m"; sourceTree = "<group>"; };
+		1FB1CED953A142EB155DD8E9C3D80215 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
+		2505C796FA7904CB1B52C95CB286DD47 /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ViewController+MASAdditions.h"; path = "Masonry/ViewController+MASAdditions.h"; sourceTree = "<group>"; };
+		2B0F945B4C4EC3506F4F50EDF523344F /* EXTKeyPathCoding.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EXTKeyPathCoding.h; path = Mantle/extobjc/EXTKeyPathCoding.h; sourceTree = "<group>"; };
+		2BF085F15637C3BAFF25D254F79A2B2F /* MASCompositeConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASCompositeConstraint.m; path = Masonry/MASCompositeConstraint.m; sourceTree = "<group>"; };
+		2D827C26124D1BBD3395777365095633 /* MTLModel+NSCoding.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "MTLModel+NSCoding.m"; path = "Mantle/MTLModel+NSCoding.m"; sourceTree = "<group>"; };
+		2FA1CE3B6E523201F27B0A9CDA677762 /* NSDictionary+MTLManipulationAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+MTLManipulationAdditions.h"; path = "Mantle/NSDictionary+MTLManipulationAdditions.h"; sourceTree = "<group>"; };
+		342F52DE038A939573CD3393588D9DCC /* DOUAudioFilePreprocessor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DOUAudioFilePreprocessor.m; path = src/DOUAudioFilePreprocessor.m; sourceTree = "<group>"; };
+		35B9968D9532C8325912217E3C0492BC /* Mantle.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Mantle.xcconfig; sourceTree = "<group>"; };
+		35E14CA4A227C9230D1B840E9410DF87 /* NSArray+MTLManipulationAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+MTLManipulationAdditions.h"; path = "Mantle/NSArray+MTLManipulationAdditions.h"; sourceTree = "<group>"; };
+		3A385028EB3A19D566E9034FE511F1FD /* DOUAudioFileProvider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DOUAudioFileProvider.m; path = src/DOUAudioFileProvider.m; sourceTree = "<group>"; };
+		3E89BF7E0AD1EFAC95FE48B188F185CF /* DOUAudioStreamer+Options.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "DOUAudioStreamer+Options.m"; path = "src/DOUAudioStreamer+Options.m"; sourceTree = "<group>"; };
+		44128E369D01259383A503E0F4B56C29 /* DOUAudioFrequencyAnalyzer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DOUAudioFrequencyAnalyzer.m; path = src/DOUAudioFrequencyAnalyzer.m; sourceTree = "<group>"; };
+		46887A936E5557711EFD539AA9956557 /* DOUEAGLView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DOUEAGLView.m; path = src/DOUEAGLView.m; sourceTree = "<group>"; };
+		4BC83BD25355FB60C7DC1917FF3777DD /* NSObject+MTLComparisonAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+MTLComparisonAdditions.h"; path = "Mantle/NSObject+MTLComparisonAdditions.h"; sourceTree = "<group>"; };
+		4CAA04BF45E81BB363790446B97B7C6A /* DOUAudioPlaybackItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DOUAudioPlaybackItem.h; path = src/DOUAudioPlaybackItem.h; sourceTree = "<group>"; };
 		5108654B92BD35D963DE18E7360308BF /* Pods-数字版权交易系统.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-数字版权交易系统.release.xcconfig"; sourceTree = "<group>"; };
+		5176D3CA3B1E961384DC51D4965B2C16 /* DOUAudioRenderer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DOUAudioRenderer.m; path = src/DOUAudioRenderer.m; sourceTree = "<group>"; };
+		5230DC2A155399A4E178E60AC585DDE9 /* DOUAudioStreamer.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DOUAudioStreamer.xcconfig; sourceTree = "<group>"; };
+		53BC0BBAF4FEDE9C32C040944B3E3F10 /* DOUAudioFile.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DOUAudioFile.h; path = src/DOUAudioFile.h; sourceTree = "<group>"; };
+		552FCCFA999B7524C10DA9A58F8AF041 /* Masonry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Masonry.h; path = Masonry/Masonry.h; sourceTree = "<group>"; };
+		557227FB9C2F288320CA2D1F44F7F0B4 /* View+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "View+MASAdditions.m"; path = "Masonry/View+MASAdditions.m"; sourceTree = "<group>"; };
+		56E4822028ABC08AB2E540FEC0CA18D7 /* EXTRuntimeExtensions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EXTRuntimeExtensions.m; path = Mantle/extobjc/EXTRuntimeExtensions.m; sourceTree = "<group>"; };
+		571EA3E498E9D2D1B79BEE5486B35D49 /* NSArray+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+MASAdditions.h"; path = "Masonry/NSArray+MASAdditions.h"; sourceTree = "<group>"; };
 		59D7BF65D3A45D0995CEC4ECA791507C /* Pods-数字版权交易系统-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-数字版权交易系统-frameworks.sh"; sourceTree = "<group>"; };
-		5B0BC1B85B663B02D2B5981B54CF82D5 /* libMasonry.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMasonry.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		780A86CEB0A0131C88BE12414D500734 /* MASConstraintMaker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASConstraintMaker.h; path = Masonry/MASConstraintMaker.h; sourceTree = "<group>"; };
-		7882AB8492CA4F59F730C76CC3BBF57A /* Masonry.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Masonry.xcconfig; sourceTree = "<group>"; };
-		7B5A231E76AF7DC6CB887B5B2C522A7A /* Masonry-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Masonry-dummy.m"; sourceTree = "<group>"; };
-		807FFD255E8235D5B42FE078299B5F1B /* MASLayoutConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASLayoutConstraint.m; path = Masonry/MASLayoutConstraint.m; sourceTree = "<group>"; };
-		8229525E7067F22D3977D2628DF5F2C3 /* NSArray+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+MASAdditions.m"; path = "Masonry/NSArray+MASAdditions.m"; sourceTree = "<group>"; };
-		82F28AEAAF722BC62BF5B37D6663BBC2 /* MASViewAttribute.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASViewAttribute.m; path = Masonry/MASViewAttribute.m; sourceTree = "<group>"; };
-		8A9F610CB90E57B81F8F7DCA2176E0FD /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "View+MASShorthandAdditions.h"; path = "Masonry/View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
-		8E7E17DB5590A8C4D9625D67E6FBD243 /* View+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "View+MASAdditions.h"; path = "Masonry/View+MASAdditions.h"; sourceTree = "<group>"; };
-		915A6FF0E04F5A5C0ACDE0E32BD2F193 /* MASViewAttribute.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASViewAttribute.h; path = Masonry/MASViewAttribute.h; sourceTree = "<group>"; };
+		5B3C4E45F1A9ACC93049ACD09983858C /* NSDictionary+MTLManipulationAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+MTLManipulationAdditions.m"; path = "Mantle/NSDictionary+MTLManipulationAdditions.m"; sourceTree = "<group>"; };
+		5C76C62C22C6ADC108669E4A5527DC51 /* DOUSimpleHTTPRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DOUSimpleHTTPRequest.h; path = src/DOUSimpleHTTPRequest.h; sourceTree = "<group>"; };
+		5FDEC1DC37B9981FEABF1863BB67D2AA /* MASViewConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASViewConstraint.h; path = Masonry/MASViewConstraint.h; sourceTree = "<group>"; };
+		602A9DF751B8D992352E40E3D94651AF /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
+		637C60933BE54846BF07C4C663EBD9DE /* MTLModel+NSCoding.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MTLModel+NSCoding.h"; path = "Mantle/MTLModel+NSCoding.h"; sourceTree = "<group>"; };
+		65DB2E539185D023A8F6025C7FCE4F3B /* metamacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = metamacros.h; path = Mantle/extobjc/metamacros.h; sourceTree = "<group>"; };
+		6607594369D9AC781899BB5D41AC1667 /* MASConstraint+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MASConstraint+Private.h"; path = "Masonry/MASConstraint+Private.h"; sourceTree = "<group>"; };
+		674E97C98832AB3C500A8431F5DFB7A1 /* DOUAudioAnalyzer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DOUAudioAnalyzer.m; path = src/DOUAudioAnalyzer.m; sourceTree = "<group>"; };
+		67C518B6DF418600248231DD2F28F484 /* DOUAudioRenderer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DOUAudioRenderer.h; path = src/DOUAudioRenderer.h; sourceTree = "<group>"; };
+		67E4F8F96FB3EB22AC1D027DD9B6D3F0 /* MASViewAttribute.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASViewAttribute.h; path = Masonry/MASViewAttribute.h; sourceTree = "<group>"; };
+		6848DEE203ACA9494D320FBCF59FFBA2 /* View+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "View+MASAdditions.h"; path = "Masonry/View+MASAdditions.h"; sourceTree = "<group>"; };
+		69EC5B043B180004CB82910D275F7B4F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
+		6ADB7B82F03B498FEEC66609228ABFBB /* libMantle.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMantle.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D723E5A31653412EEEAB99ECF87FC32 /* MASConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASConstraint.m; path = Masonry/MASConstraint.m; sourceTree = "<group>"; };
+		70FBF544478D4B2F2ECF895237D73466 /* DOUAudioPlaybackItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DOUAudioPlaybackItem.m; path = src/DOUAudioPlaybackItem.m; sourceTree = "<group>"; };
+		72A8DB920E189DBEF56E3AEE86E079B7 /* DOUAudioAnalyzer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DOUAudioAnalyzer.h; path = src/DOUAudioAnalyzer.h; sourceTree = "<group>"; };
+		7A216E46CFCF0F8F299F805588914DBC /* DOUSimpleHTTPRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DOUSimpleHTTPRequest.m; path = src/DOUSimpleHTTPRequest.m; sourceTree = "<group>"; };
+		7AB6EB1DC5F5591D33E8C394AA0DC45E /* libPods-数字版权交易系统.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-数字版权交易系统.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C2887344E84F76DDEBD4176AA342954 /* NSData+DOUMappedFile.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSData+DOUMappedFile.h"; path = "src/NSData+DOUMappedFile.h"; sourceTree = "<group>"; };
+		82EE5C8CC871BD2CA4788D0DDAC4F7D0 /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "ViewController+MASAdditions.m"; path = "Masonry/ViewController+MASAdditions.m"; sourceTree = "<group>"; };
+		868FB237829B6E83E09CEA008457361E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/AudioToolbox.framework; sourceTree = DEVELOPER_DIR; };
+		86C0D926D2004D192F930CF4A11F9A40 /* MTLModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTLModel.h; path = Mantle/MTLModel.h; sourceTree = "<group>"; };
+		8764DFA8F1A29E4A2EC709CF769AEDD8 /* NSArray+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+MASAdditions.m"; path = "Masonry/NSArray+MASAdditions.m"; sourceTree = "<group>"; };
+		8B6B0A524BE49030BC2416E6173C9542 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
+		8B70125CF173E6E072CB910EB3027F13 /* NSDictionary+MTLJSONKeyPath.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+MTLJSONKeyPath.m"; path = "Mantle/NSDictionary+MTLJSONKeyPath.m"; sourceTree = "<group>"; };
+		8C1F75EF6F4FFC3BEA7F354166C92547 /* DOUAudioFileProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DOUAudioFileProvider.h; path = src/DOUAudioFileProvider.h; sourceTree = "<group>"; };
+		8CF31072B29A343E22EB30354AE60A1C /* Masonry.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Masonry.xcconfig; sourceTree = "<group>"; };
+		8FABB0EADC3AC6E244F93DB9983EB0D4 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Accelerate.framework; sourceTree = DEVELOPER_DIR; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9742699B5D40CCE5E70893A9B8CF5ADE /* DOUAudioVisualizer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DOUAudioVisualizer.h; path = src/DOUAudioVisualizer.h; sourceTree = "<group>"; };
+		99473CC3426C7C3FB1738606F5B96E9C /* Masonry-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Masonry-prefix.pch"; sourceTree = "<group>"; };
 		9BA414FAC3CEF85C04B960BD389EBCF4 /* Pods-数字版权交易系统-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-数字版权交易系统-resources.sh"; sourceTree = "<group>"; };
-		9F937BDEB8DF93A08D20C5355C0FDB5C /* MASConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASConstraint.m; path = Masonry/MASConstraint.m; sourceTree = "<group>"; };
-		A2A6FF208CEC4C2861F1E9D42D651453 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		A2F75C96947B2651F82FC18F66C43B49 /* Masonry-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Masonry-prefix.pch"; sourceTree = "<group>"; };
-		B179F4D3D34A3CE25A698B8D9AC9D6C2 /* NSArray+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+MASAdditions.h"; path = "Masonry/NSArray+MASAdditions.h"; sourceTree = "<group>"; };
-		B48867DE203BCF3BB3DFCAB8FDC7516B /* MASLayoutConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASLayoutConstraint.h; path = Masonry/MASLayoutConstraint.h; sourceTree = "<group>"; };
-		C762C4F3A304C10AF7EBEA6AAA8508A0 /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSLayoutConstraint+MASDebugAdditions.m"; path = "Masonry/NSLayoutConstraint+MASDebugAdditions.m"; sourceTree = "<group>"; };
-		C7C02266037F030E22468AC86802DB57 /* MASViewConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASViewConstraint.m; path = Masonry/MASViewConstraint.m; sourceTree = "<group>"; };
-		D5EC6EDDDD3E503C5B2E967D3FEECFEB /* MASCompositeConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASCompositeConstraint.m; path = Masonry/MASCompositeConstraint.m; sourceTree = "<group>"; };
-		E158FC65C5404E098F16E26F478DA504 /* NSLayoutConstraint+MASDebugAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSLayoutConstraint+MASDebugAdditions.h"; path = "Masonry/NSLayoutConstraint+MASDebugAdditions.h"; sourceTree = "<group>"; };
+		9C1ABFA94EB9720F21855301097E12A2 /* NSError+MTLModelException.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSError+MTLModelException.m"; path = "Mantle/NSError+MTLModelException.m"; sourceTree = "<group>"; };
+		9C53F05CE69ED9E9C6DD3B1C723E7795 /* DOUAudioEventLoop.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DOUAudioEventLoop.h; path = src/DOUAudioEventLoop.h; sourceTree = "<group>"; };
+		9CBEE799BE6CC58762928DE84B384065 /* NSValueTransformer+MTLInversionAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSValueTransformer+MTLInversionAdditions.h"; path = "Mantle/NSValueTransformer+MTLInversionAdditions.h"; sourceTree = "<group>"; };
+		9E48BE2A7B49CC4921D795BB6D53555F /* NSError+MTLModelException.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSError+MTLModelException.h"; path = "Mantle/NSError+MTLModelException.h"; sourceTree = "<group>"; };
+		9FDA8A8A8B22154D6F0FAA42209F90F0 /* MTLReflection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTLReflection.m; path = Mantle/MTLReflection.m; sourceTree = "<group>"; };
+		A1F87900540C7B515527A2B3399FE8E4 /* NSValueTransformer+MTLInversionAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSValueTransformer+MTLInversionAdditions.m"; path = "Mantle/NSValueTransformer+MTLInversionAdditions.m"; sourceTree = "<group>"; };
+		A54D941D9394E12161437F9BDD0A7687 /* NSArray+MASShorthandAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+MASShorthandAdditions.h"; path = "Masonry/NSArray+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		A7929711F4CE9D44A8C1E5C1C017DAD4 /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "View+MASShorthandAdditions.h"; path = "Masonry/View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		A9582C895226BA4583E8ACAFD7A37B23 /* DOUAudioStreamer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DOUAudioStreamer.h; path = src/DOUAudioStreamer.h; sourceTree = "<group>"; };
+		A9956690E701DE2A476891E2632FF561 /* DOUAudioFilePreprocessor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DOUAudioFilePreprocessor.h; path = src/DOUAudioFilePreprocessor.h; sourceTree = "<group>"; };
+		AA1F730BC821FCCB55152575625BCC86 /* DOUAudioStreamer_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DOUAudioStreamer_Private.h; path = src/DOUAudioStreamer_Private.h; sourceTree = "<group>"; };
+		AE85A2856725511F3E7E9F588C4879F2 /* MTLTransformerErrorHandling.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTLTransformerErrorHandling.h; path = Mantle/MTLTransformerErrorHandling.h; sourceTree = "<group>"; };
+		AFAC52E23DB3140AD03D9D398C744ED9 /* Mantle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Mantle.h; path = Mantle/Mantle.h; sourceTree = "<group>"; };
+		B012D8C85C3B486FF4DC81C9728FB6E1 /* NSValueTransformer+MTLPredefinedTransformerAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSValueTransformer+MTLPredefinedTransformerAdditions.h"; path = "Mantle/NSValueTransformer+MTLPredefinedTransformerAdditions.h"; sourceTree = "<group>"; };
+		B427550D7B9D0EAB52CEE0442EF0EC55 /* MTLJSONAdapter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTLJSONAdapter.h; path = Mantle/MTLJSONAdapter.h; sourceTree = "<group>"; };
+		B4301393C913F61EB91F6EB37F1B1D88 /* MASLayoutConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASLayoutConstraint.m; path = Masonry/MASLayoutConstraint.m; sourceTree = "<group>"; };
+		B47B14F20860B154FC6243AF0C419362 /* DOUAudioStreamer-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DOUAudioStreamer-prefix.pch"; sourceTree = "<group>"; };
+		B4D38B3C93F837989D3118CA8FF246F3 /* EXTRuntimeExtensions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EXTRuntimeExtensions.h; path = Mantle/extobjc/EXTRuntimeExtensions.h; sourceTree = "<group>"; };
+		B579DDBE5E0807701659A96F8D63D278 /* MASLayoutConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASLayoutConstraint.h; path = Masonry/MASLayoutConstraint.h; sourceTree = "<group>"; };
+		B87A1E9F3657DE72E1FE3AC9ABE9B1AD /* NSLayoutConstraint+MASDebugAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSLayoutConstraint+MASDebugAdditions.h"; path = "Masonry/NSLayoutConstraint+MASDebugAdditions.h"; sourceTree = "<group>"; };
+		BAAE48E53898F59167E950D775C160C0 /* MASConstraintMaker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASConstraintMaker.h; path = Masonry/MASConstraintMaker.h; sourceTree = "<group>"; };
+		BC59B6463142BB525C7D89D784AB021D /* libMasonry.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMasonry.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD51FC2EFF60F0E9A14F0C492E0E54BB /* DOUAudioDecoder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DOUAudioDecoder.m; path = src/DOUAudioDecoder.m; sourceTree = "<group>"; };
+		BE5310D2A21DAE8C107CEFED2099A96E /* DOUAudioAnalyzer+Default.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "DOUAudioAnalyzer+Default.m"; path = "src/DOUAudioAnalyzer+Default.m"; sourceTree = "<group>"; };
+		C16B8B3282A3134B671F932692A901F8 /* DOUAudioLPCM.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DOUAudioLPCM.h; path = src/DOUAudioLPCM.h; sourceTree = "<group>"; };
+		C42669EB218055450F4866146815FC68 /* NSDictionary+MTLMappingAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+MTLMappingAdditions.m"; path = "Mantle/NSDictionary+MTLMappingAdditions.m"; sourceTree = "<group>"; };
+		C7AF44E9A977590AC658D1B69428E057 /* DOUAudioStreamer-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DOUAudioStreamer-dummy.m"; sourceTree = "<group>"; };
+		CA1E4742CA855A3A16378579BA11F88D /* DOUAudioStreamer+Options.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "DOUAudioStreamer+Options.h"; path = "src/DOUAudioStreamer+Options.h"; sourceTree = "<group>"; };
+		CB5D1F9EE8EFAF8BC89FE297A00FAE92 /* DOUAudioVisualizer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DOUAudioVisualizer.m; path = src/DOUAudioVisualizer.m; sourceTree = "<group>"; };
+		CDB4B12E9416051B6B5CAC145E1B6EF3 /* MTLModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTLModel.m; path = Mantle/MTLModel.m; sourceTree = "<group>"; };
+		CDE488529BA126F31AC3D9FC975BF8D8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		CFFF47C36CAE9BD5BCDA207B24591CD0 /* Masonry-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Masonry-dummy.m"; sourceTree = "<group>"; };
+		D4625358DCE9DBF84DFF2B356B7A876F /* DOUAudioSpatialAnalyzer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DOUAudioSpatialAnalyzer.h; path = src/DOUAudioSpatialAnalyzer.h; sourceTree = "<group>"; };
+		DBD3BAD2B3F2DE00060F7D4203F36D38 /* MASViewConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASViewConstraint.m; path = Masonry/MASViewConstraint.m; sourceTree = "<group>"; };
+		DCDB574692C117520A53700945580698 /* Mantle-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Mantle-dummy.m"; sourceTree = "<group>"; };
+		DD43CD73C2770FF91539032292657B27 /* DOUAudioLPCM.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DOUAudioLPCM.m; path = src/DOUAudioLPCM.m; sourceTree = "<group>"; };
+		DF944EC20EEB61EE277CC76D8FA0C1A6 /* DOUAudioSpatialAnalyzer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DOUAudioSpatialAnalyzer.m; path = src/DOUAudioSpatialAnalyzer.m; sourceTree = "<group>"; };
+		DFE2BD13AD313BB410912CA7F44FFE04 /* MTLTransformerErrorHandling.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTLTransformerErrorHandling.m; path = Mantle/MTLTransformerErrorHandling.m; sourceTree = "<group>"; };
 		E305642429C46F73C698BEBDEE7B51E4 /* Pods-数字版权交易系统-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-数字版权交易系统-dummy.m"; sourceTree = "<group>"; };
-		E86668F20F252C440D1015B816BE59C5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		EC0384F145CF471A951BA8E9486AD626 /* Masonry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Masonry.h; path = Masonry/Masonry.h; sourceTree = "<group>"; };
+		E3FCF78C988ABD5B5E714FF691006F89 /* DOUAudioBase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DOUAudioBase.h; path = src/DOUAudioBase.h; sourceTree = "<group>"; };
+		E65919BF7A37CF3B508F1BE2DF1B6E6B /* MASViewAttribute.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASViewAttribute.m; path = Masonry/MASViewAttribute.m; sourceTree = "<group>"; };
+		E8E50349031A6A230BA8605E47331EA0 /* MTLReflection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTLReflection.h; path = Mantle/MTLReflection.h; sourceTree = "<group>"; };
+		E94E3801C745EC1D2CB1D032516F04E5 /* DOUMPMediaLibraryAssetLoader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DOUMPMediaLibraryAssetLoader.m; path = src/DOUMPMediaLibraryAssetLoader.m; sourceTree = "<group>"; };
 		EE46FFB48E631455518C341D26B061AF /* Pods-数字版权交易系统-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-数字版权交易系统-acknowledgements.markdown"; sourceTree = "<group>"; };
+		EFA3D1CC8A3C0EC8A97A5E375A7D812A /* NSDictionary+MTLMappingAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+MTLMappingAdditions.h"; path = "Mantle/NSDictionary+MTLMappingAdditions.h"; sourceTree = "<group>"; };
 		F08BFD936AA8498ED3D984CD7684EA30 /* Pods-数字版权交易系统-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-数字版权交易系统-acknowledgements.plist"; sourceTree = "<group>"; };
-		F8AB44751192F0AA8DA5F75A06138D15 /* MASConstraintMaker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASConstraintMaker.m; path = Masonry/MASConstraintMaker.m; sourceTree = "<group>"; };
-		FA891F8E85C079B4FB101DDD5BC7A477 /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ViewController+MASAdditions.h"; path = "Masonry/ViewController+MASAdditions.h"; sourceTree = "<group>"; };
-		FBE23E70FF64ACC81816A368E171B903 /* NSArray+MASShorthandAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+MASShorthandAdditions.h"; path = "Masonry/NSArray+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		F1EE1C3D64E47B35B1D99EAE23D56148 /* DOUAudioAnalyzer_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DOUAudioAnalyzer_Private.h; path = src/DOUAudioAnalyzer_Private.h; sourceTree = "<group>"; };
+		F414309243F3EC2746420255473B3F61 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		F53D103BD1EAD3EC49C8D935067E8FD7 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/CoreAudio.framework; sourceTree = DEVELOPER_DIR; };
+		F5C071EA630FEEDBAE5E765A752E2872 /* libDOUAudioStreamer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDOUAudioStreamer.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5D808E0F1F077672D7D83AD56233D47 /* NSValueTransformer+MTLPredefinedTransformerAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSValueTransformer+MTLPredefinedTransformerAdditions.m"; path = "Mantle/NSValueTransformer+MTLPredefinedTransformerAdditions.m"; sourceTree = "<group>"; };
+		F8BCAF79BB933D5C268A65902AD3C707 /* NSData+DOUMappedFile.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSData+DOUMappedFile.m"; path = "src/NSData+DOUMappedFile.m"; sourceTree = "<group>"; };
+		FAF73E9DEF801E4FEE4410F0543D8F7E /* MTLJSONAdapter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTLJSONAdapter.m; path = Mantle/MTLJSONAdapter.m; sourceTree = "<group>"; };
+		FB02A1A93A13066851CDDE80190232F3 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/MediaPlayer.framework; sourceTree = DEVELOPER_DIR; };
+		FF93C89F56287A999408D48DCA120E8B /* NSDictionary+MTLJSONKeyPath.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+MTLJSONKeyPath.h"; path = "Mantle/NSDictionary+MTLJSONKeyPath.h"; sourceTree = "<group>"; };
+		FFA4549B03B4EFA20ECBC92ACAA9249C /* DOUEAGLView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DOUEAGLView.h; path = src/DOUEAGLView.h; sourceTree = "<group>"; };
+		FFC91180588515563CA1EDA4953A8456 /* MASConstraintMaker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASConstraintMaker.m; path = Masonry/MASConstraintMaker.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		9B23E7321205C5F448AC542D0E9EC6D0 /* Frameworks */ = {
+		1399F5F5B8A99754AF89DC93A9E100DE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16954C1328C469ACEBAC7AE72B51C06C /* Foundation.framework in Frameworks */,
+				FABE202EF519CA939E0F85EAA4435DFB /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D484111FB4DD150A1BD4B09BE85BFCB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				51D82E935F209D702C5A0F923AED3E68 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7FB00204520B23036E8BECD717B9860E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB2EEA8892612C75B617E841B965E3A0 /* Accelerate.framework in Frameworks */,
+				FEC787F5585081E25DEE0E3B3769ED13 /* AudioToolbox.framework in Frameworks */,
+				CFBD269078732F653128E28C3FE7DC1B /* AVFoundation.framework in Frameworks */,
+				FD008E0D9346BC4D2287B50719AA829E /* CFNetwork.framework in Frameworks */,
+				569E6AA601234C855548AEA15EF491B7 /* CoreAudio.framework in Frameworks */,
+				BA77A67C22A6E7719679A40B26193CCE /* Foundation.framework in Frameworks */,
+				31FA7C846806699503E820967ACD3C0B /* MediaPlayer.framework in Frameworks */,
+				4B80195CC9E343CFBEF93240532BAD43 /* MobileCoreServices.framework in Frameworks */,
+				0AC78DD9AAAA1CCE7D0ACABEB36775FB /* OpenGLES.framework in Frameworks */,
+				38A7CC4F2BC041042712A5FA1BD2CB2F /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,74 +347,128 @@
 			path = "Target Support Files/Pods-数字版权交易系统";
 			sourceTree = "<group>";
 		};
-		3A6C4FAE0923303FFC38085E815D5D22 /* Products */ = {
+		3CF553C38ABA97B248C2A42EB87A0D8F /* extobjc */ = {
 			isa = PBXGroup;
 			children = (
-				5B0BC1B85B663B02D2B5981B54CF82D5 /* libMasonry.a */,
-				1A5C22B3E618E188827ADA1B58FB46BE /* libPods-数字版权交易系统.a */,
+				2B0F945B4C4EC3506F4F50EDF523344F /* EXTKeyPathCoding.h */,
+				B4D38B3C93F837989D3118CA8FF246F3 /* EXTRuntimeExtensions.h */,
+				56E4822028ABC08AB2E540FEC0CA18D7 /* EXTRuntimeExtensions.m */,
+				1B6C2035496AA08F23EFA12EA4B8C4BB /* EXTScope.h */,
+				0C8B9D2603EE87E9937A949C3782A468 /* EXTScope.m */,
+				65DB2E539185D023A8F6025C7FCE4F3B /* metamacros.h */,
 			);
-			name = Products;
+			name = extobjc;
 			sourceTree = "<group>";
 		};
-		3B9FAC5BAEA75CAB3E20372C4D27D7EE /* Masonry */ = {
+		51883FE71459300CA3BFBA349D5FBDFE /* DOUAudioStreamer */ = {
 			isa = PBXGroup;
 			children = (
-				475326F2A929CD1AFFB74850961F32C0 /* MASCompositeConstraint.h */,
-				D5EC6EDDDD3E503C5B2E967D3FEECFEB /* MASCompositeConstraint.m */,
-				3162AC8E29FA7F3BF0D8641F7F4D9B60 /* MASConstraint.h */,
-				9F937BDEB8DF93A08D20C5355C0FDB5C /* MASConstraint.m */,
-				22E2395DA2EBCF6241A0DA0E1859FF45 /* MASConstraint+Private.h */,
-				780A86CEB0A0131C88BE12414D500734 /* MASConstraintMaker.h */,
-				F8AB44751192F0AA8DA5F75A06138D15 /* MASConstraintMaker.m */,
-				B48867DE203BCF3BB3DFCAB8FDC7516B /* MASLayoutConstraint.h */,
-				807FFD255E8235D5B42FE078299B5F1B /* MASLayoutConstraint.m */,
-				EC0384F145CF471A951BA8E9486AD626 /* Masonry.h */,
-				1321572A3ED9C894C94A131BE29B81B2 /* MASUtilities.h */,
-				915A6FF0E04F5A5C0ACDE0E32BD2F193 /* MASViewAttribute.h */,
-				82F28AEAAF722BC62BF5B37D6663BBC2 /* MASViewAttribute.m */,
-				043FB94CF93050E20D8E4C071ACFA5D2 /* MASViewConstraint.h */,
-				C7C02266037F030E22468AC86802DB57 /* MASViewConstraint.m */,
-				B179F4D3D34A3CE25A698B8D9AC9D6C2 /* NSArray+MASAdditions.h */,
-				8229525E7067F22D3977D2628DF5F2C3 /* NSArray+MASAdditions.m */,
-				FBE23E70FF64ACC81816A368E171B903 /* NSArray+MASShorthandAdditions.h */,
-				E158FC65C5404E098F16E26F478DA504 /* NSLayoutConstraint+MASDebugAdditions.h */,
-				C762C4F3A304C10AF7EBEA6AAA8508A0 /* NSLayoutConstraint+MASDebugAdditions.m */,
-				8E7E17DB5590A8C4D9625D67E6FBD243 /* View+MASAdditions.h */,
-				2FCC2A09AC3DCD0E4A3D268DAABC5135 /* View+MASAdditions.m */,
-				8A9F610CB90E57B81F8F7DCA2176E0FD /* View+MASShorthandAdditions.h */,
-				FA891F8E85C079B4FB101DDD5BC7A477 /* ViewController+MASAdditions.h */,
-				25CED739CF35B6D0A1D95AE17D712A7F /* ViewController+MASAdditions.m */,
-				4854BD850DB1ADEB02DE483F0C44E016 /* Support Files */,
+				72A8DB920E189DBEF56E3AEE86E079B7 /* DOUAudioAnalyzer.h */,
+				674E97C98832AB3C500A8431F5DFB7A1 /* DOUAudioAnalyzer.m */,
+				090C5C3C0ADA4CA55FFAAE9A892483FD /* DOUAudioAnalyzer+Default.h */,
+				BE5310D2A21DAE8C107CEFED2099A96E /* DOUAudioAnalyzer+Default.m */,
+				F1EE1C3D64E47B35B1D99EAE23D56148 /* DOUAudioAnalyzer_Private.h */,
+				E3FCF78C988ABD5B5E714FF691006F89 /* DOUAudioBase.h */,
+				00705DE64BF48441A79EC97F140491D8 /* DOUAudioDecoder.h */,
+				BD51FC2EFF60F0E9A14F0C492E0E54BB /* DOUAudioDecoder.m */,
+				9C53F05CE69ED9E9C6DD3B1C723E7795 /* DOUAudioEventLoop.h */,
+				043F588A48CF2018B62C32997B7AF420 /* DOUAudioEventLoop.m */,
+				53BC0BBAF4FEDE9C32C040944B3E3F10 /* DOUAudioFile.h */,
+				A9956690E701DE2A476891E2632FF561 /* DOUAudioFilePreprocessor.h */,
+				342F52DE038A939573CD3393588D9DCC /* DOUAudioFilePreprocessor.m */,
+				8C1F75EF6F4FFC3BEA7F354166C92547 /* DOUAudioFileProvider.h */,
+				3A385028EB3A19D566E9034FE511F1FD /* DOUAudioFileProvider.m */,
+				0C32A4117294301A028A8C0A4442C781 /* DOUAudioFrequencyAnalyzer.h */,
+				44128E369D01259383A503E0F4B56C29 /* DOUAudioFrequencyAnalyzer.m */,
+				C16B8B3282A3134B671F932692A901F8 /* DOUAudioLPCM.h */,
+				DD43CD73C2770FF91539032292657B27 /* DOUAudioLPCM.m */,
+				4CAA04BF45E81BB363790446B97B7C6A /* DOUAudioPlaybackItem.h */,
+				70FBF544478D4B2F2ECF895237D73466 /* DOUAudioPlaybackItem.m */,
+				67C518B6DF418600248231DD2F28F484 /* DOUAudioRenderer.h */,
+				5176D3CA3B1E961384DC51D4965B2C16 /* DOUAudioRenderer.m */,
+				D4625358DCE9DBF84DFF2B356B7A876F /* DOUAudioSpatialAnalyzer.h */,
+				DF944EC20EEB61EE277CC76D8FA0C1A6 /* DOUAudioSpatialAnalyzer.m */,
+				A9582C895226BA4583E8ACAFD7A37B23 /* DOUAudioStreamer.h */,
+				12A8960193A7A426020224CE7958C5F1 /* DOUAudioStreamer.m */,
+				CA1E4742CA855A3A16378579BA11F88D /* DOUAudioStreamer+Options.h */,
+				3E89BF7E0AD1EFAC95FE48B188F185CF /* DOUAudioStreamer+Options.m */,
+				AA1F730BC821FCCB55152575625BCC86 /* DOUAudioStreamer_Private.h */,
+				9742699B5D40CCE5E70893A9B8CF5ADE /* DOUAudioVisualizer.h */,
+				CB5D1F9EE8EFAF8BC89FE297A00FAE92 /* DOUAudioVisualizer.m */,
+				FFA4549B03B4EFA20ECBC92ACAA9249C /* DOUEAGLView.h */,
+				46887A936E5557711EFD539AA9956557 /* DOUEAGLView.m */,
+				017C21A67211C3FAC64E3E6BCE5216FD /* DOUMPMediaLibraryAssetLoader.h */,
+				E94E3801C745EC1D2CB1D032516F04E5 /* DOUMPMediaLibraryAssetLoader.m */,
+				5C76C62C22C6ADC108669E4A5527DC51 /* DOUSimpleHTTPRequest.h */,
+				7A216E46CFCF0F8F299F805588914DBC /* DOUSimpleHTTPRequest.m */,
+				7C2887344E84F76DDEBD4176AA342954 /* NSData+DOUMappedFile.h */,
+				F8BCAF79BB933D5C268A65902AD3C707 /* NSData+DOUMappedFile.m */,
+				C2FC6E720EA6CF4068196900A05C5E8A /* Support Files */,
+			);
+			path = DOUAudioStreamer;
+			sourceTree = "<group>";
+		};
+		54F45D3AEB0FB62645307828C2B4E641 /* Masonry */ = {
+			isa = PBXGroup;
+			children = (
+				1D2920B340FA1274A5D6984AE1AEED9D /* MASCompositeConstraint.h */,
+				2BF085F15637C3BAFF25D254F79A2B2F /* MASCompositeConstraint.m */,
+				1CF9AD38A41103A49C9559C9D67022DF /* MASConstraint.h */,
+				6D723E5A31653412EEEAB99ECF87FC32 /* MASConstraint.m */,
+				6607594369D9AC781899BB5D41AC1667 /* MASConstraint+Private.h */,
+				BAAE48E53898F59167E950D775C160C0 /* MASConstraintMaker.h */,
+				FFC91180588515563CA1EDA4953A8456 /* MASConstraintMaker.m */,
+				B579DDBE5E0807701659A96F8D63D278 /* MASLayoutConstraint.h */,
+				B4301393C913F61EB91F6EB37F1B1D88 /* MASLayoutConstraint.m */,
+				552FCCFA999B7524C10DA9A58F8AF041 /* Masonry.h */,
+				19186BD1D28BCEDC9D4AA513580BE348 /* MASUtilities.h */,
+				67E4F8F96FB3EB22AC1D027DD9B6D3F0 /* MASViewAttribute.h */,
+				E65919BF7A37CF3B508F1BE2DF1B6E6B /* MASViewAttribute.m */,
+				5FDEC1DC37B9981FEABF1863BB67D2AA /* MASViewConstraint.h */,
+				DBD3BAD2B3F2DE00060F7D4203F36D38 /* MASViewConstraint.m */,
+				571EA3E498E9D2D1B79BEE5486B35D49 /* NSArray+MASAdditions.h */,
+				8764DFA8F1A29E4A2EC709CF769AEDD8 /* NSArray+MASAdditions.m */,
+				A54D941D9394E12161437F9BDD0A7687 /* NSArray+MASShorthandAdditions.h */,
+				B87A1E9F3657DE72E1FE3AC9ABE9B1AD /* NSLayoutConstraint+MASDebugAdditions.h */,
+				1F2B640DC756FC2CF131E1AED4FC7EC4 /* NSLayoutConstraint+MASDebugAdditions.m */,
+				6848DEE203ACA9494D320FBCF59FFBA2 /* View+MASAdditions.h */,
+				557227FB9C2F288320CA2D1F44F7F0B4 /* View+MASAdditions.m */,
+				A7929711F4CE9D44A8C1E5C1C017DAD4 /* View+MASShorthandAdditions.h */,
+				2505C796FA7904CB1B52C95CB286DD47 /* ViewController+MASAdditions.h */,
+				82EE5C8CC871BD2CA4788D0DDAC4F7D0 /* ViewController+MASAdditions.m */,
+				6475A8A0E08CC4A94A04F3E414019361 /* Support Files */,
 			);
 			path = Masonry;
 			sourceTree = "<group>";
 		};
-		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
+		6475A8A0E08CC4A94A04F3E414019361 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				F302CD3B306AF1ED96B9AF31FCDBC26C /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		4854BD850DB1ADEB02DE483F0C44E016 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				7882AB8492CA4F59F730C76CC3BBF57A /* Masonry.xcconfig */,
-				7B5A231E76AF7DC6CB887B5B2C522A7A /* Masonry-dummy.m */,
-				A2F75C96947B2651F82FC18F66C43B49 /* Masonry-prefix.pch */,
+				8CF31072B29A343E22EB30354AE60A1C /* Masonry.xcconfig */,
+				CFFF47C36CAE9BD5BCDA207B24591CD0 /* Masonry-dummy.m */,
+				99473CC3426C7C3FB1738606F5B96E9C /* Masonry-prefix.pch */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/Masonry";
+			sourceTree = "<group>";
+		};
+		64AAA744067F03BE271FC191A6FD6FC1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				51883FE71459300CA3BFBA349D5FBDFE /* DOUAudioStreamer */,
+				B21443F83BD60E354EB146F10C18045B /* Mantle */,
+				54F45D3AEB0FB62645307828C2B4E641 /* Masonry */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
-				E9B49E9D4F6BC02AA78DCF86BCED2145 /* Pods */,
-				3A6C4FAE0923303FFC38085E815D5D22 /* Products */,
+				EB57DDB3388FBC701046A1E93218737F /* Frameworks */,
+				64AAA744067F03BE271FC191A6FD6FC1 /* Pods */,
+				C4C8E9569640ABF65AC8C952C8F732C0 /* Products */,
 				A16DAA97F8DCF32B14FF3161E9C73478 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
@@ -208,21 +481,101 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		E9B49E9D4F6BC02AA78DCF86BCED2145 /* Pods */ = {
+		B21443F83BD60E354EB146F10C18045B /* Mantle */ = {
 			isa = PBXGroup;
 			children = (
-				3B9FAC5BAEA75CAB3E20372C4D27D7EE /* Masonry */,
+				AFAC52E23DB3140AD03D9D398C744ED9 /* Mantle.h */,
+				B427550D7B9D0EAB52CEE0442EF0EC55 /* MTLJSONAdapter.h */,
+				FAF73E9DEF801E4FEE4410F0543D8F7E /* MTLJSONAdapter.m */,
+				86C0D926D2004D192F930CF4A11F9A40 /* MTLModel.h */,
+				CDB4B12E9416051B6B5CAC145E1B6EF3 /* MTLModel.m */,
+				637C60933BE54846BF07C4C663EBD9DE /* MTLModel+NSCoding.h */,
+				2D827C26124D1BBD3395777365095633 /* MTLModel+NSCoding.m */,
+				E8E50349031A6A230BA8605E47331EA0 /* MTLReflection.h */,
+				9FDA8A8A8B22154D6F0FAA42209F90F0 /* MTLReflection.m */,
+				AE85A2856725511F3E7E9F588C4879F2 /* MTLTransformerErrorHandling.h */,
+				DFE2BD13AD313BB410912CA7F44FFE04 /* MTLTransformerErrorHandling.m */,
+				034E315A6AB47900672A4BB33DE5D553 /* MTLValueTransformer.h */,
+				00CA216B12FBEA312288518214C2AE52 /* MTLValueTransformer.m */,
+				35E14CA4A227C9230D1B840E9410DF87 /* NSArray+MTLManipulationAdditions.h */,
+				12D26667060C43B784E0C23C53455A09 /* NSArray+MTLManipulationAdditions.m */,
+				FF93C89F56287A999408D48DCA120E8B /* NSDictionary+MTLJSONKeyPath.h */,
+				8B70125CF173E6E072CB910EB3027F13 /* NSDictionary+MTLJSONKeyPath.m */,
+				2FA1CE3B6E523201F27B0A9CDA677762 /* NSDictionary+MTLManipulationAdditions.h */,
+				5B3C4E45F1A9ACC93049ACD09983858C /* NSDictionary+MTLManipulationAdditions.m */,
+				EFA3D1CC8A3C0EC8A97A5E375A7D812A /* NSDictionary+MTLMappingAdditions.h */,
+				C42669EB218055450F4866146815FC68 /* NSDictionary+MTLMappingAdditions.m */,
+				9E48BE2A7B49CC4921D795BB6D53555F /* NSError+MTLModelException.h */,
+				9C1ABFA94EB9720F21855301097E12A2 /* NSError+MTLModelException.m */,
+				4BC83BD25355FB60C7DC1917FF3777DD /* NSObject+MTLComparisonAdditions.h */,
+				0CDECD88C94AF89F98A3BB777B28CA62 /* NSObject+MTLComparisonAdditions.m */,
+				9CBEE799BE6CC58762928DE84B384065 /* NSValueTransformer+MTLInversionAdditions.h */,
+				A1F87900540C7B515527A2B3399FE8E4 /* NSValueTransformer+MTLInversionAdditions.m */,
+				B012D8C85C3B486FF4DC81C9728FB6E1 /* NSValueTransformer+MTLPredefinedTransformerAdditions.h */,
+				F5D808E0F1F077672D7D83AD56233D47 /* NSValueTransformer+MTLPredefinedTransformerAdditions.m */,
+				3CF553C38ABA97B248C2A42EB87A0D8F /* extobjc */,
+				C7D2721C9CC926C5873D3E66F721B0FA /* Support Files */,
 			);
-			name = Pods;
+			path = Mantle;
 			sourceTree = "<group>";
 		};
-		F302CD3B306AF1ED96B9AF31FCDBC26C /* iOS */ = {
+		C2FC6E720EA6CF4068196900A05C5E8A /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				A2A6FF208CEC4C2861F1E9D42D651453 /* Foundation.framework */,
-				E86668F20F252C440D1015B816BE59C5 /* UIKit.framework */,
+				5230DC2A155399A4E178E60AC585DDE9 /* DOUAudioStreamer.xcconfig */,
+				C7AF44E9A977590AC658D1B69428E057 /* DOUAudioStreamer-dummy.m */,
+				B47B14F20860B154FC6243AF0C419362 /* DOUAudioStreamer-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/DOUAudioStreamer";
+			sourceTree = "<group>";
+		};
+		C4C8E9569640ABF65AC8C952C8F732C0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F5C071EA630FEEDBAE5E765A752E2872 /* libDOUAudioStreamer.a */,
+				6ADB7B82F03B498FEEC66609228ABFBB /* libMantle.a */,
+				BC59B6463142BB525C7D89D784AB021D /* libMasonry.a */,
+				7AB6EB1DC5F5591D33E8C394AA0DC45E /* libPods-数字版权交易系统.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C7D2721C9CC926C5873D3E66F721B0FA /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				35B9968D9532C8325912217E3C0492BC /* Mantle.xcconfig */,
+				DCDB574692C117520A53700945580698 /* Mantle-dummy.m */,
+				1AAB4B90243D1E8B2BF7DCA0F89D75E2 /* Mantle-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Mantle";
+			sourceTree = "<group>";
+		};
+		D4822708FD62D96C3BEDA5A2BFCA8569 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				8FABB0EADC3AC6E244F93DB9983EB0D4 /* Accelerate.framework */,
+				868FB237829B6E83E09CEA008457361E /* AudioToolbox.framework */,
+				8B6B0A524BE49030BC2416E6173C9542 /* AVFoundation.framework */,
+				1FB1CED953A142EB155DD8E9C3D80215 /* CFNetwork.framework */,
+				F53D103BD1EAD3EC49C8D935067E8FD7 /* CoreAudio.framework */,
+				CDE488529BA126F31AC3D9FC975BF8D8 /* Foundation.framework */,
+				FB02A1A93A13066851CDDE80190232F3 /* MediaPlayer.framework */,
+				69EC5B043B180004CB82910D275F7B4F /* MobileCoreServices.framework */,
+				602A9DF751B8D992352E40E3D94651AF /* OpenGLES.framework */,
+				F414309243F3EC2746420255473B3F61 /* QuartzCore.framework */,
+				1D4E8C3F455C35A60AB6E5D54A06D809 /* UIKit.framework */,
 			);
 			name = iOS;
+			sourceTree = "<group>";
+		};
+		EB57DDB3388FBC701046A1E93218737F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D4822708FD62D96C3BEDA5A2BFCA8569 /* iOS */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,9 +603,81 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A7CE0B2F5900B8DE72065180B996B165 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F8FF07D76760D6A2FF269061E11A8B31 /* EXTKeyPathCoding.h in Headers */,
+				4980C203311F9A91EF1A1FCAEC09EBD2 /* EXTRuntimeExtensions.h in Headers */,
+				0CCB6B307EBF17E2D0E3A6AD52F6F51E /* EXTScope.h in Headers */,
+				FF3D94F730A96F1B9FAF43E8DB68E702 /* Mantle.h in Headers */,
+				41C46F19A2CE1E29840F226638A10678 /* metamacros.h in Headers */,
+				3C43032339841F7D1D94EF12903A2272 /* MTLJSONAdapter.h in Headers */,
+				0563227B6D480B862CA5EF8C36DF51A4 /* MTLModel+NSCoding.h in Headers */,
+				4BABB4C716353500FDF75187D35DAACF /* MTLModel.h in Headers */,
+				9BB66BC3A3E2C0AB0BA3ACE98373EF30 /* MTLReflection.h in Headers */,
+				F7B7585021FEDC680689A7B49F8BA3ED /* MTLTransformerErrorHandling.h in Headers */,
+				F0D2DF741E4223975FD166C5C101479F /* MTLValueTransformer.h in Headers */,
+				D1A08D7B676CB358664FE1A7EE3472E3 /* NSArray+MTLManipulationAdditions.h in Headers */,
+				E72FE1FA640F108A9769E9661E34F3BF /* NSDictionary+MTLJSONKeyPath.h in Headers */,
+				6B45ADBBD4925214FD239E8C25214C87 /* NSDictionary+MTLManipulationAdditions.h in Headers */,
+				19D81E345715F41ED29349DBFF389D55 /* NSDictionary+MTLMappingAdditions.h in Headers */,
+				495E27E8D0F85F4008E237D0F29EA8AC /* NSError+MTLModelException.h in Headers */,
+				52B96AC796E60DBF61A11151FD25CEE8 /* NSObject+MTLComparisonAdditions.h in Headers */,
+				2B91954D1D8469415E1164E83DD3D3F1 /* NSValueTransformer+MTLInversionAdditions.h in Headers */,
+				784E07C8B9704257D10696DD47E2A3B4 /* NSValueTransformer+MTLPredefinedTransformerAdditions.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF00C9CB9E44B541E6002785920DAE19 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A4684ED0157A10C50B6EE8DDE32C914 /* DOUAudioAnalyzer+Default.h in Headers */,
+				DA76BB21D1FE399EEA1FFD8DA7D249DA /* DOUAudioAnalyzer.h in Headers */,
+				C25EBB7B652B85828281DEF0CBA6C9E3 /* DOUAudioAnalyzer_Private.h in Headers */,
+				2EF2857A858C62CE1C2F203A0FD70E10 /* DOUAudioBase.h in Headers */,
+				DD856498EFDEF474BEDBA2ED0F5211EB /* DOUAudioDecoder.h in Headers */,
+				02688A3AC1104171ADD7048DD3787CFA /* DOUAudioEventLoop.h in Headers */,
+				19980BF298B835DFA7A00EF7EF0FB691 /* DOUAudioFile.h in Headers */,
+				7B0CBF4EBD30C92AEE692533E181F7BD /* DOUAudioFilePreprocessor.h in Headers */,
+				AD0B55020BE616605CAF305E7902A016 /* DOUAudioFileProvider.h in Headers */,
+				2017E47DA83874EDEB9EF451AE4CA83C /* DOUAudioFrequencyAnalyzer.h in Headers */,
+				E858268814D1A5EC2F7BC3542EB834CF /* DOUAudioLPCM.h in Headers */,
+				F752B63B4E925CD5EF4562F3922DB9A9 /* DOUAudioPlaybackItem.h in Headers */,
+				3A514B1E6F5A34F4F2DD745C18F2FC63 /* DOUAudioRenderer.h in Headers */,
+				281C9550741C50DA99A3F55EC37A01F1 /* DOUAudioSpatialAnalyzer.h in Headers */,
+				3122D0AA7789106A4DAB1D9C3BA0F9A8 /* DOUAudioStreamer+Options.h in Headers */,
+				8A958560C6BB6168CF41BD59588ABEA6 /* DOUAudioStreamer.h in Headers */,
+				218E64C304FFBB084429E262097BF331 /* DOUAudioStreamer_Private.h in Headers */,
+				FC1B9333FA4F13DF59E29B99B149F1E9 /* DOUAudioVisualizer.h in Headers */,
+				05B638931DCA43D4FFA6B2D2A86115D7 /* DOUEAGLView.h in Headers */,
+				CBB2036D8F67093FFD19CAEFD65599B3 /* DOUMPMediaLibraryAssetLoader.h in Headers */,
+				C41D6DC16BB3583049D50710CD9D160B /* DOUSimpleHTTPRequest.h in Headers */,
+				E1EA75FDD2FA058C6C43239B3D33E084 /* NSData+DOUMappedFile.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		426BC4549A625B5E1E4200D5261A98BF /* Mantle */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0705E2EB1ED884E2B646D5F2180F282B /* Build configuration list for PBXNativeTarget "Mantle" */;
+			buildPhases = (
+				541D0E339EB299E614EF0FCA9EC8C140 /* Sources */,
+				1399F5F5B8A99754AF89DC93A9E100DE /* Frameworks */,
+				A7CE0B2F5900B8DE72065180B996B165 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Mantle;
+			productName = Mantle;
+			productReference = 6ADB7B82F03B498FEEC66609228ABFBB /* libMantle.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		53480ED0BE09FF49E34B1702D485CAAB /* Masonry */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B6653DB75D219E078020C341A7D83ECE /* Build configuration list for PBXNativeTarget "Masonry" */;
@@ -267,24 +692,43 @@
 			);
 			name = Masonry;
 			productName = Masonry;
-			productReference = 5B0BC1B85B663B02D2B5981B54CF82D5 /* libMasonry.a */;
+			productReference = BC59B6463142BB525C7D89D784AB021D /* libMasonry.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		D97113DC648543500C3794EF50BE16B5 /* Pods-数字版权交易系统 */ = {
+		A858AF66BD7DEF853E769BDBC15AB5A2 /* Pods-数字版权交易系统 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 233FB671E0F064272C6A790E632BD994 /* Build configuration list for PBXNativeTarget "Pods-数字版权交易系统" */;
+			buildConfigurationList = FA56D596723AA6CAC4D667AACBDD1D61 /* Build configuration list for PBXNativeTarget "Pods-数字版权交易系统" */;
 			buildPhases = (
-				841620C209AEB153727CE6AED2655E4D /* Sources */,
-				9B23E7321205C5F448AC542D0E9EC6D0 /* Frameworks */,
+				F140B1F1C3F45D50E0601550C68214B1 /* Sources */,
+				6D484111FB4DD150A1BD4B09BE85BFCB /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				F23943F1BBFFD16B9A2F4FB52B8FBC41 /* PBXTargetDependency */,
+				A24CD0A809F1AB36FDAEBC5D4E9F04C4 /* PBXTargetDependency */,
+				E1BF6343A30D206E3B56EFF906E314AE /* PBXTargetDependency */,
+				49B20DC73C3D03A6A6BA71AB0B021DAF /* PBXTargetDependency */,
 			);
 			name = "Pods-数字版权交易系统";
 			productName = "Pods-数字版权交易系统";
-			productReference = 1A5C22B3E618E188827ADA1B58FB46BE /* libPods-数字版权交易系统.a */;
+			productReference = 7AB6EB1DC5F5591D33E8C394AA0DC45E /* libPods-数字版权交易系统.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		D26A6D000EA63A2C3BBCF016605D3D4E /* DOUAudioStreamer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FCC5EB2899E628D9EDF9CB532157ECD9 /* Build configuration list for PBXNativeTarget "DOUAudioStreamer" */;
+			buildPhases = (
+				A4D0874CD04D7FB7D6DA3AD0AE63EAFC /* Sources */,
+				7FB00204520B23036E8BECD717B9860E /* Frameworks */,
+				FF00C9CB9E44B541E6002785920DAE19 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DOUAudioStreamer;
+			productName = DOUAudioStreamer;
+			productReference = F5C071EA630FEEDBAE5E765A752E2872 /* libDOUAudioStreamer.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -304,22 +748,66 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 3A6C4FAE0923303FFC38085E815D5D22 /* Products */;
+			productRefGroup = C4C8E9569640ABF65AC8C952C8F732C0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				D26A6D000EA63A2C3BBCF016605D3D4E /* DOUAudioStreamer */,
+				426BC4549A625B5E1E4200D5261A98BF /* Mantle */,
 				53480ED0BE09FF49E34B1702D485CAAB /* Masonry */,
-				D97113DC648543500C3794EF50BE16B5 /* Pods-数字版权交易系统 */,
+				A858AF66BD7DEF853E769BDBC15AB5A2 /* Pods-数字版权交易系统 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		841620C209AEB153727CE6AED2655E4D /* Sources */ = {
+		541D0E339EB299E614EF0FCA9EC8C140 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F728DFB30D75C9CBA181CC9719AE89B /* Pods-数字版权交易系统-dummy.m in Sources */,
+				17A59C9B4F5727FAF9E3A6D92A9FFABD /* EXTRuntimeExtensions.m in Sources */,
+				BAE29EFF696E9062CE0DFB3887FF9806 /* EXTScope.m in Sources */,
+				669FAFC1DA77D8FF3171FA45F80A0AB8 /* Mantle-dummy.m in Sources */,
+				04A4FE6BC333B1FC7D35EADA8F59FAD6 /* MTLJSONAdapter.m in Sources */,
+				9543DC81B3F035E8C5768FB50B7146F1 /* MTLModel+NSCoding.m in Sources */,
+				06B93267BE4B80B2B4B91E5EFCE386D2 /* MTLModel.m in Sources */,
+				FD913ECF18E91FD4D8EE34BA8170DB4F /* MTLReflection.m in Sources */,
+				6672A2EFC9413A1DE45CAF0A950CCAAE /* MTLTransformerErrorHandling.m in Sources */,
+				542A74473DEBCC4A4A8EFD7219D2957B /* MTLValueTransformer.m in Sources */,
+				7E5C71195CF0F35F44FDA4D355CFE73C /* NSArray+MTLManipulationAdditions.m in Sources */,
+				2D097F9B47E61A2F9ED4053728DA7AE6 /* NSDictionary+MTLJSONKeyPath.m in Sources */,
+				944BC5B32BE8AFDE9A1E1B88C7F7E86D /* NSDictionary+MTLManipulationAdditions.m in Sources */,
+				C0B7827E6FEB64AEA58656D1DE343E63 /* NSDictionary+MTLMappingAdditions.m in Sources */,
+				6B6012E259B1804C7CC8D36A07252B07 /* NSError+MTLModelException.m in Sources */,
+				7632A90850BF21261FD1585914D71E98 /* NSObject+MTLComparisonAdditions.m in Sources */,
+				B6E1E26869BC3BFBEAD1B6F35F5A670D /* NSValueTransformer+MTLInversionAdditions.m in Sources */,
+				EEF2248467AB8464AB72CB730C7FE178 /* NSValueTransformer+MTLPredefinedTransformerAdditions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A4D0874CD04D7FB7D6DA3AD0AE63EAFC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				515B8D3A3DAB237434480661D93D0E27 /* DOUAudioAnalyzer+Default.m in Sources */,
+				607BCD6EB3DADAAEA14B97A122A916FC /* DOUAudioAnalyzer.m in Sources */,
+				C483169672651CBF5C5E59F5B2E3C1A5 /* DOUAudioDecoder.m in Sources */,
+				9E313EBFF35F7598A0E727EABA0ECA90 /* DOUAudioEventLoop.m in Sources */,
+				10502E01B8C2B1E1F37B392A064DEDE2 /* DOUAudioFilePreprocessor.m in Sources */,
+				77E78FB2117200F1DAD425BA6C004D9A /* DOUAudioFileProvider.m in Sources */,
+				FE20DE3DDB2A9BB792B0A1F287551DDB /* DOUAudioFrequencyAnalyzer.m in Sources */,
+				BDFF01E29219DCC25BCA914631475815 /* DOUAudioLPCM.m in Sources */,
+				5C89AAAFA66048023D99CD773AC769E5 /* DOUAudioPlaybackItem.m in Sources */,
+				1BF9FCDC89DD1C7EF39D0437799C5A46 /* DOUAudioRenderer.m in Sources */,
+				BB78302DC7CB7B6612A654392BA232F4 /* DOUAudioSpatialAnalyzer.m in Sources */,
+				04128B0E53194DE3C5164AC6DFC3D2F7 /* DOUAudioStreamer+Options.m in Sources */,
+				9AA464DB367DB91F7F79DA339BC3C170 /* DOUAudioStreamer-dummy.m in Sources */,
+				B2D4FA96F36032A793FABB1B3AC04376 /* DOUAudioStreamer.m in Sources */,
+				CB6711B5093C6B6C594943A608907071 /* DOUAudioVisualizer.m in Sources */,
+				A59DA6402E69C4BC3F19AA198068D6B1 /* DOUEAGLView.m in Sources */,
+				BD488B298157D668C004B59167FEC251 /* DOUMPMediaLibraryAssetLoader.m in Sources */,
+				D91E60246FC8DBE1ED99FADE1524F58A /* DOUSimpleHTTPRequest.m in Sources */,
+				96A9238D869289C03F849575D109CF22 /* NSData+DOUMappedFile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,21 +829,62 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F140B1F1C3F45D50E0601550C68214B1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				825DAFCB8DBF26AF38B4ACD5DF927D02 /* Pods-数字版权交易系统-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		F23943F1BBFFD16B9A2F4FB52B8FBC41 /* PBXTargetDependency */ = {
+		49B20DC73C3D03A6A6BA71AB0B021DAF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Masonry;
 			target = 53480ED0BE09FF49E34B1702D485CAAB /* Masonry */;
-			targetProxy = 959811F5A8266A12C8A083ED300E7E01 /* PBXContainerItemProxy */;
+			targetProxy = 34FD120103DD63CBB20F2CDC07E4B30A /* PBXContainerItemProxy */;
+		};
+		A24CD0A809F1AB36FDAEBC5D4E9F04C4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = DOUAudioStreamer;
+			target = D26A6D000EA63A2C3BBCF016605D3D4E /* DOUAudioStreamer */;
+			targetProxy = A25C2D1CAFDE8EB302B0F6927848910E /* PBXContainerItemProxy */;
+		};
+		E1BF6343A30D206E3B56EFF906E314AE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Mantle;
+			target = 426BC4549A625B5E1E4200D5261A98BF /* Mantle */;
+			targetProxy = 136D969C9C16650683A08DC9DD28EFF3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		186A22BF010EDCCFE9EC34AC7425B3BF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 35B9968D9532C8325912217E3C0492BC /* Mantle.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Mantle/Mantle-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
 		2DAE732D13CB652A1ECC83370B3C00E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7882AB8492CA4F59F730C76CC3BBF57A /* Masonry.xcconfig */;
+			baseConfigurationReference = 8CF31072B29A343E22EB30354AE60A1C /* Masonry.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -412,37 +941,16 @@
 			};
 			name = Release;
 		};
-		5E7A8D900F1564CF6427317AAA2608AC /* Debug */ = {
+		593262A554FEFCAC17A8193917653269 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 16A00B545D49E0AEC6962DB7DD2BDA1F /* Pods-数字版权交易系统.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		903FBF203C5658B140DF3CBEF5D2090D /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7882AB8492CA4F59F730C76CC3BBF57A /* Masonry.xcconfig */;
+			baseConfigurationReference = 5230DC2A155399A4E178E60AC585DDE9 /* DOUAudioStreamer.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Masonry/Masonry-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				GCC_PREFIX_HEADER = "Target Support Files/DOUAudioStreamer/DOUAudioStreamer-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
@@ -454,7 +962,7 @@
 			};
 			name = Release;
 		};
-		A53A08EA8B167321D85050A221EC6C47 /* Release */ = {
+		68FDF309CDF32B28EF4E86919C653E26 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5108654B92BD35D963DE18E7360308BF /* Pods-数字版权交易系统.release.xcconfig */;
 			buildSettings = {
@@ -474,6 +982,69 @@
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
+		};
+		903FBF203C5658B140DF3CBEF5D2090D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8CF31072B29A343E22EB30354AE60A1C /* Masonry.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Masonry/Masonry-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		A1597968BE7BBED43B0BA0DD89C803A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5230DC2A155399A4E178E60AC585DDE9 /* DOUAudioStreamer.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/DOUAudioStreamer/DOUAudioStreamer-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		ADDE50A839AE81038D486C5F0C1AF663 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16A00B545D49E0AEC6962DB7DD2BDA1F /* Pods-数字版权交易系统.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
 		};
 		AE9439C22469D35336242DD983DB5C5F /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -517,14 +1088,35 @@
 			};
 			name = Debug;
 		};
+		AF4627FF5D5D72C1389B13F0F0DE4B73 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 35B9968D9532C8325912217E3C0492BC /* Mantle.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Mantle/Mantle-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		233FB671E0F064272C6A790E632BD994 /* Build configuration list for PBXNativeTarget "Pods-数字版权交易系统" */ = {
+		0705E2EB1ED884E2B646D5F2180F282B /* Build configuration list for PBXNativeTarget "Mantle" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5E7A8D900F1564CF6427317AAA2608AC /* Debug */,
-				A53A08EA8B167321D85050A221EC6C47 /* Release */,
+				186A22BF010EDCCFE9EC34AC7425B3BF /* Debug */,
+				AF4627FF5D5D72C1389B13F0F0DE4B73 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -543,6 +1135,24 @@
 			buildConfigurations = (
 				2DAE732D13CB652A1ECC83370B3C00E5 /* Debug */,
 				903FBF203C5658B140DF3CBEF5D2090D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA56D596723AA6CAC4D667AACBDD1D61 /* Build configuration list for PBXNativeTarget "Pods-数字版权交易系统" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ADDE50A839AE81038D486C5F0C1AF663 /* Debug */,
+				68FDF309CDF32B28EF4E86919C653E26 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FCC5EB2899E628D9EDF9CB532157ECD9 /* Build configuration list for PBXNativeTarget "DOUAudioStreamer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1597968BE7BBED43B0BA0DD89C803A1 /* Debug */,
+				593262A554FEFCAC17A8193917653269 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

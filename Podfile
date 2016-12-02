@@ -7,5 +7,7 @@ target '数字版权交易系统' do
 
   # Pods for 数字版权交易系统
     pod 'Masonry'
+    pod 'DOUAudioStreamer'
+    pod 'Mantle'
 
 end

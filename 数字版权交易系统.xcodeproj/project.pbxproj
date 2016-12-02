@@ -13,6 +13,17 @@
 		302A40B01DC87D26002812FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 302A40AF1DC87D26002812FB /* Assets.xcassets */; };
 		302A40B31DC87D26002812FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 302A40B11DC87D26002812FB /* LaunchScreen.storyboard */; };
 		303226B21DEF05FC00B966EF /* FakeNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 303226B11DEF05FC00B966EF /* FakeNavigationBar.m */; };
+		303226F01DEFC3F800B966EF /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = 303226EF1DEFC3F800B966EF /* Track.m */; };
+		303226F21DEFC95F00B966EF /* 1770040300_2031329_l.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 303226F11DEFC95F00B966EF /* 1770040300_2031329_l.mp3 */; };
+		303226F61DEFFE8C00B966EF /* CategoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 303226F51DEFFE8C00B966EF /* CategoryTableViewCell.m */; };
+		303226F91DF0317800B966EF /* MusicListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 303226F81DF0317800B966EF /* MusicListViewController.m */; };
+		303226FC1DF0528500B966EF /* MusicListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 303226FB1DF0528500B966EF /* MusicListTableViewCell.m */; };
+		303226FF1DF060BB00B966EF /* PlayAllTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 303226FE1DF060BB00B966EF /* PlayAllTableViewCell.m */; };
+		303227011DF1418000B966EF /* music_list.json in Resources */ = {isa = PBXBuildFile; fileRef = 303227001DF1418000B966EF /* music_list.json */; };
+		303227031DF1419400B966EF /* 1770059653_2050944_l.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 303227021DF1419400B966EF /* 1770059653_2050944_l.mp3 */; };
+		303227051DF1419A00B966EF /* 1771694697_4194836_l.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 303227041DF1419A00B966EF /* 1771694697_4194836_l.mp3 */; };
+		3032270A1DF1485400B966EF /* BaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 303227071DF1485400B966EF /* BaseEntity.m */; };
+		3032270B1DF1485400B966EF /* MusicEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 303227091DF1485400B966EF /* MusicEntity.m */; };
 		3040B3641DE848AF008C4E89 /* RootTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3040B3631DE848AF008C4E89 /* RootTabBarController.m */; };
 		3040B3671DE84A24008C4E89 /* DiscoverMusicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3040B3661DE84A24008C4E89 /* DiscoverMusicViewController.m */; };
 		3040B36A1DE84A35008C4E89 /* MyMusicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3040B3691DE84A35008C4E89 /* MyMusicViewController.m */; };
@@ -41,6 +52,24 @@
 		302A40B41DC87D26002812FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		303226B01DEF05FC00B966EF /* FakeNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FakeNavigationBar.h; sourceTree = "<group>"; };
 		303226B11DEF05FC00B966EF /* FakeNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FakeNavigationBar.m; sourceTree = "<group>"; };
+		303226EE1DEFC3F800B966EF /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Track.h; sourceTree = "<group>"; };
+		303226EF1DEFC3F800B966EF /* Track.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Track.m; sourceTree = "<group>"; };
+		303226F11DEFC95F00B966EF /* 1770040300_2031329_l.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 1770040300_2031329_l.mp3; sourceTree = "<group>"; };
+		303226F41DEFFE8C00B966EF /* CategoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryTableViewCell.h; sourceTree = "<group>"; };
+		303226F51DEFFE8C00B966EF /* CategoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryTableViewCell.m; sourceTree = "<group>"; };
+		303226F71DF0317800B966EF /* MusicListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicListViewController.h; sourceTree = "<group>"; };
+		303226F81DF0317800B966EF /* MusicListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicListViewController.m; sourceTree = "<group>"; };
+		303226FA1DF0528500B966EF /* MusicListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicListTableViewCell.h; sourceTree = "<group>"; };
+		303226FB1DF0528500B966EF /* MusicListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicListTableViewCell.m; sourceTree = "<group>"; };
+		303226FD1DF060BB00B966EF /* PlayAllTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayAllTableViewCell.h; sourceTree = "<group>"; };
+		303226FE1DF060BB00B966EF /* PlayAllTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayAllTableViewCell.m; sourceTree = "<group>"; };
+		303227001DF1418000B966EF /* music_list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = music_list.json; sourceTree = "<group>"; };
+		303227021DF1419400B966EF /* 1770059653_2050944_l.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 1770059653_2050944_l.mp3; sourceTree = "<group>"; };
+		303227041DF1419A00B966EF /* 1771694697_4194836_l.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 1771694697_4194836_l.mp3; sourceTree = "<group>"; };
+		303227061DF1485400B966EF /* BaseEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseEntity.h; sourceTree = "<group>"; };
+		303227071DF1485400B966EF /* BaseEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseEntity.m; sourceTree = "<group>"; };
+		303227081DF1485400B966EF /* MusicEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicEntity.h; sourceTree = "<group>"; };
+		303227091DF1485400B966EF /* MusicEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicEntity.m; sourceTree = "<group>"; };
 		3040B3621DE848AF008C4E89 /* RootTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootTabBarController.h; sourceTree = "<group>"; };
 		3040B3631DE848AF008C4E89 /* RootTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootTabBarController.m; sourceTree = "<group>"; };
 		3040B3651DE84A24008C4E89 /* DiscoverMusicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverMusicViewController.h; sourceTree = "<group>"; };
@@ -114,6 +143,7 @@
 		302A40A21DC87D26002812FB /* 数字版权交易系统 */ = {
 			isa = PBXGroup;
 			children = (
+				303226F31DEFFE3200B966EF /* MyMusicViewController */,
 				3040B3901DED199E008C4E89 /* PlayingViewController */,
 				3040B37D1DEBFAFB008C4E89 /* Account */,
 				3040B37C1DEB0F4C008C4E89 /* RootViewControllers */,
@@ -132,9 +162,32 @@
 		302A40A31DC87D26002812FB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				303226F11DEFC95F00B966EF /* 1770040300_2031329_l.mp3 */,
+				303227021DF1419400B966EF /* 1770059653_2050944_l.mp3 */,
+				303227041DF1419A00B966EF /* 1771694697_4194836_l.mp3 */,
 				302A40A41DC87D26002812FB /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		303226F31DEFFE3200B966EF /* MyMusicViewController */ = {
+			isa = PBXGroup;
+			children = (
+				303226F41DEFFE8C00B966EF /* CategoryTableViewCell.h */,
+				303226F51DEFFE8C00B966EF /* CategoryTableViewCell.m */,
+				303226F71DF0317800B966EF /* MusicListViewController.h */,
+				303226F81DF0317800B966EF /* MusicListViewController.m */,
+				303226FA1DF0528500B966EF /* MusicListTableViewCell.h */,
+				303226FB1DF0528500B966EF /* MusicListTableViewCell.m */,
+				303226FD1DF060BB00B966EF /* PlayAllTableViewCell.h */,
+				303226FE1DF060BB00B966EF /* PlayAllTableViewCell.m */,
+				303227061DF1485400B966EF /* BaseEntity.h */,
+				303227071DF1485400B966EF /* BaseEntity.m */,
+				303227081DF1485400B966EF /* MusicEntity.h */,
+				303227091DF1485400B966EF /* MusicEntity.m */,
+				303227001DF1418000B966EF /* music_list.json */,
+			);
+			name = MyMusicViewController;
 			sourceTree = "<group>";
 		};
 		3040B3711DE85380008C4E89 /* Helper */ = {
@@ -190,6 +243,8 @@
 			children = (
 				3040B3941DEE68B1008C4E89 /* RecordView.h */,
 				3040B3951DEE68B1008C4E89 /* RecordView.m */,
+				303226EE1DEFC3F800B966EF /* Track.h */,
+				303226EF1DEFC3F800B966EF /* Track.m */,
 			);
 			name = PlayingViewController;
 			sourceTree = "<group>";
@@ -264,9 +319,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				303227011DF1418000B966EF /* music_list.json in Resources */,
 				302A40B31DC87D26002812FB /* LaunchScreen.storyboard in Resources */,
 				302A40B01DC87D26002812FB /* Assets.xcassets in Resources */,
+				303227051DF1419A00B966EF /* 1771694697_4194836_l.mp3 in Resources */,
+				303226F21DEFC95F00B966EF /* 1770040300_2031329_l.mp3 in Resources */,
 				302A40AE1DC87D26002812FB /* Main.storyboard in Resources */,
+				303227031DF1419400B966EF /* 1770059653_2050944_l.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,15 +387,22 @@
 				3040B3641DE848AF008C4E89 /* RootTabBarController.m in Sources */,
 				302A40A81DC87D26002812FB /* AppDelegate.m in Sources */,
 				3040B3891DEC2185008C4E89 /* CategoryCollectionViewCell.m in Sources */,
+				303226FC1DF0528500B966EF /* MusicListTableViewCell.m in Sources */,
 				3040B36A1DE84A35008C4E89 /* MyMusicViewController.m in Sources */,
 				3040B3861DEC013A008C4E89 /* UIView+FrameProcessor.m in Sources */,
 				302A40A51DC87D26002812FB /* main.m in Sources */,
 				3040B3701DE852FB008C4E89 /* AccountViewController.m in Sources */,
 				3040B3931DED19DF008C4E89 /* PlayingViewController.m in Sources */,
 				3040B3961DEE68B1008C4E89 /* RecordView.m in Sources */,
+				303226F91DF0317800B966EF /* MusicListViewController.m in Sources */,
 				3040B3831DEBFED7008C4E89 /* HeaderCollectionViewCell.m in Sources */,
 				303226B21DEF05FC00B966EF /* FakeNavigationBar.m in Sources */,
+				3032270B1DF1485400B966EF /* MusicEntity.m in Sources */,
 				3040B3671DE84A24008C4E89 /* DiscoverMusicViewController.m in Sources */,
+				303226F01DEFC3F800B966EF /* Track.m in Sources */,
+				303226F61DEFFE8C00B966EF /* CategoryTableViewCell.m in Sources */,
+				303226FF1DF060BB00B966EF /* PlayAllTableViewCell.m in Sources */,
+				3032270A1DF1485400B966EF /* BaseEntity.m in Sources */,
 				3040B37B1DEB0B5A008C4E89 /* PlayingBarItem.m in Sources */,
 				3040B38F1DEC491F008C4E89 /* DecorationView.m in Sources */,
 				3040B3801DEBFBB2008C4E89 /* AccountHeaderView.m in Sources */,

@@ -11,12 +11,15 @@
 
 #define THEME_COLOR_RED [UIColor colorWithRed:235/255.0 green:69/255.0 blue:47/255.0 alpha:1]
 #define NAVBAR_TINT_COLOR [UIColor whiteColor]
+#define FONT_COLOR_GREY [UIColor colorWithWhite:0.6 alpha:1]
 
 #define kScreenWidth [[UIScreen mainScreen] bounds].size.width
 #define kScreenHeight [[UIScreen mainScreen] bounds].size.height
 
 #define kNavigationBarHeight 44
 #define kStatusBarHeight 20
+
+#define DISTANCE_CELL_LEFT 20
 
 #define backgroundColorWhite [UIColor colorWithWhite:0.90 alpha:1.000]
 

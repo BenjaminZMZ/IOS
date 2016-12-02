@@ -8,6 +8,7 @@
 
 #import "CategoryCollectionViewCell.h"
 #import "UIView+FrameProcessor.h"
+#import "Macro.h"
 
 #import "Masonry.h"
 
@@ -51,7 +52,7 @@
         _textLabel = [[UILabel alloc] init];
         _textLabel.backgroundColor = [UIColor clearColor];
         _textLabel.font = [UIFont systemFontOfSize:12];
-        _textLabel.textColor = [UIColor colorWithWhite:0.6 alpha:1];
+        _textLabel.textColor = FONT_COLOR_GREY;
 
     }
     
