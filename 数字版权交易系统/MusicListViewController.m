@@ -46,6 +46,22 @@ static NSString * const PlayAllTableViewCellIdentifier = @"PlayAllTableViewCellI
     self.fakeBar.fakeRightBarButtonItem = [PlayingBarItem sharedInstance];
     [PlayingBarItem sharedInstance].delegate = self;
     self.navigationController.interactivePopGestureRecognizer.delegate = (id<UIGestureRecognizerDelegate>)self;
+    NSLog(@"%s", __FUNCTION__);
+}
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    NSLog(@"%s", __FUNCTION__);
+}
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    NSLog(@"%s", __FUNCTION__);
+}
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    NSLog(@"%s", __FUNCTION__);
 }
 
 - (void)configureNavigationBar

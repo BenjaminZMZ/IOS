@@ -1,12 +1,25 @@
 PODS:
+  - DOUAudioStreamer (0.2.15)
+  - Mantle (2.0.7):
+    - Mantle/extobjc (= 2.0.7)
+  - Mantle/extobjc (2.0.7)
   - Masonry (1.0.2)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
 
 DEPENDENCIES:
+  - DOUAudioStreamer
+  - Mantle
   - Masonry
+  - SDWebImage
 
 SPEC CHECKSUMS:
+  DOUAudioStreamer: 14f217bab01b52171fc2bd7d96e1f8fdd50fce68
+  Mantle: bc40bb061d8c2c6fb48d5083e04d928c3b7f73d9
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
 
-PODFILE CHECKSUM: 182811ebc8f69e407770d61e10206f215809c6f6
+PODFILE CHECKSUM: 5b1be7063885c26744217442a63dfd4db215efb1
 
 COCOAPODS: 1.0.1

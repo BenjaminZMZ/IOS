@@ -9,11 +9,21 @@
 #import "PlayingViewController.h"
 #import "RecordView.h"
 #import "Masonry.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "FakeNavigationBar.h"
 #import "UIView+FrameProcessor.h"
 #import "Track.h"
 #import "Macro.h"
 #import "MusicEntity.h"
+#import "NSString+Additions.h"
+#import "MusicTitleNavBarView.h"
+
+typedef NS_ENUM(NSInteger, MusicPlayingMode)
+{
+    MusicPlayingModeLoopAll = 0,
+    MusicPlayingModeLoopSingle = 1,
+    MusicPlayingModeShuffle = 2,
+};
 
 @interface PlayingViewController ()
 
@@ -35,8 +45,19 @@
 @property (nonatomic) UIButton *musicListButton;
 @property (nonatomic) UIImageView *backgroundImageView;
 @property (nonatomic) UIVisualEffectView *visualEffectView;
+@property (nonatomic) UIView *backgroundView;
+
+@property (nonatomic) MusicTitleNavBarView *musicTitleView;
 
 @property (nonatomic) BOOL isPlaying;
+@property (nonatomic) NSTimer *musicProgressTimer;
+@property (nonatomic) BOOL isMusicTimerEffective;
+@property (nonatomic) NSTimer *sliderValueTimer;
+@property (nonatomic) BOOL isSliderTimerEffective;
+@property (nonatomic, assign) MusicPlayingMode musicPlayingMode;
+
+@property (nonatomic) NSMutableArray *originArray;
+@property (nonatomic) NSInteger nextRandomMusicIndex;
 
 
 @end
@@ -44,6 +65,12 @@
 #define offsetY1 -44
 #define offsetY2 -94
 #define offsetY3 -140
+
+static void *kStatusKVOKey = &kStatusKVOKey;
+static void *kDurationKVOKey = &kDurationKVOKey;
+static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
+
+static void *kSliderValueKVOKey = &kSliderValueKVOKey;
 
 @implementation PlayingViewController
 
@@ -53,8 +80,10 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedPlayingVC = [[PlayingViewController alloc] init];
-        sharedPlayingVC.streamer = [[DOUAudioStreamer alloc] init];
+        //sharedPlayingVC.streamer = [[DOUAudioStreamer alloc] init];
         sharedPlayingVC.isPlaying = NO;
+        sharedPlayingVC.musicPlayingMode = MusicPlayingModeLoopAll;
+        
     });
     
     return sharedPlayingVC;
@@ -66,9 +95,12 @@
     //将translucent设为YES，使edgesForExtendedLayout设为UIRectEdgeAll
 //    self.navigationController.navigationBar.translucent = YES;
 //    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
-    [self configureNavigationBar];
+    self.view.opaque = YES;
     [self configureViews];
+    [self configureNavigationBar];
     //self.currentIndex = 0;
+    self.musicProgressTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateSliderValue) userInfo:nil repeats:YES];
+    self.isMusicTimerEffective = NO;
     NSLog(@"%s", __FUNCTION__);
 }
 
@@ -87,6 +119,7 @@
 {
     [super viewDidAppear:animated];
     NSLog(@"%s", __FUNCTION__);
+    self.dontReloadMusic = YES;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -110,6 +143,7 @@
     self.fakeBar.fakeLeftBarButtonItem = backItem;
     self.fakeBar.tintColor = NAVBAR_TINT_COLOR;
     [self.fakeBar setTransparent:YES];
+    self.fakeBar.fakeTitleView = self.musicTitleView;
     [self.view addSubview:self.fakeBar];
 }
 
@@ -120,9 +154,9 @@
 
 - (void)configureViews
 {
-    self.view.backgroundColor = [UIColor darkGrayColor];
-    [self.view addSubview:self.backgroundImageView];
-    //[self.view addSubview:self.visualEffectView];
+//    [self.view addSubview:self.backgroundImageView];
+//    [self.view addSubview:self.visualEffectView];
+    [self.view addSubview:self.backgroundView];
     [self.view addSubview:self.recordImageView];
     [self.recordImageView mas_makeConstraints:^(MASConstraintMaker *make){
         make.centerX.equalTo(self.view.mas_centerX);
@@ -249,32 +283,226 @@
     NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:((MusicEntity *)(self.musicEntities[self.currentIndex])).fileName ofType:@"mp3"];
     NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
     track.audioFileURL = fileURL;
-    _streamer = nil;
-    _streamer = [DOUAudioStreamer streamerWithAudioFile:track];
-    [_streamer play];
-    [self tooglePlayPause];
+
+    MusicEntity *currentEntity = ((MusicEntity *)(self.musicEntities[self.currentIndex]));
+    self.musicTitleView.musicTitle = currentEntity.name;
+    self.musicTitleView.authorName = currentEntity.artistName;
+    NSLog(@"%@", currentEntity.cover);
+    //self.backgroundImageView.image = [UIImage imageNamed:@"cm2_default_play_bg"];
+    NSURL *imageURL = [NSURL URLWithString:currentEntity.cover];
+    [self.backgroundImageView sd_setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"cm2_default_play_bg"]];
+    if (self.streamer != nil)
+    {
+        [self removeStreamerObserver];
+        self.streamer = nil;
+    }
+    self.streamer = [DOUAudioStreamer streamerWithAudioFile:track];
+    [self addStreamerObserver];
+    //[self updateTimeLabel];
+    [self.musicSlider setValue:0];
+    
+    [self.streamer play];
+    self.isMusicTimerEffective = YES;
+
+    self.isPlaying = YES;
 }
 
+- (void)removeStreamerObserver
+{
+    [self.streamer removeObserver:self forKeyPath:@"status" context:kStatusKVOKey];
+    [self.streamer removeObserver:self forKeyPath:@"duration" context:kDurationKVOKey];
+    [self.streamer removeObserver:self forKeyPath:@"bufferingRatio" context:kBufferingRatioKVOKey];
+}
+
+- (void)addStreamerObserver
+{
+    [self.streamer addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:kStatusKVOKey];
+    [self.streamer addObserver:self forKeyPath:@"duration" options:NSKeyValueObservingOptionNew context:kDurationKVOKey];
+    [self.streamer addObserver:self forKeyPath:@"bufferingRatio" options:NSKeyValueObservingOptionNew context:kBufferingRatioKVOKey];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
+{
+    if (context == kStatusKVOKey)
+    {
+        [self streamerStatusChanged];
+    }
+    else if (context == kDurationKVOKey)
+    {
+        
+    }
+    else if (context == kBufferingRatioKVOKey)
+    {
+        
+    }
+    else if (context == kSliderValueKVOKey)
+    {
+        self.sliderValueTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(sliderValueStartChanging) userInfo:nil repeats:YES];
+//        NSLog(@"kSliderValueKVOKey");
+        self.isMusicTimerEffective = NO;
+//        self.beginTimeLabel.text = [NSString timeIntervalToMMSSFormat:self.streamer.duration * [change[NSKeyValueChangeNewKey] floatValue]];
+    }
+    else
+    {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
+}
+
+- (void)streamerStatusChanged
+{
+    switch (self.streamer.status) {
+        case DOUAudioStreamerPaused:
+            
+            break;
+        case DOUAudioStreamerPlaying:
+            
+            break;
+        case DOUAudioStreamerFinished:
+            if (self.musicPlayingMode == MusicPlayingModeLoopSingle)
+                [self.streamer play];
+            else
+                [self playNextMusic];
+            break;
+        case DOUAudioStreamerBuffering:
+            
+            break;
+        case DOUAudioStreamerIdle:
+            
+            break;
+        case DOUAudioStreamerError:
+            
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)updateSliderValue
+{
+    if (self.isMusicTimerEffective == NO)
+        return;
+    if (self.streamer.currentTime >= self.streamer.duration)
+        self.streamer.currentTime -= self.streamer.duration;
+    [self.musicSlider setValue:self.streamer.currentTime / self.streamer.duration animated:YES];
+    [self updateTimeLabel];
+}
+
+- (void)updateTimeLabel
+{
+    self.beginTimeLabel.text = [NSString timeIntervalToMMSSFormat:self.streamer.currentTime];
+    self.endTimeLabel.text = [NSString timeIntervalToMMSSFormat:self.streamer.duration];
+}
+
+#pragma mark target-action methods
 - (void)tooglePlayPause
 {
     if (!self.isPlaying)
     {
-        [self.tooglePlayPauseButton setImage:[UIImage imageNamed:@"cm2_fm_btn_pause"] forState:UIControlStateNormal];
+        //[self.tooglePlayPauseButton setImage:[UIImage imageNamed:@"cm2_fm_btn_pause"] forState:UIControlStateNormal];
         [_streamer play];
         self.isPlaying = YES;
     }
     else
     {
-        [self.tooglePlayPauseButton setImage:[UIImage imageNamed:@"cm2_fm_btn_play"] forState:UIControlStateNormal];
+        //[self.tooglePlayPauseButton setImage:[UIImage imageNamed:@"cm2_fm_btn_play"] forState:UIControlStateNormal];
         [_streamer pause];
         self.isPlaying = NO;
     }
-    
+}
+
+- (void)playPreviousMusic
+{
+    self.isMusicTimerEffective = NO;
+    if (self.currentIndex == 0)
+        self.currentIndex = self.musicEntities.count;
+    self.currentIndex = (self.currentIndex - 1) % self.musicEntities.count;
+    NSLog(@"self.currentIndex: %ld", (long)self.currentIndex);
+    [self createStreamer];
+}
+
+- (void)playNextMusic
+{
+    self.isMusicTimerEffective = NO;;
+    if (self.musicPlayingMode == MusicPlayingModeShuffle)
+        self.currentIndex = [self getNextRandomMusicIndex];
+    else
+        self.currentIndex = (self.currentIndex + 1) % self.musicEntities.count;
+    NSLog(@"self.currentIndex: %ld", (long)self.currentIndex);
+    [self createStreamer];
+}
+
+- (void)tooglePlayMode
+{
+    switch (self.musicPlayingMode) {
+        case MusicPlayingModeLoopAll:
+            self.musicPlayingMode = MusicPlayingModeLoopSingle;
+            break;
+        case MusicPlayingModeLoopSingle:
+            self.musicPlayingMode = MusicPlayingModeShuffle;
+            break;
+        case MusicPlayingModeShuffle:
+            self.musicPlayingMode = MusicPlayingModeLoopAll;
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)sliderValueStartChanging
+{
+    self.beginTimeLabel.text = [NSString timeIntervalToMMSSFormat:self.streamer.duration * self.musicSlider.value];
+}
+
+- (void)sliderValueEndChanging
+{
+    [self.sliderValueTimer invalidate];
+    self.sliderValueTimer = nil;
+    self.isMusicTimerEffective = YES;
+    float currentVolume = self.streamer.volume;
+    [self.streamer setVolume:0];
+//    NSTimer *tempTimer = [NSTimer timerWithTimeInterval:0.1 repeats:NO block:^(NSTimer *timer){
+//        [self.streamer setCurrentTime:self.streamer.duration * self.musicSlider.value];
+//        [self.streamer setVolume:currentVolume];
+//    }];
+    [self.streamer setCurrentTime:self.streamer.duration * self.musicSlider.value];
+    [self.streamer setVolume:currentVolume];
     
 }
 
 
-#pragma mark - Accessor Methods
+
+#pragma shuffle music
+- (void)loadOriginArrayIfNeeded
+{
+    if (self.originArray.count == 0)
+    {
+        for (NSInteger i = 0; i < self.musicEntities.count; i++)
+        {
+            if (i == self.currentIndex)
+                continue;
+            else
+            {
+                NSNumber *number = [NSNumber numberWithInteger:i];
+                [self.originArray addObject:number];
+                NSLog(@"number: %@", number);
+            }
+        }
+    }
+}
+
+- (NSInteger)getNextRandomMusicIndex
+{
+    [self loadOriginArrayIfNeeded];
+    NSInteger index = arc4random() % self.originArray.count;
+    NSInteger result = [self.originArray[index] integerValue];
+    if (self.originArray.count > 1)
+        self.originArray[index] = [self.originArray lastObject];
+    [self.originArray removeLastObject];
+    return result;
+}
+
+
+#pragma mark - Accessor Getter Methods
 - (UIImageView *)recordImageView
 {
     if (_recordImageView == nil)
@@ -371,7 +599,7 @@
         _beginTimeLabel.backgroundColor = [UIColor clearColor];
         _beginTimeLabel.font = [UIFont systemFontOfSize:10];
         _beginTimeLabel.textColor = [UIColor whiteColor];
-        _beginTimeLabel.text = @"00:00";
+        //_beginTimeLabel.text = @"00:00";
         //_beginTimeLabel.backgroundColor = [UIColor redColor];
         [_beginTimeLabel sizeToFit];
     }
@@ -387,7 +615,7 @@
         _endTimeLabel.backgroundColor = [UIColor clearColor];
         _endTimeLabel.font = [UIFont systemFontOfSize:10];
         _endTimeLabel.textColor = [UIColor whiteColor];
-        _endTimeLabel.text = @"04:39";
+        //_endTimeLabel.text = @"04:39";
         //_endTimeLabel.backgroundColor = [UIColor redColor];
         [_endTimeLabel sizeToFit];
     }
@@ -401,7 +629,10 @@
     {
         _musicSlider = [[UISlider alloc] init];
         _musicSlider.tintColor = THEME_COLOR_RED;
+        _musicSlider.continuous = NO;
         //_musicSlider.backgroundColor = [UIColor redColor];
+        [_musicSlider addTarget:self action:@selector(sliderValueEndChanging) forControlEvents:UIControlEventValueChanged];
+        [_musicSlider addObserver:self forKeyPath:@"value" options:NSKeyValueObservingOptionNew context:kSliderValueKVOKey];
     }
     
     return _musicSlider;
@@ -417,6 +648,7 @@
         [_tooglePlayModeButton setImage:musicListImage forState:UIControlStateNormal];
         _tooglePlayModeButton.size = musicListImage.size;
      //   _tooglePlayModeButton.backgroundColor = [UIColor redColor];
+        [_tooglePlayModeButton addTarget:self action:@selector(tooglePlayMode) forControlEvents:UIControlEventTouchUpInside];
     }
     
     return _tooglePlayModeButton;
@@ -433,6 +665,7 @@
         _previousMusicButton.size = previousMusicImage.size;
         _previousMusicButton.transform = CGAffineTransformMakeRotation(M_PI);
         //_previousMusicButton.backgroundColor = [UIColor redColor];
+        [_previousMusicButton addTarget:self action:@selector(playPreviousMusic) forControlEvents:UIControlEventTouchUpInside];
     }
     
     return _previousMusicButton;
@@ -447,6 +680,7 @@
         //_nextMusicButton.imageView.image = nextMusicImage;
         [_nextMusicButton setImage:nextMusicImage forState:UIControlStateNormal];
         _nextMusicButton.size = nextMusicImage.size;
+        [_nextMusicButton addTarget:self action:@selector(playNextMusic) forControlEvents:UIControlEventTouchUpInside];
     }
     
     return _nextMusicButton;
@@ -486,6 +720,9 @@
     if (_backgroundImageView == nil)
     {
         _backgroundImageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+        _backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
+        _backgroundImageView.clipsToBounds = YES;
+        _backgroundView.opaque = YES;
     }
     
     return _backgroundImageView;
@@ -495,11 +732,28 @@
 {
     if (_visualEffectView == nil)
     {
-        _visualEffectView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleDark]];
+        _visualEffectView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];
+        
         _visualEffectView.frame = self.view.bounds;
     }
     
     return _visualEffectView;
+}
+
+- (UIView *)backgroundView
+{
+    if (_backgroundView == nil)
+    {
+        _backgroundView = [[UIView alloc] initWithFrame:self.view.bounds];
+        [_backgroundView addSubview:self.backgroundImageView];
+        UIView *view = [[UIView alloc] initWithFrame:self.view.bounds];
+        view.backgroundColor = [UIColor blackColor];
+        view.alpha = 0.3;
+        [_backgroundView addSubview:view];
+        [_backgroundView addSubview:self.visualEffectView];
+        _backgroundView.opaque = YES;
+    }
+    return _backgroundView;
 }
 
 - (FakeNavigationBar *)fakeBar
@@ -512,5 +766,56 @@
     return _fakeBar;
 }
 
+- (NSMutableArray *)originArray
+{
+    if (_originArray == nil)
+        _originArray = @[].mutableCopy;
+    return _originArray;
+}
+
+- (MusicTitleNavBarView *)musicTitleView
+{
+    if (_musicTitleView == nil)
+    {
+        _musicTitleView = [[MusicTitleNavBarView alloc] initWithFrame:CGRectMake(0, 0, 200, 30)];
+        //_musicTitleView.backgroundColor = [UIColor redColor];
+    }
+    return _musicTitleView;
+}
+
+#pragma mark - Accessor Setter Methods
+- (void)setIsPlaying:(BOOL)isPlaying
+{
+    _isPlaying = isPlaying;
+    if (isPlaying)
+        [self.tooglePlayPauseButton setImage:[UIImage imageNamed:@"cm2_fm_btn_pause"] forState:UIControlStateNormal];
+    else
+        [self.tooglePlayPauseButton setImage:[UIImage imageNamed:@"cm2_fm_btn_play"] forState:UIControlStateNormal];
+}
+
+- (void)setMusicPlayingMode:(MusicPlayingMode)musicPlayingMode
+{
+    _musicPlayingMode = musicPlayingMode;
+    switch (musicPlayingMode) {
+        case MusicPlayingModeLoopAll:
+            [self.tooglePlayModeButton setImage:[UIImage imageNamed:@"cm2_icn_loop"] forState:UIControlStateNormal];
+            break;
+        case MusicPlayingModeLoopSingle:
+            [self.tooglePlayModeButton setImage:[UIImage imageNamed:@"cm2_icn_one"] forState:UIControlStateNormal];
+            break;
+        case MusicPlayingModeShuffle:
+            [self.tooglePlayModeButton setImage:[UIImage imageNamed:@"cm2_icn_shuffle"] forState:UIControlStateNormal];
+            [self.originArray removeAllObjects];
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)dealloc
+{
+    [self.musicSlider removeObserver:self forKeyPath:@"value" context: kSliderValueKVOKey];
+    //[super dealloc];
+}
 
 @end

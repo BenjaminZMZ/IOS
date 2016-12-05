@@ -9,5 +9,6 @@ target '数字版权交易系统' do
     pod 'Masonry'
     pod 'DOUAudioStreamer'
     pod 'Mantle'
+    pod 'SDWebImage'
 
 end
