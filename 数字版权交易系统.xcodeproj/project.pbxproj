@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3021640B1DF53A590000B778 /* MusicTitleNavBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3021640A1DF53A590000B778 /* MusicTitleNavBarView.m */; };
+		3021640E1DF6CFD90000B778 /* RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3021640D1DF6CFD90000B778 /* RecordViewController.m */; };
 		302A40A51DC87D26002812FB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 302A40A41DC87D26002812FB /* main.m */; };
 		302A40A81DC87D26002812FB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 302A40A71DC87D26002812FB /* AppDelegate.m */; };
 		302A40AE1DC87D26002812FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 302A40AC1DC87D26002812FB /* Main.storyboard */; };
@@ -46,6 +47,8 @@
 		0036DD958D818C30E773AD34 /* Pods-数字版权交易系统.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-数字版权交易系统.release.xcconfig"; path = "Pods/Target Support Files/Pods-数字版权交易系统/Pods-数字版权交易系统.release.xcconfig"; sourceTree = "<group>"; };
 		302164091DF53A590000B778 /* MusicTitleNavBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicTitleNavBarView.h; sourceTree = "<group>"; };
 		3021640A1DF53A590000B778 /* MusicTitleNavBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicTitleNavBarView.m; sourceTree = "<group>"; };
+		3021640C1DF6CFD90000B778 /* RecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordViewController.h; sourceTree = "<group>"; };
+		3021640D1DF6CFD90000B778 /* RecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordViewController.m; sourceTree = "<group>"; };
 		302A40A01DC87D26002812FB /* 数字版权交易系统.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "数字版权交易系统.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		302A40A41DC87D26002812FB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		302A40A61DC87D26002812FB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -255,6 +258,8 @@
 				303226EF1DEFC3F800B966EF /* Track.m */,
 				302164091DF53A590000B778 /* MusicTitleNavBarView.h */,
 				3021640A1DF53A590000B778 /* MusicTitleNavBarView.m */,
+				3021640C1DF6CFD90000B778 /* RecordViewController.h */,
+				3021640D1DF6CFD90000B778 /* RecordViewController.m */,
 			);
 			name = PlayingViewController;
 			sourceTree = "<group>";
@@ -408,6 +413,7 @@
 				3040B3831DEBFED7008C4E89 /* HeaderCollectionViewCell.m in Sources */,
 				303226B21DEF05FC00B966EF /* FakeNavigationBar.m in Sources */,
 				3032270B1DF1485400B966EF /* MusicEntity.m in Sources */,
+				3021640E1DF6CFD90000B778 /* RecordViewController.m in Sources */,
 				3040B3671DE84A24008C4E89 /* DiscoverMusicViewController.m in Sources */,
 				303226F01DEFC3F800B966EF /* Track.m in Sources */,
 				303226F61DEFFE8C00B966EF /* CategoryTableViewCell.m in Sources */,

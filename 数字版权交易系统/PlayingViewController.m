@@ -17,6 +17,7 @@
 #import "MusicEntity.h"
 #import "NSString+Additions.h"
 #import "MusicTitleNavBarView.h"
+#import "RecordViewController.h"
 
 typedef NS_ENUM(NSInteger, MusicPlayingMode)
 {
@@ -25,11 +26,15 @@ typedef NS_ENUM(NSInteger, MusicPlayingMode)
     MusicPlayingModeShuffle = 2,
 };
 
-@interface PlayingViewController ()
+@interface PlayingViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource>
 
 @property (nonatomic) FakeNavigationBar *fakeBar;
 
+@property (nonatomic) RecordView *recordView;
 @property (nonatomic) UIImageView *recordImageView;
+
+@property (nonatomic) UIView *recordBackgroundView;
+@property (nonatomic) UIView *bbView;
 @property (nonatomic) UIImageView *recordNeddleView;
 @property (nonatomic) UIButton *loveButton;
 @property (nonatomic) UIButton *downloadButton;
@@ -59,12 +64,18 @@ typedef NS_ENUM(NSInteger, MusicPlayingMode)
 @property (nonatomic) NSMutableArray *originArray;
 @property (nonatomic) NSInteger nextRandomMusicIndex;
 
+@property (nonatomic) UIPageViewController *recordPageVC;
+
 
 @end
 
 #define offsetY1 -44
 #define offsetY2 -94
 #define offsetY3 -140
+
+#define diskWidth (kScreenWidth == 320 ? 228 : 288)
+#define bbViewWidth (diskWidth + (kScreenWidth == 320 ? 13 : 15))
+//#define diskWidthIp6 248
 
 static void *kStatusKVOKey = &kStatusKVOKey;
 static void *kDurationKVOKey = &kDurationKVOKey;
@@ -100,6 +111,12 @@ static void *kSliderValueKVOKey = &kSliderValueKVOKey;
     [self configureNavigationBar];
     //self.currentIndex = 0;
     self.musicProgressTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateSliderValue) userInfo:nil repeats:YES];
+    NSTimer *timer = [NSTimer timerWithTimeInterval:1.0
+                                             target:self
+                                           selector:@selector(updateSliderValue)
+                                           userInfo:nil
+                                            repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];//用户拖动切换唱片时musicProgressTimer失效，time Label不会更新。需要在NSRunLoopCommonModes下加一个timer
     self.isMusicTimerEffective = NO;
     NSLog(@"%s", __FUNCTION__);
 }
@@ -111,7 +128,8 @@ static void *kSliderValueKVOKey = &kSliderValueKVOKey;
     
     if (self.dontReloadMusic && self.streamer)
         return;
-    [self createStreamer];
+    [self startRotatingRecordView];
+    [self playMusicOfIndex:self.currentIndex];
     NSLog(@"%s", __FUNCTION__);
 }
 
@@ -143,6 +161,7 @@ static void *kSliderValueKVOKey = &kSliderValueKVOKey;
     self.fakeBar.fakeLeftBarButtonItem = backItem;
     self.fakeBar.tintColor = NAVBAR_TINT_COLOR;
     [self.fakeBar setTransparent:YES];
+    //[self.fakeBar setValue:@YES forKey:@"_fakeTranslucent"];
     self.fakeBar.fakeTitleView = self.musicTitleView;
     [self.view addSubview:self.fakeBar];
 }
@@ -157,18 +176,55 @@ static void *kSliderValueKVOKey = &kSliderValueKVOKey;
 //    [self.view addSubview:self.backgroundImageView];
 //    [self.view addSubview:self.visualEffectView];
     [self.view addSubview:self.backgroundView];
-    [self.view addSubview:self.recordImageView];
-    [self.recordImageView mas_makeConstraints:^(MASConstraintMaker *make){
+    
+    [self.view addSubview:self.bbView];
+    [self.bbView mas_makeConstraints:^(MASConstraintMaker *make){
         make.centerX.equalTo(self.view.mas_centerX);
         make.centerY.equalTo(self.view.mas_top).with.offset((self.view.height - 64 + offsetY3)/2 + 64);
-        NSLog(@"self.view.height: %f", self.view.height);
-        NSLog(@"(self.view.height - 64 + offsetY3)/2 + 64: %f", (self.view.height - 64 + offsetY3)/2 + 64);
+        make.width.equalTo(@(bbViewWidth));
+        make.height.equalTo(@(bbViewWidth));
     }];
+    [self.view addSubview:self.recordBackgroundView];
+    [self.recordBackgroundView mas_makeConstraints:^(MASConstraintMaker *make){
+        make.centerX.equalTo(self.view.mas_centerX);
+        make.centerY.equalTo(self.view.mas_top).with.offset((self.view.height - 64 + offsetY3)/2 + 64);
+        make.width.equalTo(@(diskWidth));
+        make.height.equalTo(@(diskWidth));
+    }];
+    
+    [self addChildViewController:self.recordPageVC];
+    self.recordPageVC.view.frame = self.view.bounds;
+    [self.view addSubview:self.recordPageVC.view];
+    [self.recordPageVC didMoveToParentViewController:self];
+    
+
+    
+//    [self.view addSubview:self.recordView];
+//    [self.recordView mas_makeConstraints:^(MASConstraintMaker *make){
+//        make.centerX.equalTo(self.view.mas_centerX);
+//        make.centerY.equalTo(self.view.mas_top).with.offset((self.view.height - 64 + offsetY3)/2 + 64);
+//    }];
+    
+//    [self.view addSubview:self.recordImageView];
+//    [self.recordImageView mas_makeConstraints:^(MASConstraintMaker *make){
+//        make.centerX.equalTo(self.view.mas_centerX);
+//        make.centerY.equalTo(self.view.mas_top).with.offset((self.view.height - 64 + offsetY3)/2 + 64);
+//        NSLog(@"self.view.height: %f", self.view.height);
+//        NSLog(@"(self.view.height - 64 + offsetY3)/2 + 64: %f", (self.view.height - 64 + offsetY3)/2 + 64);
+//    }];
     
     [self.view addSubview:self.recordNeddleView];
     [self.recordNeddleView mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(self.view.mas_top).with.offset(48);
-        make.centerX.equalTo(self.view.mas_centerX).with.offset(self.recordNeddleView.width * 0.3);
+        if (kScreenWidth == 320)
+        {
+            make.top.equalTo(self.view.mas_top).with.offset(48);
+            make.centerX.equalTo(self.view.mas_centerX).with.offset(self.recordNeddleView.width * 0.3);
+        }
+        else
+        {
+            make.top.equalTo(self.view.mas_top).with.offset(36);
+            make.centerX.equalTo(self.view.mas_centerX).with.offset(self.recordNeddleView.width * 0.25);
+        }
     }];
     
     [self.view addSubview:self.beginTimeLabel];
@@ -229,7 +285,6 @@ static void *kSliderValueKVOKey = &kSliderValueKVOKey;
         make.width.equalTo(@(40));
         make.height.equalTo(@(40));
     }];
-
     [self.view addSubview:self.tooglePlayModeButton];
     [self.view addSubview:self.previousMusicButton];
     [self.view addSubview:self.tooglePlayPauseButton];
@@ -277,19 +332,21 @@ static void *kSliderValueKVOKey = &kSliderValueKVOKey;
 
 
 #pragma play music
-- (void)createStreamer
+- (void)playMusicOfIndex:(NSInteger)index
 {
+    self.currentIndex = index;
     Track *track = [[Track alloc] init];//((MusicEntity *)(self.musicEntities[self.currentIndex])).fileName
-    NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:((MusicEntity *)(self.musicEntities[self.currentIndex])).fileName ofType:@"mp3"];
+    NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:((MusicEntity *)(self.musicEntities[index])).fileName ofType:@"mp3"];
     NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
     track.audioFileURL = fileURL;
 
-    MusicEntity *currentEntity = ((MusicEntity *)(self.musicEntities[self.currentIndex]));
-    self.musicTitleView.musicTitle = currentEntity.name;
-    self.musicTitleView.authorName = currentEntity.artistName;
-    NSLog(@"%@", currentEntity.cover);
+    MusicEntity *entity = ((MusicEntity *)(self.musicEntities[index]));
+    self.musicTitleView.musicTitle = entity.name;
+    self.musicTitleView.authorName = entity.artistName;
+    NSLog(@"%@", entity.cover);
     //self.backgroundImageView.image = [UIImage imageNamed:@"cm2_default_play_bg"];
-    NSURL *imageURL = [NSURL URLWithString:currentEntity.cover];
+    NSURL *imageURL = [NSURL URLWithString:entity.cover];
+    [self.recordView setCoverWithURL:imageURL];
     [self.backgroundImageView sd_setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"cm2_default_play_bg"]];
     if (self.streamer != nil)
     {
@@ -335,9 +392,15 @@ static void *kSliderValueKVOKey = &kSliderValueKVOKey;
     {
         
     }
-    else if (context == kSliderValueKVOKey)
+    else if (context == kSliderValueKVOKey)//用户开始拖动歌曲进度条
     {
         self.sliderValueTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(sliderValueStartChanging) userInfo:nil repeats:YES];
+        NSTimer *timer = [NSTimer timerWithTimeInterval:0.1
+                                                 target:self
+                                               selector:@selector(sliderValueStartChanging)
+                                               userInfo:nil
+                                                repeats:YES];
+        [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];//用于用户一边切换唱片一边拖动滚动条
 //        NSLog(@"kSliderValueKVOKey");
         self.isMusicTimerEffective = NO;
 //        self.beginTimeLabel.text = [NSString timeIntervalToMMSSFormat:self.streamer.duration * [change[NSKeyValueChangeNewKey] floatValue]];
@@ -381,10 +444,27 @@ static void *kSliderValueKVOKey = &kSliderValueKVOKey;
 {
     if (self.isMusicTimerEffective == NO)
         return;
-    if (self.streamer.currentTime >= self.streamer.duration)
-        self.streamer.currentTime -= self.streamer.duration;
-    [self.musicSlider setValue:self.streamer.currentTime / self.streamer.duration animated:YES];
-    [self updateTimeLabel];
+//    if (self.streamer.currentTime >= self.streamer.duration)
+//        self.streamer.currentTime -= self.streamer.duration;
+//    [self.musicSlider setValue:self.streamer.currentTime / self.streamer.duration animated:YES];
+//    [self updateTimeLabel];
+    if (!_streamer) {
+        return;
+    }
+    if (_streamer.status == DOUAudioStreamerFinished) {
+        [_streamer play];
+    }
+    
+    if ([_streamer duration] == 0.0) {//streamer切换中为nil时
+        [_musicSlider setValue:0.0f animated:NO];
+    } else {
+        if (_streamer.currentTime >= _streamer.duration) {
+            _streamer.currentTime -= _streamer.duration;
+        }
+        
+        [_musicSlider setValue:[_streamer currentTime] / [_streamer duration] animated:YES];
+        [self updateTimeLabel];
+    }
 }
 
 - (void)updateTimeLabel
@@ -399,12 +479,14 @@ static void *kSliderValueKVOKey = &kSliderValueKVOKey;
     if (!self.isPlaying)
     {
         //[self.tooglePlayPauseButton setImage:[UIImage imageNamed:@"cm2_fm_btn_pause"] forState:UIControlStateNormal];
+        [self startRotatingRecordView];
         [_streamer play];
         self.isPlaying = YES;
     }
     else
     {
         //[self.tooglePlayPauseButton setImage:[UIImage imageNamed:@"cm2_fm_btn_play"] forState:UIControlStateNormal];
+        [self stopRotatingRecordView];
         [_streamer pause];
         self.isPlaying = NO;
     }
@@ -413,22 +495,25 @@ static void *kSliderValueKVOKey = &kSliderValueKVOKey;
 - (void)playPreviousMusic
 {
     self.isMusicTimerEffective = NO;
-    if (self.currentIndex == 0)
-        self.currentIndex = self.musicEntities.count;
-    self.currentIndex = (self.currentIndex - 1) % self.musicEntities.count;
-    NSLog(@"self.currentIndex: %ld", (long)self.currentIndex);
-    [self createStreamer];
+    NSInteger previousMusicIndex = [self previousMusicIndex];
+    RecordViewController *previousRecordVC = [self recordVCWithIndex:previousMusicIndex];
+    [self.recordPageVC setViewControllers:@[previousRecordVC] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:^(BOOL finished){
+        if (finished)
+            [previousRecordVC startRotating];
+    }];
+    [self playMusicOfIndex:previousMusicIndex];
 }
 
 - (void)playNextMusic
 {
-    self.isMusicTimerEffective = NO;;
-    if (self.musicPlayingMode == MusicPlayingModeShuffle)
-        self.currentIndex = [self getNextRandomMusicIndex];
-    else
-        self.currentIndex = (self.currentIndex + 1) % self.musicEntities.count;
-    NSLog(@"self.currentIndex: %ld", (long)self.currentIndex);
-    [self createStreamer];
+    self.isMusicTimerEffective = NO;
+    NSInteger nextMusicIndex = [self nextMusicIndex];
+    RecordViewController *nextRecordVC = [self recordVCWithIndex:nextMusicIndex];
+    [self.recordPageVC setViewControllers:@[nextRecordVC] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished){
+        if (finished)
+            [nextRecordVC startRotating];
+    }];
+    [self playMusicOfIndex:nextMusicIndex];
 }
 
 - (void)tooglePlayMode
@@ -501,8 +586,87 @@ static void *kSliderValueKVOKey = &kSliderValueKVOKey;
     return result;
 }
 
+#pragma mark - UIPageViewControllerDataSource
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
+{
+    NSInteger index = [self previousMusicIndex];
+    NSLog(@"previousIndex: %ld", (long)index);
+    RecordViewController *recordVC = [self recordVCWithIndex:index];
+    return recordVC;
+}
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
+{
+    
+    NSInteger index = [self nextMusicIndex];
+    NSLog(@"nextIndex: %ld", (long)index);
+    RecordViewController *recordVC = [self recordVCWithIndex:index];
+    return recordVC;
+}
+
+- (RecordViewController *)recordVCWithIndex:(NSInteger)index
+{
+    RecordViewController *recordVC = [[RecordViewController alloc] init];
+    MusicEntity *previousMusicEntity = self.musicEntities[index];
+    NSURL *coverURL = [NSURL URLWithString:previousMusicEntity.cover];
+    [recordVC setCoverWithURL:coverURL];
+    recordVC.index = index;
+    return recordVC;
+}
+
+- (NSInteger)nextMusicIndex
+{
+    if (self.musicPlayingMode == MusicPlayingModeShuffle)
+        return [self getNextRandomMusicIndex];
+    return (self.currentIndex + 1) % self.musicEntities.count;
+}
+
+- (NSInteger)previousMusicIndex
+{
+    if (self.musicPlayingMode == MusicPlayingModeShuffle)
+        return [self getNextRandomMusicIndex];
+    return self.currentIndex == 0 ? self.musicEntities.count - 1 : self.currentIndex - 1;
+}
+
+#pragma mark - UIPageViewControllerDelegate
+- (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers
+{
+    [self stopRotatingRecordView];
+}
+
+- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers transitionCompleted:(BOOL)completed
+{
+    NSLog(@"%s", __FUNCTION__);
+    [self startRotatingRecordView];
+    if (completed == YES)
+    {
+        RecordViewController *presentVC = (RecordViewController *)(self.recordPageVC.viewControllers[0]);
+        [self playMusicOfIndex:presentVC.index];
+    }
+}
+
+#pragma mark - rotating record view
+- (void)startRotatingRecordView
+{
+    RecordViewController *presentVC = (RecordViewController *)(self.recordPageVC.viewControllers[0]);
+    [presentVC startRotating];
+}
+
+- (void)stopRotatingRecordView
+{
+    RecordViewController *presentVC = (RecordViewController *)(self.recordPageVC.viewControllers[0]);
+    [presentVC stopRotating];
+}
 
 #pragma mark - Accessor Getter Methods
+- (RecordView *)recordView
+{
+    if (_recordView == nil)
+    {
+        _recordView = [[RecordView alloc] initWithFrame:CGRectMake(0, 0, 238, 238)];
+    }
+    return _recordView;
+}
 - (UIImageView *)recordImageView
 {
     if (_recordImageView == nil)
@@ -520,10 +684,11 @@ static void *kSliderValueKVOKey = &kSliderValueKVOKey;
 {
     if (_recordNeddleView == nil)
     {
-        if (kScreenWidth == 375 && kScreenHeight == 667)
-            _recordNeddleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cm2_play_needle_play-ip6"]];
-        else
+        if (kScreenWidth == 320)
             _recordNeddleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cm2_play_needle_play"]];
+        else
+            _recordNeddleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cm2_play_needle_play-ip6"]];
+            
     }
     
     return _recordNeddleView;
@@ -781,6 +946,48 @@ static void *kSliderValueKVOKey = &kSliderValueKVOKey;
         //_musicTitleView.backgroundColor = [UIColor redColor];
     }
     return _musicTitleView;
+}
+
+- (UIPageViewController *)recordPageVC
+{
+    if (_recordPageVC == nil)
+    {
+        _recordPageVC = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
+        _recordPageVC.dataSource = self;
+        _recordPageVC.delegate = self;
+        RecordViewController *recordVC = [self recordVCWithIndex:self.currentIndex];
+        [_recordPageVC setViewControllers:@[recordVC] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    }
+    return _recordPageVC;
+}
+
+- (UIView *)recordBackgroundView
+{
+    if (_recordBackgroundView == nil)
+    {
+        _recordBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, diskWidth, diskWidth)];
+        _recordBackgroundView.layer.cornerRadius = _recordBackgroundView.width / 2;
+        _recordBackgroundView.clipsToBounds = YES;
+        _recordBackgroundView.backgroundColor = [UIColor blackColor];
+        _recordBackgroundView.alpha = 0.15;
+
+//        _recordBackgroundView.layer.shadowColor = [UIColor redColor].CGColor;
+//        _recordBackgroundView.layer.shadowOffset = CGSizeMake(10, 10);
+    }
+    return _recordBackgroundView;
+}
+
+- (UIView *)bbView
+{
+    if (_bbView == nil)
+    {
+        _bbView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, bbViewWidth, bbViewWidth)];
+        _bbView.layer.cornerRadius = _bbView.width / 2;
+        _bbView.clipsToBounds = YES;
+        _bbView.backgroundColor = FONT_COLOR_GREY;
+        _bbView.alpha = 0.15;
+    }
+    return _bbView;
 }
 
 #pragma mark - Accessor Setter Methods

@@ -8,12 +8,16 @@
 
 #import "RecordView.h"
 #import "Masonry.h"
+#import "Macro.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import "UIView+FrameProcessor.h"
 
 @interface RecordView ()
 
 @property (nonatomic) UIImageView *coverImageView;
 @property (nonatomic) UIImageView *diskImageView;
-@property (nonatomic) UIImageView *circleImageView;
+//@property (nonatomic) UIImageView *circleImageView;
+@property (nonatomic) BOOL shouldRotate;
 
 @end
 
@@ -36,16 +40,51 @@
         make.centerY.equalTo(self.coverImageView.mas_centerY);
     }];
     
-    [self.circleImageView addSubview:self.coverImageView];
+    [self addSubview:self.coverImageView];
+    CGSize size = self.coverImageView.size;
+    NSLog(@"size: %@", NSStringFromCGSize(size));
     [self.coverImageView mas_makeConstraints:^(MASConstraintMaker *make){
-        make.centerX.equalTo(self.circleImageView.mas_centerX);
-        make.centerY.equalTo(self.circleImageView.mas_centerY);
-    }];
-    [self addSubview:self.circleImageView];
-    [self.circleImageView mas_makeConstraints:^(MASConstraintMaker *make){
         make.centerX.equalTo(self.mas_centerX);
         make.centerY.equalTo(self.mas_centerY);
+        make.width.equalTo(@(size.width));
+        make.height.equalTo(@(size.height));
     }];
+//    [self addSubview:self.circleImageView];
+//    [self.circleImageView mas_makeConstraints:^(MASConstraintMaker *make){
+//        make.centerX.equalTo(self.mas_centerX);
+//        make.centerY.equalTo(self.mas_centerY);
+//    }];
+}
+
+#pragma mark - Instance Methods
+- (void)setCoverWithURL:(NSURL *)url
+{
+    //[self.coverImageView sd_setImageWithURL:url];
+    if (kScreenWidth == 320)
+        [self.coverImageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"cm2_default_cover_play"]];
+    else
+        [self.coverImageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"cm2_default_cover_play-ip6"]];
+}
+
+- (void)startRotating
+{
+    //CGAffineTransform endAngle = CGAffineTransformMakeRotation(2 * M_PI);
+    self.shouldRotate = YES;
+}
+
+- (void)stopRotating
+{
+    self.shouldRotate = NO;
+}
+
+- (void)rotate
+{
+    if (self.shouldRotate)
+        [UIView animateWithDuration:0.1 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+            self.transform = CGAffineTransformRotate(self.transform, M_PI/100);
+        } completion:^(BOOL finished){
+            [self rotate];
+        }];
 }
 
 #pragma mark - Accessor Methods
@@ -53,7 +92,20 @@
 {
     if (_coverImageView == nil)
     {
-        _coverImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cm2_default_cover_play"]];
+        if (kScreenWidth == 320)
+        {
+            UIImage *cover = [UIImage imageNamed:@"cm2_default_cover_play"];
+            _coverImageView = [[UIImageView alloc] initWithImage:cover];
+            _coverImageView.size = cover.size;
+        }
+        
+        else//cm2_default_cover_play-ip6
+        {
+            UIImage *cover = [UIImage imageNamed:@"cm2_default_cover_play-ip6"];
+            _coverImageView = [[UIImageView alloc] initWithImage:cover];
+            _coverImageView.size = cover.size;
+        }
+        _coverImageView.contentMode = UIViewContentModeScaleToFill;
     }
     
     return _coverImageView;
@@ -63,21 +115,31 @@
 {
     if (_diskImageView == nil)
     {
-        _diskImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cm2_play_disc"]];
-        
+        if (kScreenWidth == 320)
+            _diskImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cm2_play_disc"]];
+        else
+            _diskImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cm2_play_disc-ip6"]];
+        //cm2_play_disc-ip6
     }
     return _diskImageView;
 }
 
-- (UIImageView *)circleImageView
+- (void)setShouldRotate:(BOOL)shouldRotate
 {
-    if (_circleImageView == nil)
-    {
-        _circleImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cm2_runfm_circle"]];
-    }
-    
-    return _circleImageView;
+    _shouldRotate = shouldRotate;
+    if (shouldRotate == YES)
+        [self rotate];
 }
+
+//- (UIImageView *)circleImageView
+//{
+//    if (_circleImageView == nil)
+//    {
+//        _circleImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cm2_runfm_circle"]];
+//    }
+//    
+//    return _circleImageView;
+//}
 
 /*
 // Only override drawRect: if you perform custom drawing.

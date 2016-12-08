@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "cm2_default_cover_play@-ip62x.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "cm2_default_cover_play-ip6@2x.png",
       "scale" : "2x"
     },
     {
