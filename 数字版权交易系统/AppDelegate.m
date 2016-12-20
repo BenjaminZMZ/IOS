@@ -12,6 +12,8 @@
 #import "MyMusicViewController.h"
 #import "AccountViewController.h"
 
+#import "LJThemeSwitcher.h"
+
 @interface AppDelegate ()
 
 @end
@@ -46,7 +48,9 @@
     self.window.rootViewController = rootVC;
     [self.window makeKeyAndVisible];
     
-    
+    LJThemeManager *themeManager = [LJThemeManager sharedManager];
+    themeManager.themes = @[@"NormalTheme", @"NightTheme", @"BlueTheme"];
+    themeManager.currentTheme = NormalTheme;
     
 	return YES;
 }

@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		3021640B1DF53A590000B778 /* MusicTitleNavBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3021640A1DF53A590000B778 /* MusicTitleNavBarView.m */; };
 		3021640E1DF6CFD90000B778 /* RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3021640D1DF6CFD90000B778 /* RecordViewController.m */; };
+		302164401DFC0C410000B778 /* LJThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3021643F1DFC0C410000B778 /* LJThemeManager.m */; };
+		302164491DFC0D9B0000B778 /* LJPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 302164481DFC0D9B0000B778 /* LJPicker.m */; };
+		3021644F1DFC0F050000B778 /* NSObject+Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = 3021644D1DFC0F050000B778 /* NSObject+Theme.m */; };
+		302164501DFC0F050000B778 /* UIView+Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = 3021644E1DFC0F050000B778 /* UIView+Theme.m */; };
 		302A40A51DC87D26002812FB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 302A40A41DC87D26002812FB /* main.m */; };
 		302A40A81DC87D26002812FB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 302A40A71DC87D26002812FB /* AppDelegate.m */; };
 		302A40AE1DC87D26002812FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 302A40AC1DC87D26002812FB /* Main.storyboard */; };
@@ -49,6 +53,15 @@
 		3021640A1DF53A590000B778 /* MusicTitleNavBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicTitleNavBarView.m; sourceTree = "<group>"; };
 		3021640C1DF6CFD90000B778 /* RecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordViewController.h; sourceTree = "<group>"; };
 		3021640D1DF6CFD90000B778 /* RecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordViewController.m; sourceTree = "<group>"; };
+		3021643E1DFC0C410000B778 /* LJThemeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJThemeManager.h; sourceTree = "<group>"; };
+		3021643F1DFC0C410000B778 /* LJThemeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJThemeManager.m; sourceTree = "<group>"; };
+		302164471DFC0D9B0000B778 /* LJPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJPicker.h; sourceTree = "<group>"; };
+		302164481DFC0D9B0000B778 /* LJPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJPicker.m; sourceTree = "<group>"; };
+		3021644A1DFC0F050000B778 /* UIView+Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Theme.h"; sourceTree = "<group>"; };
+		3021644B1DFC0F050000B778 /* NSObject+Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Theme.h"; sourceTree = "<group>"; };
+		3021644C1DFC0F050000B778 /* LJThemeSwitcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJThemeSwitcher.h; sourceTree = "<group>"; };
+		3021644D1DFC0F050000B778 /* NSObject+Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Theme.m"; sourceTree = "<group>"; };
+		3021644E1DFC0F050000B778 /* UIView+Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Theme.m"; sourceTree = "<group>"; };
 		302A40A01DC87D26002812FB /* 数字版权交易系统.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "数字版权交易系统.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		302A40A41DC87D26002812FB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		302A40A61DC87D26002812FB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -131,6 +144,22 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		302164221DFB93700000B778 /* LJThemeSwitcher */ = {
+			isa = PBXGroup;
+			children = (
+				3021644C1DFC0F050000B778 /* LJThemeSwitcher.h */,
+				3021644A1DFC0F050000B778 /* UIView+Theme.h */,
+				3021644E1DFC0F050000B778 /* UIView+Theme.m */,
+				3021644B1DFC0F050000B778 /* NSObject+Theme.h */,
+				3021644D1DFC0F050000B778 /* NSObject+Theme.m */,
+				3021643E1DFC0C410000B778 /* LJThemeManager.h */,
+				3021643F1DFC0C410000B778 /* LJThemeManager.m */,
+				302164471DFC0D9B0000B778 /* LJPicker.h */,
+				302164481DFC0D9B0000B778 /* LJPicker.m */,
+			);
+			name = LJThemeSwitcher;
+			sourceTree = "<group>";
+		};
 		302A40971DC87D26002812FB = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +181,7 @@
 		302A40A21DC87D26002812FB /* 数字版权交易系统 */ = {
 			isa = PBXGroup;
 			children = (
+				302164221DFB93700000B778 /* LJThemeSwitcher */,
 				303226F31DEFFE3200B966EF /* MyMusicViewController */,
 				3040B3901DED199E008C4E89 /* PlayingViewController */,
 				3040B37D1DEBFAFB008C4E89 /* Account */,
@@ -401,10 +431,12 @@
 			files = (
 				3040B3641DE848AF008C4E89 /* RootTabBarController.m in Sources */,
 				302A40A81DC87D26002812FB /* AppDelegate.m in Sources */,
+				302164401DFC0C410000B778 /* LJThemeManager.m in Sources */,
 				3040B3891DEC2185008C4E89 /* CategoryCollectionViewCell.m in Sources */,
 				303226FC1DF0528500B966EF /* MusicListTableViewCell.m in Sources */,
 				3040B36A1DE84A35008C4E89 /* MyMusicViewController.m in Sources */,
 				3040B3861DEC013A008C4E89 /* UIView+FrameProcessor.m in Sources */,
+				302164491DFC0D9B0000B778 /* LJPicker.m in Sources */,
 				302A40A51DC87D26002812FB /* main.m in Sources */,
 				3040B3701DE852FB008C4E89 /* AccountViewController.m in Sources */,
 				3040B3931DED19DF008C4E89 /* PlayingViewController.m in Sources */,
@@ -421,9 +453,11 @@
 				303226FF1DF060BB00B966EF /* PlayAllTableViewCell.m in Sources */,
 				3032270A1DF1485400B966EF /* BaseEntity.m in Sources */,
 				3040B37B1DEB0B5A008C4E89 /* PlayingBarItem.m in Sources */,
+				3021644F1DFC0F050000B778 /* NSObject+Theme.m in Sources */,
 				3040B38F1DEC491F008C4E89 /* DecorationView.m in Sources */,
 				3040B3801DEBFBB2008C4E89 /* AccountHeaderView.m in Sources */,
 				3021640B1DF53A590000B778 /* MusicTitleNavBarView.m in Sources */,
+				302164501DFC0F050000B778 /* UIView+Theme.m in Sources */,
 				3040B38C1DEC4824008C4E89 /* AccountHeaderViewFlowLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -543,7 +577,10 @@
 			baseConfigurationReference = A674B33CEF3F17C5D862B11F /* Pods-数字版权交易系统.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				DEVELOPMENT_TEAM = BM66D6ANYU;
+				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "数字版权交易系统/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zdrjxy.drm;
@@ -556,7 +593,9 @@
 			baseConfigurationReference = 0036DD958D818C30E773AD34 /* Pods-数字版权交易系统.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				DEVELOPMENT_TEAM = BM66D6ANYU;
+				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "数字版权交易系统/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zdrjxy.drm;

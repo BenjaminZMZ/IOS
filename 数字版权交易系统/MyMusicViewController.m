@@ -18,6 +18,8 @@
 
 #import "CategoryTableViewCell.h"
 
+#import "LJThemeSwitcher.h"
+
 @interface MyMusicViewController ()<PlayingBarItemDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic) FakeNavigationBar *fakeBar;
@@ -48,6 +50,7 @@ static NSString * const CategoryTableViewCellIdentifier = @"CategoryTableViewCel
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     NSLog(@"%s", __FUNCTION__);
+    //self.view.bkColorPicker = colorPickerWithColors([UIColor whiteColor], [UIColor blackColor]);
     [self configureNavigationBar];
     [self.view addSubview:self.tableView];
 }

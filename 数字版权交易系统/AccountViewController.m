@@ -18,6 +18,8 @@
 
 #import "Macro.h"
 
+#import "LJThemeSwitcher.h"
+
 #define HeaderViewHeight 140
 #define LastFooterHeight 250
 static NSString * const HeaderCollectionViewCellReuseIdentifier = @"HeaderCollectionViewCellReuseIdentifier";
@@ -124,7 +126,10 @@ static NSString * const CategoryCollectionViewCellReuseIdentifier = @"CategoryCo
     {
         cell.imageView.image = [UIImage imageNamed:@"cm2_set_icn_time"];
         cell.textLabel.text = @"夜间模式";
-        cell.accessoryView = [[UISwitch alloc] init];
+        UISwitch *themeSwitch = [[UISwitch alloc] init];
+        [themeSwitch addTarget:self action:@selector(toogleTheme) forControlEvents:UIControlEventValueChanged];
+        cell.accessoryView = themeSwitch;
+        
     }
     if (indexPath.section == 1 && indexPath.row == 1)
     {
@@ -232,7 +237,7 @@ static NSString * const CategoryCollectionViewCellReuseIdentifier = @"CategoryCo
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.tableHeaderView = self.headerView;
-        UIView *footerView = [[UIView alloc] init];
+        //UIView *footerView = [[UIView alloc] init];
         //footerView.backgroundColor = [UIColor blueColor];
         //_tableView.tableFooterView = footerView;
         //_tableView.backgroundColor = backgroundColorWhite;
@@ -275,6 +280,17 @@ static NSString * const CategoryCollectionViewCellReuseIdentifier = @"CategoryCo
     playingVC.hidesBottomBarWhenPushed = YES;
     playingVC.dontReloadMusic = YES;
     [self.navigationController pushViewController:playingVC animated:YES];
+}
+
+#pragma mark - Target-Action Methods
+- (void)toogleTheme
+{
+    LJThemeManager *themeManager = [LJThemeManager sharedManager];
+    NSString *currentTheme = themeManager.currentTheme;
+    if ([currentTheme isEqualToString:NormalTheme])
+        themeManager.currentTheme = @"NightTheme";
+    else if ([currentTheme isEqualToString:NightTheme])
+        themeManager.currentTheme = NormalTheme;
 }
 
 @end

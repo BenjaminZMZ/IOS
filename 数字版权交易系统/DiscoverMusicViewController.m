@@ -12,6 +12,8 @@
 #import "FakeNavigationBar.h"
 #import "Macro.h"
 
+#import "LJThemeSwitcher.h"
+
 @interface DiscoverMusicViewController ()<PlayingBarItemDelegate>
 
 @property (nonatomic) FakeNavigationBar *fakeBar;
@@ -37,6 +39,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self configureNavigationBar];
+    self.view.bkColorPicker = colorPickerWithColors([UIColor whiteColor], [UIColor blackColor], [UIColor blueColor]);
+    //self.view.backgroundColor = [UIColor blackColor];
     NSLog(@"%s", __FUNCTION__);
 }
 
