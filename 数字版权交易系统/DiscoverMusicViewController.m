@@ -10,13 +10,24 @@
 #import "PlayingBarItem.h"
 #import "PlayingViewController.h"
 #import "FakeNavigationBar.h"
+#import "MusicSearchResultsVC.h"
+
 #import "Macro.h"
+#import "UIView+FrameProcessor.h"
 
 #import "LJThemeSwitcher.h"
 
-@interface DiscoverMusicViewController ()<PlayingBarItemDelegate>
+
+@interface DiscoverMusicViewController ()<PlayingBarItemDelegate, UISearchBarDelegate>
 
 @property (nonatomic) FakeNavigationBar *fakeBar;
+@property (nonatomic) UISearchBar *searchBar;
+@property (nonatomic) UIView *shelterView;//点击搜索框弹出的视图
+@property (nonatomic) UIBarButtonItem *cancelSearchItem;
+@property (nonatomic) LJTabPagerVC *discoverTabPagerVC;
+@property (nonatomic) MusicSearchResultsVC *searchResultsVC;
+@property (nonatomic) BOOL isSearchResultsVCOn;
+@property (nonatomic) BOOL shelterViewVisible;
 
 @end
 
@@ -40,52 +51,46 @@
     // Do any additional setup after loading the view.
     [self configureNavigationBar];
     self.view.bkColorPicker = colorPickerWithColors([UIColor whiteColor], [UIColor blackColor], [UIColor blueColor]);
-    //self.view.backgroundColor = [UIColor blackColor];
-    NSLog(@"%s", __FUNCTION__);
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    [self addChildViewController:self.discoverTabPagerVC];
+    self.discoverTabPagerVC.view.frame = CGRectMake(0, kStatusBarHeight + kNavigationBarHeight, self.view.width, self.view.height);
+    [self.view addSubview:self.discoverTabPagerVC.view];
+    [self.discoverTabPagerVC didMoveToParentViewController:self];
+    
+
+    //NSLog(@"%s", __FUNCTION__);
+    
+    [self.view addSubview:self.shelterView];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    NSLog(@"%s", __FUNCTION__);
+    //NSLog(@"%s", __FUNCTION__);
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    NSLog(@"%s", __FUNCTION__);
+    //NSLog(@"%s", __FUNCTION__);
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    NSLog(@"%s", __FUNCTION__);
+    //NSLog(@"%s", __FUNCTION__);
 }
 
 - (void)viewWillLayoutSubviews
 {
-    NSLog(@"%s", __FUNCTION__);
+    //NSLog(@"%s", __FUNCTION__);
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
-//-(UIStatusBarStyle)preferredStatusBarStyle
-//{
-//    return UIStatusBarStyleLightContent;
-//}
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (void)addFakeNavigationBar
 {
@@ -108,14 +113,32 @@
     self.fakeBar.fakeBarTintColor = THEME_COLOR_RED;
     self.fakeBar.fakeTintColor = NAVBAR_TINT_COLOR;
     self.fakeBar.fakeTranslucent = NO;
-    UISearchBar *searchBar = [[UISearchBar alloc] init];
-    searchBar.placeholder = @"搜索音乐、歌词、电台";
-    self.fakeBar.fakeTitleView = searchBar;
+    
+
+    self.fakeBar.fakeTitleView = self.searchBar;
     self.fakeBar.fakeRightBarButtonItem = [PlayingBarItem sharedInstance];
     [PlayingBarItem sharedInstance].delegate = self;
     
     [self.navigationController setNavigationBarHidden:YES];
     [self.view addSubview:self.fakeBar];
+}
+
+- (void)pushShelterView {
+    [UIView animateWithDuration:0.15 animations:^(){
+        self.shelterView.y -= self.shelterView.height;
+    }];
+    self.shelterViewVisible = YES;
+}
+
+- (void)hideShelterView {
+    if (self.shelterViewVisible == NO) return;
+    else {
+        [UIView animateWithDuration:0.15 animations:^(){
+            self.shelterView.y += self.shelterView.height;
+        }];
+        self.shelterViewVisible = NO;
+    }
+    
 }
 
 #pragma mark - PlayingBarItemDelegate
@@ -128,6 +151,55 @@
     [self.navigationController pushViewController:playingVC animated:YES];
     
     //self.tabBarController.tabBar.hidden = YES;
+}
+
+#pragma mark - UISearchBarDelegate
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
+    //NSLog(@"%s", __FUNCTION__);
+    self.fakeBar.fakeRightBarButtonItem = nil;
+    //[self.searchBar setShowsCancelButton:YES animated:YES];
+    self.fakeBar.fakeRightBarButtonItem = self.cancelSearchItem;
+    [self pushShelterView];
+
+    return YES;
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    NSLog(@"%s", __FUNCTION__);
+    [self.searchBar resignFirstResponder];
+    [self hideShelterView];
+    [self addSearchResultsVC];
+    
+}
+
+- (void)cancelItemClicked {
+    self.fakeBar.fakeRightBarButtonItem = [PlayingBarItem sharedInstance];
+    [self.searchBar resignFirstResponder];
+    [self hideShelterView];
+    [self removeSearchResultsVC];
+}
+
+- (void) removeSearchResultsVC {
+    [self.searchResultsVC willMoveToParentViewController:nil];
+    [self.searchResultsVC.view removeFromSuperview];
+    [self.searchResultsVC removeFromParentViewController];
+    self.searchResultsVC = nil;
+    self.isSearchResultsVCOn = NO;
+}
+
+- (void)addSearchResultsVC {
+    NSLog(@"%@", self.searchBar.text);
+    self.searchResultsVC.searchTerm = self.searchBar.text;
+    if (self.isSearchResultsVCOn == NO) {
+        [self addChildViewController:self.searchResultsVC];
+        self.searchResultsVC.view.frame = CGRectMake(0, kStatusBarHeight + kNavigationBarHeight, self.view.width, self.view.height);
+        
+        self.searchResultsVC.view.backgroundColor = [UIColor redColor];
+        [self.view addSubview:self.searchResultsVC.view];
+        [self.searchResultsVC didMoveToParentViewController:self];
+        self.isSearchResultsVCOn = YES;
+    }
+    
 }
 
 #pragma mark - Accessor Methods
@@ -153,9 +225,62 @@
 //        _fakeBar.backgroundColor = THEME_COLOR_RED;
 //        [_fakeBar addSubview:fakeNavBar];
         _fakeBar = [[FakeNavigationBar alloc] init];
+        _fakeBar.layer.zPosition = 1000;//保证始终在最前面
     }
     
     return _fakeBar;
 }
+
+- (UISearchBar *)searchBar {
+    if (_searchBar == nil) {
+        _searchBar = [[UISearchBar alloc] init];
+        _searchBar.placeholder = @"搜索音乐、歌词、电台";
+        _searchBar.delegate = self;
+    }
+    return _searchBar;
+}
+
+- (UIView *)shelterView {
+    if (_shelterView == nil) {
+        _shelterView = [[UIView alloc] initWithFrame:self.view.frame];
+        _shelterView.height -= kNavigationBarHeight + kStatusBarHeight;
+        _shelterView.y =  self.view.height;
+        //NSLog(@"shelterView frame: %@", NSStringFromCGRect(_shelterView.frame));
+        _shelterView.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.5];
+
+    }
+    return _shelterView;
+}
+
+- (UIBarButtonItem *)cancelSearchItem {
+    if (_cancelSearchItem == nil) {
+        _cancelSearchItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancelItemClicked)];
+    }
+    return _cancelSearchItem;
+}
+
+- (LJTabPagerVC *)discoverTabPagerVC {
+    if (_discoverTabPagerVC == nil) {
+        _discoverTabPagerVC = [[LJTabPagerVC alloc] init];
+        UIViewController *personalRecommendVC = [[UIViewController alloc] init];
+        personalRecommendVC.title = @"个性推荐";
+        UIViewController *songListVC = [[UIViewController alloc] init];
+        songListVC.title = @"歌单";
+        UIViewController *radioVC = [[UIViewController alloc] init];
+        radioVC.title = @"主播电台";
+        UIViewController *ranklistVC = [[UIViewController alloc] init];
+        ranklistVC.title = @"排行榜";
+        _discoverTabPagerVC.viewControllers = @[personalRecommendVC, songListVC, radioVC, ranklistVC];
+    }
+    return _discoverTabPagerVC;
+}
+
+- (MusicSearchResultsVC *)searchResultsVC {
+    if (_searchResultsVC == nil) {
+        _searchResultsVC = [[MusicSearchResultsVC alloc] init];
+    }
+    return _searchResultsVC;
+}
+
 
 @end

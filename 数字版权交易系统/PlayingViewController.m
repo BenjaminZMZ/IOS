@@ -335,25 +335,39 @@ static void *kSliderValueKVOKey = &kSliderValueKVOKey;
 - (void)playMusicOfIndex:(NSInteger)index
 {
     self.currentIndex = index;
-    Track *track = [[Track alloc] init];//((MusicEntity *)(self.musicEntities[self.currentIndex])).fileName
-    NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:((MusicEntity *)(self.musicEntities[index])).fileName ofType:@"mp3"];
-    NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
-    track.audioFileURL = fileURL;
-
-    MusicEntity *entity = ((MusicEntity *)(self.musicEntities[index]));
-    self.musicTitleView.musicTitle = entity.name;
-    self.musicTitleView.authorName = entity.artistName;
-    NSLog(@"%@", entity.cover);
+    MusicEntity *musicEntity = ((MusicEntity *)(self.musicEntities[index]));
+    ((MusicTitleNavBarView *)self.fakeBar.fakeTitleView).musicTitle = musicEntity.name;
+    //self.musicTitleView.musicTitle = musicEntity.name;
+    NSLog(@"***%@", musicEntity.name);
+    self.musicTitleView.authorName = musicEntity.artistName;
+    //NSLog(@"entity.cover: %@", entity.cover);
     //self.backgroundImageView.image = [UIImage imageNamed:@"cm2_default_play_bg"];
-    NSURL *imageURL = [NSURL URLWithString:entity.cover];
+    NSURL *imageURL = [NSURL URLWithString:musicEntity.cover];
+    [self stopRotatingRecordView];
     [self.recordView setCoverWithURL:imageURL];
+    [self startRotatingRecordView];
     [self.backgroundImageView sd_setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"cm2_default_play_bg"]];
+    
     if (self.streamer != nil)
     {
         [self removeStreamerObserver];
         self.streamer = nil;
     }
+    Track *track = [[Track alloc] init];//((MusicEntity *)(self.musicEntities[self.currentIndex])).fileName
+    //MusicEntity *musicEntity = self.musicEntities[index];
+    NSURL *fileURL = nil;
+    if (musicEntity.fileName != nil) {
+        NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:musicEntity.fileName ofType:@"mp3"];
+        fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
+    } else if (musicEntity.musicUrl != nil) {
+        fileURL = [NSURL URLWithString:musicEntity.musicUrl];
+    } else return;
+    
+    track.audioFileURL = fileURL;
+    NSLog(@"*****%@", fileURL);
+    //track.audioFileURL = [NSURL URLWithString:@"http://a789.phobos.apple.com/us/r30/Music5/v4/91/a0/01/91a00165-9b15-faa8-56c2-9352afba3957/mzaf_6263818415477230773.plus.aac.p.m4a"];
     self.streamer = [DOUAudioStreamer streamerWithAudioFile:track];
+    
     [self addStreamerObserver];
     //[self updateTimeLabel];
     [self.musicSlider setValue:0];
@@ -943,7 +957,7 @@ static void *kSliderValueKVOKey = &kSliderValueKVOKey;
     if (_musicTitleView == nil)
     {
         _musicTitleView = [[MusicTitleNavBarView alloc] initWithFrame:CGRectMake(0, 0, 200, 30)];
-        //_musicTitleView.backgroundColor = [UIColor redColor];
+        _musicTitleView.backgroundColor = [UIColor clearColor];
     }
     return _musicTitleView;
 }

@@ -60,10 +60,9 @@
 - (void)setCoverWithURL:(NSURL *)url
 {
     //[self.coverImageView sd_setImageWithURL:url];
-    if (kScreenWidth == 320)
-        [self.coverImageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"cm2_default_cover_play"]];
-    else
-        [self.coverImageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"cm2_default_cover_play-ip6"]];
+    [self.coverImageView setImage:nil];
+    UIImage *placeholder = kScreenWidth == 320 ? [UIImage imageNamed:@"cm2_default_cover_play"] : [UIImage imageNamed:@"cm2_default_cover_play-ip6"];
+    [self.coverImageView sd_setImageWithURL:url placeholderImage:placeholder];
 }
 
 - (void)startRotating

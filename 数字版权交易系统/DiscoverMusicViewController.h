@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LJTabPagerVC.h"
 
 @interface DiscoverMusicViewController : UIViewController
 

@@ -53,10 +53,11 @@
 {
     if (_musicTitleLabel == nil)
     {
+        _musicTitleLabel.backgroundColor = [UIColor blueColor];
         _musicTitleLabel = [[UILabel alloc] init];
         _musicTitleLabel.font = [UIFont systemFontOfSize:17];
         _musicTitleLabel.textColor = [UIColor whiteColor];
-        _musicTitleLabel.backgroundColor = [UIColor clearColor];
+        //_musicTitleLabel.backgroundColor = [UIColor clearColor];
     }
     return _musicTitleLabel;
 }
@@ -78,6 +79,7 @@
     _musicTitle = musicTitle;
     self.musicTitleLabel.text = musicTitle;
     [self.musicTitleLabel sizeToFit];
+    [self layoutIfNeeded];
 }
 
 - (void)setAuthorName:(NSString *)authorName
@@ -85,6 +87,7 @@
     _authorName = authorName;
     self.authorNameLabel.text = authorName;
     [self.authorNameLabel sizeToFit];
+    [self layoutIfNeeded];
 }
 
 @end

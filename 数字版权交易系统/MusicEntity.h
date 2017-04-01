@@ -13,7 +13,10 @@
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *musicUrl;
 @property (nonatomic, copy) NSString *cover;
+@property (nonatomic, copy) NSString *thumbnailCover;
 @property (nonatomic, copy) NSString *artistName;
 @property (nonatomic, copy) NSString *fileName;
 @property (nonatomic, assign) BOOL isFavorited;
+
+- (instancetype)initWithMusicId: (NSNumber *)musicId name: (NSString *)name musicUrl: (NSString *)musicUrl cover: (NSString *)cover thumbnailCover: (NSString *)thumbnailCover artistName: (NSString *)artistName fileName: (NSString *)fileName isFavorited: (BOOL)isFavorited;
 @end
