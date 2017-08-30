@@ -18,19 +18,20 @@
 @end
 #define offsetY3 -140
 @implementation RecordViewController
-
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        [self configureViews];
-    }
-    return self;
-}
+//
+//- (instancetype)init
+//{
+//    self = [super init];
+//    if (self) {
+//        
+//    }
+//    return self;
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self configureViews];
 }
 
 - (void)configureViews
@@ -38,8 +39,9 @@
     [self.view addSubview:self.recordView];
     [self.recordView mas_makeConstraints:^(MASConstraintMaker *make){
         make.centerX.equalTo(self.view.mas_centerX);
-        make.centerY.equalTo(self.view.mas_top).with.offset((self.view.height - 64 + offsetY3)/2 + 64);
+        make.centerY.equalTo(self.view.mas_top).with.offset((self.view.height - 64 + offsetY3)/2);
     }];
+    
 }
 
 

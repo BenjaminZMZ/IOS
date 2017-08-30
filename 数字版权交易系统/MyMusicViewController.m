@@ -54,7 +54,6 @@ static NSString * const CategoryTableViewCellIdentifier = @"CategoryTableViewCel
     [self configureNavigationBar];
     [self.view addSubview:self.tableView];
 }
-
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -198,8 +197,8 @@ static NSString * const CategoryTableViewCellIdentifier = @"CategoryTableViewCel
         switch (indexPath.row) {
             case 2:
             {
-                NSDictionary *dict = [self dictionaryWithContentsOfJSONString:@"music_list.json"];
-                musicListVC.musicEntities = [MusicEntity arrayOfEntitiesFromArray:dict[@"data"]].mutableCopy;
+//                NSDictionary *dict = [self dictionaryWithContentsOfJSONString:@"music_list.json"];
+//                musicListVC.musicEntities = [MusicEntity arrayOfEntitiesFromArray:dict[@"data"]].mutableCopy;
             }
                 break;
                 

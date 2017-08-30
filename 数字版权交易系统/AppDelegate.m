@@ -52,6 +52,16 @@
     themeManager.themes = @[@"NormalTheme", @"NightTheme", @"BlueTheme"];
     themeManager.currentTheme = NormalTheme;
     
+//    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+//    NSURLSessionDataTask *task = [session dataTaskWithURL:[NSURL URLWithString:@"http://116.196.100.188:3000/search?keywords=%E6%B5%B7%E9%98%94%E5%A4%A9%E7%A9%BA"] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+//        if (!error) {
+//            NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//            NSLog(@"%@", str);
+//        }
+//        
+//    }];
+//    [task resume];
+    
 	return YES;
 }
 

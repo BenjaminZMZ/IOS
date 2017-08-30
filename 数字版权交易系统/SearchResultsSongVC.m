@@ -14,9 +14,13 @@
 
 #import "MusicEntity.h"
 
+#define TABBAR_HEIGHT 49
+
+const NSString *MUSIC_API_HOST = @"http://116.196.100.188:3000/";
+
 @interface SearchResultsSongVC () <LJTabPagerVCDelegate, UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic) FPSTableView *tableView;
+@property (nonatomic) UITableView *tableView;
 @property (nonatomic) NSMutableArray *searchResults;
 
 @property (nonatomic) UIImage *placeholderImage;
@@ -27,8 +31,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor blueColor];
     // Do any additional setup after loading the view.
     [self.view addSubview:self.tableView];
+    self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]|" options:0 metrics:nil views:@{@"view": self.tableView}]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[view]|" options:0 metrics:nil views:@{@"view": self.tableView}]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,37 +46,45 @@
 
 - (void)updateSearchResults: (NSData *)data {
     [self.searchResults removeAllObjects];
-    NSDictionary *response = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-    NSArray *songsArray = response[@"results"];
+    NSDictionary *response = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    NSArray *songsArray = response[@"result"][@"songs"];
     NSLog(@"%@", songsArray);
     for (NSDictionary *songDic in songsArray) {
-        //NSNumber *musicId = songDic[@"trackId"];
-        NSString *previewUrl = songDic[@"previewUrl"];
-        NSString *name = songDic[@"trackName"];
-        NSString *artist = songDic[@"artistName"];
-        NSString *thumbnailCover = songDic[@"artworkUrl30"];
-        NSString *cover = songDic[@"artworkUrl100"];
-        [self.searchResults addObject:[[MusicEntity alloc] initWithMusicId:@0 name:name musicUrl:previewUrl cover:cover thumbnailCover:thumbnailCover artistName:artist fileName:nil isFavorited:NO]];
+        NSNumber *musicId = songDic[@"id"];
+        NSString *name = songDic[@"name"];
+        NSString *artists = [self artistsNameFromArray: songDic[@"artists"]];
+        NSString *albumName = songDic[@"album"][@"name"];
+        [self.searchResults addObject:[[MusicEntity alloc] initWithMusicId:musicId name:name artistName:artists albumName:albumName]];
     }
     dispatch_async(dispatch_get_main_queue(), ^(){
         [self.tableView reloadData];
-        [self.tableView setContentOffset:CGPointMake(0, -[LJTabPagerVC pagerTabBarHeight])];
+        //[self.tableView setContentOffset:CGPointMake(0, -[LJTabPagerVC pagerTabBarHeight])];
+        //[self.tableView performSelector:@selector(reloadData) withObject:nil afterDelay:5];
     });
 }
 
-#pragma mark - LJTabPagerVCDelegate
-- (void)hasBeenSelectedAndShown {
-    NSLog(@"＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊%s", __FUNCTION__);
-    if (self.searchTerm != nil) {
-        [self search];
+- (NSString *)artistsNameFromArray:(NSArray *)array {
+    NSMutableString *artistsName = [@"" mutableCopy];
+    for (NSDictionary *dic in array) {
+        if ([array indexOfObject:dic] != array.count-1)
+            [artistsName appendFormat:@"%@//", dic[@"name"]];
+        else
+            [artistsName appendFormat:@"%@", dic[@"name"]];
     }
+    return [NSString stringWithString:artistsName];
+}
+
+#pragma mark - LJTabPagerVCDelegate
+- (void)hasBeenSelectedAndShown:(NSNumber *)firstShown {
+    BOOL _firstShown = [firstShown boolValue];
+    if (_firstShown && self.searchTerm != nil)
+        [self search];
 }
 
 - (void)search {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
-    NSString *searchString = @"https://itunes.apple.com/search?media=music&entity=song&term=";
-    searchString = [searchString stringByAppendingString:self.searchTerm];
+    NSString *searchString = [NSString stringWithFormat:@"%@search?keywords=%@&limit=20&type=1&offset=0", MUSIC_API_HOST, self.searchTerm];
     NSURL *url = [NSURL URLWithString:searchString];
     //NSURL *url = [NSURL URLWithString:@"https://itunes.apple.com/search?media=music&entity=song&term=swift"];
     NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
@@ -95,6 +111,7 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    
     return 1;
 }
 
@@ -107,9 +124,11 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"CELL"];
     }
-    cell.textLabel.text = ((MusicEntity *)self.searchResults[indexPath.row]).name;
-    cell.detailTextLabel.text = ((MusicEntity *)self.searchResults[indexPath.row]).artistName;
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:((MusicEntity *)self.searchResults[indexPath.row]).thumbnailCover] placeholderImage:self.placeholderImage];
+    MusicEntity *music = self.searchResults[indexPath.row];
+    cell.textLabel.text = music.name;
+    NSString *artists = music.artistName;
+    NSString *album = music.albumName;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", artists, album];
     return cell;
 }
 
@@ -131,9 +150,12 @@
 #pragma mark - Accessor Methods
 - (UITableView *)tableView {
     if (_tableView == nil) {
-        _tableView = [[FPSTableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];_tableView.dataSource = self;
+        NSLog(@"*****%@", NSStringFromCGRect(self.view.frame));
+        _tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
+        _tableView.dataSource = self;
         _tableView.delegate = self;
-        [_tableView setContentInset:UIEdgeInsetsMake([LJTabPagerVC pagerTabBarHeight], 0, 0, 0)];
+        [_tableView setContentInset:UIEdgeInsetsMake([LJTabPagerVC pagerTabBarHeight], 0, TABBAR_HEIGHT, 0)];
+        _tableView.delaysContentTouches = NO;
     }
     return _tableView;
 }

@@ -22,12 +22,16 @@
 @end
 
 @implementation RecordView
+{
+    bool _isRotating;
+}
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         [self configureViews];
+        _isRotating = NO;
     }
     return self;
 }
@@ -62,7 +66,10 @@
     //[self.coverImageView sd_setImageWithURL:url];
     [self.coverImageView setImage:nil];
     UIImage *placeholder = kScreenWidth == 320 ? [UIImage imageNamed:@"cm2_default_cover_play"] : [UIImage imageNamed:@"cm2_default_cover_play-ip6"];
-    [self.coverImageView sd_setImageWithURL:url placeholderImage:placeholder];
+    if (!url) {
+        self.coverImageView.image = placeholder;
+    } else
+        [self.coverImageView sd_setImageWithURL:url placeholderImage:placeholder];
 }
 
 - (void)startRotating
@@ -78,12 +85,16 @@
 
 - (void)rotate
 {
-    if (self.shouldRotate)
+    if (self.shouldRotate && !_isRotating) {
+        _isRotating = YES;
         [UIView animateWithDuration:0.1 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
             self.transform = CGAffineTransformRotate(self.transform, M_PI/100);
         } completion:^(BOOL finished){
+            _isRotating = NO;
             [self rotate];
         }];
+    }
+    
 }
 
 #pragma mark - Accessor Methods
@@ -126,7 +137,7 @@
 - (void)setShouldRotate:(BOOL)shouldRotate
 {
     _shouldRotate = shouldRotate;
-    if (shouldRotate == YES)
+    if (shouldRotate == YES && !_isRotating)
         [self rotate];
 }
 

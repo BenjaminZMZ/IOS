@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RecordViewController : UIPageViewController
+@interface RecordViewController : UIViewController
 
 @property (nonatomic) NSInteger index;
 

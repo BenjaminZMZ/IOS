@@ -8,15 +8,20 @@
 
 #import "BaseEntity.h"
 
-@interface MusicEntity : BaseEntity
-@property (nonatomic, copy) NSNumber *musicId;
-@property (nonatomic, copy) NSString *name;
-@property (nonatomic, copy) NSString *musicUrl;
-@property (nonatomic, copy) NSString *cover;
-@property (nonatomic, copy) NSString *thumbnailCover;
-@property (nonatomic, copy) NSString *artistName;
-@property (nonatomic, copy) NSString *fileName;
-@property (nonatomic, assign) BOOL isFavorited;
+typedef void(^GetMusicUrlComletionBlock)();
+typedef void(^GetPicUrlComletionBlock)(NSString *picurl);
 
-- (instancetype)initWithMusicId: (NSNumber *)musicId name: (NSString *)name musicUrl: (NSString *)musicUrl cover: (NSString *)cover thumbnailCover: (NSString *)thumbnailCover artistName: (NSString *)artistName fileName: (NSString *)fileName isFavorited: (BOOL)isFavorited;
+@interface MusicEntity : NSObject
+@property (nonatomic) NSNumber *musicId;
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *artistName;
+@property (nonatomic, copy) NSString *albumName;
+@property (nonatomic, copy) NSString *musicUrl;
+@property (nonatomic, copy) NSString *picUrl;
+@property (nonatomic, copy) NSString *filePath;
+
+- (instancetype)initWithMusicId:(NSNumber *)musicId name:(NSString *)name  artistName:(NSString *)artistName albumName:(NSString *)albumName;
+
+- (void)getMusicUrlWithCompletionBlock:(GetMusicUrlComletionBlock)completionBlock;
+- (void)getPicUrlWithCompletionBlock:(GetPicUrlComletionBlock)completionBlock;
 @end

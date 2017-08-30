@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		301C0F5E1F52703E008221A2 /* MusicSearchResultsVCsource.m in Sources */ = {isa = PBXBuildFile; fileRef = 301C0F5D1F52703E008221A2 /* MusicSearchResultsVCsource.m */; };
 		3021640B1DF53A590000B778 /* MusicTitleNavBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3021640A1DF53A590000B778 /* MusicTitleNavBarView.m */; };
 		3021640E1DF6CFD90000B778 /* RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3021640D1DF6CFD90000B778 /* RecordViewController.m */; };
 		302164401DFC0C410000B778 /* LJThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3021643F1DFC0C410000B778 /* LJThemeManager.m */; };
@@ -44,11 +45,22 @@
 		3040B38F1DEC491F008C4E89 /* DecorationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3040B38E1DEC491F008C4E89 /* DecorationView.m */; };
 		3040B3931DED19DF008C4E89 /* PlayingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3040B3921DED19DF008C4E89 /* PlayingViewController.m */; };
 		3040B3961DEE68B1008C4E89 /* RecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3040B3951DEE68B1008C4E89 /* RecordView.m */; };
+		30481C601F5566260095C4FD /* LJPagerTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 30481C5D1F5566260095C4FD /* LJPagerTabBar.m */; };
+		30481C611F5566260095C4FD /* LJTabPagerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 30481C5F1F5566260095C4FD /* LJTabPagerVC.m */; };
+		30A78B761E681623003594FE /* MusicSearchResultsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A78B751E681623003594FE /* MusicSearchResultsVC.m */; };
+		30A78B791E6911A4003594FE /* SearchResultsSongVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A78B781E6911A4003594FE /* SearchResultsSongVC.m */; };
+		30A78B7C1E6AFC77003594FE /* Decode.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A78B7B1E6AFC77003594FE /* Decode.m */; };
+		30A78B861E79782E003594FE /* SearchResultsSingerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A78B851E79782E003594FE /* SearchResultsSingerVC.m */; };
+		30A78B891E797A6E003594FE /* SingerEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A78B881E797A6E003594FE /* SingerEntity.m */; };
+		30A78B8C1E7990D7003594FE /* SearchResultsBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A78B8B1E7990D7003594FE /* SearchResultsBaseVC.m */; };
+		30A78B8F1E7A2B8A003594FE /* FPSTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A78B8E1E7A2B8A003594FE /* FPSTableView.m */; };
 		A16A66BF0C6E67E9BF902A6A /* libPods-数字版权交易系统.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F580DFAB5FFFE7526A8AFCB8 /* libPods-数字版权交易系统.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0036DD958D818C30E773AD34 /* Pods-数字版权交易系统.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-数字版权交易系统.release.xcconfig"; path = "Pods/Target Support Files/Pods-数字版权交易系统/Pods-数字版权交易系统.release.xcconfig"; sourceTree = "<group>"; };
+		301C0F5C1F52703E008221A2 /* MusicSearchResultsVCsource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicSearchResultsVCsource.h; sourceTree = "<group>"; };
+		301C0F5D1F52703E008221A2 /* MusicSearchResultsVCsource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicSearchResultsVCsource.m; sourceTree = "<group>"; };
 		302164091DF53A590000B778 /* MusicTitleNavBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicTitleNavBarView.h; sourceTree = "<group>"; };
 		3021640A1DF53A590000B778 /* MusicTitleNavBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicTitleNavBarView.m; sourceTree = "<group>"; };
 		3021640C1DF6CFD90000B778 /* RecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordViewController.h; sourceTree = "<group>"; };
@@ -119,6 +131,24 @@
 		3040B3921DED19DF008C4E89 /* PlayingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingViewController.m; sourceTree = "<group>"; };
 		3040B3941DEE68B1008C4E89 /* RecordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordView.h; sourceTree = "<group>"; };
 		3040B3951DEE68B1008C4E89 /* RecordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordView.m; sourceTree = "<group>"; };
+		30481C5C1F5566260095C4FD /* LJPagerTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJPagerTabBar.h; sourceTree = "<group>"; };
+		30481C5D1F5566260095C4FD /* LJPagerTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJPagerTabBar.m; sourceTree = "<group>"; };
+		30481C5E1F5566260095C4FD /* LJTabPagerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJTabPagerVC.h; sourceTree = "<group>"; };
+		30481C5F1F5566260095C4FD /* LJTabPagerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJTabPagerVC.m; sourceTree = "<group>"; };
+		30A78B741E681623003594FE /* MusicSearchResultsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicSearchResultsVC.h; sourceTree = "<group>"; };
+		30A78B751E681623003594FE /* MusicSearchResultsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicSearchResultsVC.m; sourceTree = "<group>"; };
+		30A78B771E6911A4003594FE /* SearchResultsSongVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultsSongVC.h; sourceTree = "<group>"; };
+		30A78B781E6911A4003594FE /* SearchResultsSongVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultsSongVC.m; sourceTree = "<group>"; };
+		30A78B7A1E6AFC77003594FE /* Decode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decode.h; sourceTree = "<group>"; };
+		30A78B7B1E6AFC77003594FE /* Decode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Decode.m; sourceTree = "<group>"; };
+		30A78B841E79782E003594FE /* SearchResultsSingerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultsSingerVC.h; sourceTree = "<group>"; };
+		30A78B851E79782E003594FE /* SearchResultsSingerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultsSingerVC.m; sourceTree = "<group>"; };
+		30A78B871E797A6E003594FE /* SingerEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingerEntity.h; sourceTree = "<group>"; };
+		30A78B881E797A6E003594FE /* SingerEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingerEntity.m; sourceTree = "<group>"; };
+		30A78B8A1E7990D7003594FE /* SearchResultsBaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultsBaseVC.h; sourceTree = "<group>"; };
+		30A78B8B1E7990D7003594FE /* SearchResultsBaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultsBaseVC.m; sourceTree = "<group>"; };
+		30A78B8D1E7A2B8A003594FE /* FPSTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPSTableView.h; sourceTree = "<group>"; };
+		30A78B8E1E7A2B8A003594FE /* FPSTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPSTableView.m; sourceTree = "<group>"; };
 		A674B33CEF3F17C5D862B11F /* Pods-数字版权交易系统.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-数字版权交易系统.debug.xcconfig"; path = "Pods/Target Support Files/Pods-数字版权交易系统/Pods-数字版权交易系统.debug.xcconfig"; sourceTree = "<group>"; };
 		F580DFAB5FFFE7526A8AFCB8 /* libPods-数字版权交易系统.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-数字版权交易系统.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -142,6 +172,19 @@
 				0036DD958D818C30E773AD34 /* Pods-数字版权交易系统.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		301CE07B1E67FE6000E2060D /* LJTabPager */ = {
+			isa = PBXGroup;
+			children = (
+				30A78B7A1E6AFC77003594FE /* Decode.h */,
+				30A78B7B1E6AFC77003594FE /* Decode.m */,
+				30481C5C1F5566260095C4FD /* LJPagerTabBar.h */,
+				30481C5D1F5566260095C4FD /* LJPagerTabBar.m */,
+				30481C5E1F5566260095C4FD /* LJTabPagerVC.h */,
+				30481C5F1F5566260095C4FD /* LJTabPagerVC.m */,
+			);
+			name = LJTabPager;
 			sourceTree = "<group>";
 		};
 		302164221DFB93700000B778 /* LJThemeSwitcher */ = {
@@ -181,7 +224,10 @@
 		302A40A21DC87D26002812FB /* 数字版权交易系统 */ = {
 			isa = PBXGroup;
 			children = (
+				301CE07B1E67FE6000E2060D /* LJTabPager */,
 				302164221DFB93700000B778 /* LJThemeSwitcher */,
+				30A78B961E7B76AE003594FE /* LocalMusic */,
+				30A78B731E6815C5003594FE /* DiscoverMusicViewController */,
 				303226F31DEFFE3200B966EF /* MyMusicViewController */,
 				3040B3901DED199E008C4E89 /* PlayingViewController */,
 				3040B37D1DEBFAFB008C4E89 /* Account */,
@@ -194,6 +240,8 @@
 				302A40B11DC87D26002812FB /* LaunchScreen.storyboard */,
 				302A40B41DC87D26002812FB /* Info.plist */,
 				3040B3711DE85380008C4E89 /* Helper */,
+				30A78B8D1E7A2B8A003594FE /* FPSTableView.h */,
+				30A78B8E1E7A2B8A003594FE /* FPSTableView.m */,
 			);
 			path = "数字版权交易系统";
 			sourceTree = "<group>";
@@ -201,9 +249,6 @@
 		302A40A31DC87D26002812FB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				303226F11DEFC95F00B966EF /* 1770040300_2031329_l.mp3 */,
-				303227021DF1419400B966EF /* 1770059653_2050944_l.mp3 */,
-				303227041DF1419A00B966EF /* 1771694697_4194836_l.mp3 */,
 				302A40A41DC87D26002812FB /* main.m */,
 			);
 			name = "Supporting Files";
@@ -292,6 +337,35 @@
 				3021640D1DF6CFD90000B778 /* RecordViewController.m */,
 			);
 			name = PlayingViewController;
+			sourceTree = "<group>";
+		};
+		30A78B731E6815C5003594FE /* DiscoverMusicViewController */ = {
+			isa = PBXGroup;
+			children = (
+				30A78B741E681623003594FE /* MusicSearchResultsVC.h */,
+				30A78B751E681623003594FE /* MusicSearchResultsVC.m */,
+				30A78B771E6911A4003594FE /* SearchResultsSongVC.h */,
+				30A78B781E6911A4003594FE /* SearchResultsSongVC.m */,
+				30A78B841E79782E003594FE /* SearchResultsSingerVC.h */,
+				30A78B851E79782E003594FE /* SearchResultsSingerVC.m */,
+				30A78B871E797A6E003594FE /* SingerEntity.h */,
+				30A78B881E797A6E003594FE /* SingerEntity.m */,
+				30A78B8A1E7990D7003594FE /* SearchResultsBaseVC.h */,
+				30A78B8B1E7990D7003594FE /* SearchResultsBaseVC.m */,
+				301C0F5C1F52703E008221A2 /* MusicSearchResultsVCsource.h */,
+				301C0F5D1F52703E008221A2 /* MusicSearchResultsVCsource.m */,
+			);
+			name = DiscoverMusicViewController;
+			sourceTree = "<group>";
+		};
+		30A78B961E7B76AE003594FE /* LocalMusic */ = {
+			isa = PBXGroup;
+			children = (
+				303226F11DEFC95F00B966EF /* 1770040300_2031329_l.mp3 */,
+				303227021DF1419400B966EF /* 1770059653_2050944_l.mp3 */,
+				303227041DF1419A00B966EF /* 1771694697_4194836_l.mp3 */,
+			);
+			name = LocalMusic;
 			sourceTree = "<group>";
 		};
 		79C3B2AD27BB939F62FC0BD8 /* Frameworks */ = {
@@ -434,10 +508,15 @@
 				302164401DFC0C410000B778 /* LJThemeManager.m in Sources */,
 				3040B3891DEC2185008C4E89 /* CategoryCollectionViewCell.m in Sources */,
 				303226FC1DF0528500B966EF /* MusicListTableViewCell.m in Sources */,
+				30A78B8F1E7A2B8A003594FE /* FPSTableView.m in Sources */,
+				30481C601F5566260095C4FD /* LJPagerTabBar.m in Sources */,
 				3040B36A1DE84A35008C4E89 /* MyMusicViewController.m in Sources */,
+				30A78B791E6911A4003594FE /* SearchResultsSongVC.m in Sources */,
 				3040B3861DEC013A008C4E89 /* UIView+FrameProcessor.m in Sources */,
+				301C0F5E1F52703E008221A2 /* MusicSearchResultsVCsource.m in Sources */,
 				302164491DFC0D9B0000B778 /* LJPicker.m in Sources */,
 				302A40A51DC87D26002812FB /* main.m in Sources */,
+				30A78B8C1E7990D7003594FE /* SearchResultsBaseVC.m in Sources */,
 				3040B3701DE852FB008C4E89 /* AccountViewController.m in Sources */,
 				3040B3931DED19DF008C4E89 /* PlayingViewController.m in Sources */,
 				3040B3961DEE68B1008C4E89 /* RecordView.m in Sources */,
@@ -446,16 +525,21 @@
 				303226B21DEF05FC00B966EF /* FakeNavigationBar.m in Sources */,
 				3032270B1DF1485400B966EF /* MusicEntity.m in Sources */,
 				3021640E1DF6CFD90000B778 /* RecordViewController.m in Sources */,
+				30481C611F5566260095C4FD /* LJTabPagerVC.m in Sources */,
 				3040B3671DE84A24008C4E89 /* DiscoverMusicViewController.m in Sources */,
+				30A78B861E79782E003594FE /* SearchResultsSingerVC.m in Sources */,
+				30A78B761E681623003594FE /* MusicSearchResultsVC.m in Sources */,
 				303226F01DEFC3F800B966EF /* Track.m in Sources */,
 				303226F61DEFFE8C00B966EF /* CategoryTableViewCell.m in Sources */,
 				3032270D1DF1763800B966EF /* NSString+Additions.m in Sources */,
+				30A78B891E797A6E003594FE /* SingerEntity.m in Sources */,
 				303226FF1DF060BB00B966EF /* PlayAllTableViewCell.m in Sources */,
 				3032270A1DF1485400B966EF /* BaseEntity.m in Sources */,
 				3040B37B1DEB0B5A008C4E89 /* PlayingBarItem.m in Sources */,
 				3021644F1DFC0F050000B778 /* NSObject+Theme.m in Sources */,
 				3040B38F1DEC491F008C4E89 /* DecorationView.m in Sources */,
 				3040B3801DEBFBB2008C4E89 /* AccountHeaderView.m in Sources */,
+				30A78B7C1E6AFC77003594FE /* Decode.m in Sources */,
 				3021640B1DF53A590000B778 /* MusicTitleNavBarView.m in Sources */,
 				302164501DFC0F050000B778 /* UIView+Theme.m in Sources */,
 				3040B38C1DEC4824008C4E89 /* AccountHeaderViewFlowLayout.m in Sources */,
@@ -524,7 +608,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -565,7 +649,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -583,7 +667,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "数字版权交易系统/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zdrjxy.drm;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mutouren;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -598,7 +682,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "数字版权交易系统/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zdrjxy.drm;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mutouren;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

@@ -48,6 +48,10 @@ static NSString * const PlayAllTableViewCellIdentifier = @"PlayAllTableViewCellI
     self.navigationController.interactivePopGestureRecognizer.delegate = (id<UIGestureRecognizerDelegate>)self;
     NSLog(@"%s", __FUNCTION__);
 }
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    NSLog(@"%s", __FUNCTION__);
+}
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];

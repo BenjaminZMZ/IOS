@@ -18,7 +18,7 @@
 #import "LJThemeSwitcher.h"
 
 
-@interface DiscoverMusicViewController ()<PlayingBarItemDelegate, UISearchBarDelegate>
+@interface DiscoverMusicViewController ()<PlayingBarItemDelegate, UISearchBarDelegate, LJTabPagerVCsSource>
 
 @property (nonatomic) FakeNavigationBar *fakeBar;
 @property (nonatomic) UISearchBar *searchBar;
@@ -56,6 +56,9 @@
     [self addChildViewController:self.discoverTabPagerVC];
     self.discoverTabPagerVC.view.frame = CGRectMake(0, kStatusBarHeight + kNavigationBarHeight, self.view.width, self.view.height);
     [self.view addSubview:self.discoverTabPagerVC.view];
+    self.discoverTabPagerVC.view.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]|" options:0 metrics:nil views:@{@"view": self.discoverTabPagerVC.view}]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(indent)-[view]|" options:0 metrics:@{@"indent": @(kStatusBarHeight+kNavigationBarHeight)} views:@{@"view": self.discoverTabPagerVC.view}]];
     [self.discoverTabPagerVC didMoveToParentViewController:self];
     
 
@@ -192,10 +195,12 @@
     self.searchResultsVC.searchTerm = self.searchBar.text;
     if (self.isSearchResultsVCOn == NO) {
         [self addChildViewController:self.searchResultsVC];
-        self.searchResultsVC.view.frame = CGRectMake(0, kStatusBarHeight + kNavigationBarHeight, self.view.width, self.view.height);
-        
+        self.searchResultsVC.view.frame = CGRectMake(0, kStatusBarHeight + kNavigationBarHeight, self.view.width, self.view.height-kStatusBarHeight - kNavigationBarHeight);
         self.searchResultsVC.view.backgroundColor = [UIColor redColor];
         [self.view addSubview:self.searchResultsVC.view];
+        self.searchResultsVC.view.translatesAutoresizingMaskIntoConstraints = NO;
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]|" options:0 metrics:nil views:@{@"view": self.searchResultsVC.view}]];
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(indent)-[view]|" options:0 metrics:@{@"indent": @(kStatusBarHeight+kNavigationBarHeight)} views:@{@"view": self.searchResultsVC.view}]];
         [self.searchResultsVC didMoveToParentViewController:self];
         self.isSearchResultsVCOn = YES;
     }
@@ -207,23 +212,6 @@
 {
     if (_fakeBar == nil)
     {
-//        UINavigationBar *fakeNavBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, kStatusBarHeight, kScreenWidth, kNavigationBarHeight)];
-//        fakeNavBar.barTintColor = THEME_COLOR_RED;
-//        fakeNavBar.tintColor = NAVBAR_TINT_COLOR;
-//        fakeNavBar.translucent = NO;
-//        
-//        UISearchBar *searchBar = [[UISearchBar alloc] init];
-//        searchBar.placeholder = @"搜索音乐、歌词、电台";
-//        UINavigationItem *fakeNavigationItem = [[UINavigationItem alloc] init];
-//        fakeNavigationItem.titleView = searchBar;
-//        fakeNavigationItem.rightBarButtonItem = [PlayingBarItem sharedInstance];
-//        [PlayingBarItem sharedInstance].delegate = self;
-//        
-//        [fakeNavBar setItems:@[fakeNavigationItem]];
-//        
-//        _fakeBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kNavigationBarHeight + kStatusBarHeight)];
-//        _fakeBar.backgroundColor = THEME_COLOR_RED;
-//        [_fakeBar addSubview:fakeNavBar];
         _fakeBar = [[FakeNavigationBar alloc] init];
         _fakeBar.layer.zPosition = 1000;//保证始终在最前面
     }
@@ -262,15 +250,7 @@
 - (LJTabPagerVC *)discoverTabPagerVC {
     if (_discoverTabPagerVC == nil) {
         _discoverTabPagerVC = [[LJTabPagerVC alloc] init];
-        UIViewController *personalRecommendVC = [[UIViewController alloc] init];
-        personalRecommendVC.title = @"个性推荐";
-        UIViewController *songListVC = [[UIViewController alloc] init];
-        songListVC.title = @"歌单";
-        UIViewController *radioVC = [[UIViewController alloc] init];
-        radioVC.title = @"主播电台";
-        UIViewController *ranklistVC = [[UIViewController alloc] init];
-        ranklistVC.title = @"排行榜";
-        _discoverTabPagerVC.viewControllers = @[personalRecommendVC, songListVC, radioVC, ranklistVC];
+        _discoverTabPagerVC.vcsSource = self;
     }
     return _discoverTabPagerVC;
 }
@@ -282,5 +262,16 @@
     return _searchResultsVC;
 }
 
+#pragma mark - LJTabPagerVCsSource
+- (NSInteger)numberOfViewControllers {
+    return 4;
+}
 
+- (NSArray *)titles {
+    return [NSArray arrayWithObjects:@"个性推荐", @"歌单", @"主播电台", @"排行榜", nil];
+}
+
+- (UIViewController *)viewControllerAtIndex:(NSInteger)index {
+    return [[UIViewController alloc] init];
+}
 @end

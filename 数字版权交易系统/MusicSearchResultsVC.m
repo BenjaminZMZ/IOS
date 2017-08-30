@@ -9,32 +9,22 @@
 #import "MusicSearchResultsVC.h"
 #import "SearchResultsSongVC.h"
 #import "SearchResultsSingerVC.h"
+#import "MusicSearchResultsVCsource.h"
 
 @interface MusicSearchResultsVC ()
+
+@property (nonatomic) MusicSearchResultsVCsource *msrVcsSource;
 
 @end
 
 @implementation MusicSearchResultsVC
+@synthesize msrVcsSource = _msrVcsSource;
 
 - (instancetype)init {
     self = [super init];
     if (self != nil) {
-        SearchResultsSongVC *controller1 = [[SearchResultsSongVC alloc] init];
-        controller1.title = @"单曲";
-        SearchResultsSingerVC *controller2 = [[SearchResultsSingerVC alloc] init];
-        controller2.title = @"歌手";
-        UITableViewController *controller3 = [[UITableViewController alloc] init];
-        controller3.title = @"专辑";
-        UITableViewController *controller4 = [[UITableViewController alloc] init];
-        controller4.title = @"歌单";
-        UITableViewController *controller5 = [[UITableViewController alloc] init];
-        controller5.title = @"MV";
-        UITableViewController *controller6 = [[UITableViewController alloc] init];
-        controller6.title = @"主播电台";
-        UITableViewController *controller7 = [[UITableViewController alloc] init];
-        controller7.title = @"用户";
-        
-        self.viewControllers = @[controller1, controller2, controller3, controller4, controller5, controller6, controller7];
+        _msrVcsSource = [[MusicSearchResultsVCsource alloc] init];
+        self.vcsSource = _msrVcsSource;
     }
     return self;
 }
@@ -64,13 +54,9 @@
 
 - (void)setSearchTerm:(NSString *)searchTerm {
     _searchTerm = searchTerm;
-    for (UIViewController *controller in self.viewControllers) {
-        if ([controller respondsToSelector:@selector(searchTerm)]) {
-            [controller setValue:self.searchTerm forKey:@"searchTerm"];
-        }
+    if ([self.vcsSource respondsToSelector:@selector(setSearchTerm:)]) {
+        [self.vcsSource performSelector:@selector(setSearchTerm:) withObject:searchTerm];
     }
-    SearchResultsBaseVC *selectedController = self.viewControllers[self.selectedIndex];
-    [selectedController search];
 }
 
 @end
