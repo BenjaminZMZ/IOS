@@ -16,4 +16,6 @@
 @property (nonatomic) CGFloat height;
 @property (nonatomic) CGSize size;
 
+- (void)setAnchorPointWithoutTranslation:(CGPoint)anchor;
+
 @end

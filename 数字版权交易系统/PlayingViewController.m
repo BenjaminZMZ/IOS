@@ -26,7 +26,7 @@ typedef NS_ENUM(NSInteger, MusicPlayingMode)
     MusicPlayingModeShuffle = 2,
 };
 
-@interface PlayingViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource>
+@interface PlayingViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource, CAAnimationDelegate>
 
 @property (nonatomic) FakeNavigationBar *fakeBar;
 
@@ -71,10 +71,9 @@ typedef NS_ENUM(NSInteger, MusicPlayingMode)
 
 @property (nonatomic) UIPageViewController *recordPageVC;
 @property (nonatomic) NSArray *recordVCsBuffer;
-@property (nonatomic) RecordViewController *prensentRecordVC;
+@property (nonatomic) RecordViewController *presentRecordVC;
 @property (nonatomic) RecordViewController *previousRecordVC;
 @property (nonatomic) RecordViewController *nextRecordVC;
-
 
 @end
 
@@ -94,9 +93,15 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 
 static void *kSliderValueKVOKey = &kSliderValueKVOKey;
 
+static NSString *kRotateAwayRecordNeedleView = @"kRotateAwayRecordNeedleView";
+static NSString *kRotateBackRecordNeedleView = @"kRotateBackRecordNeedleView";
 
 
 @implementation PlayingViewController
+{
+    CABasicAnimation *_rotateAwayRecordNeedleAnimation;
+    CABasicAnimation *_rotateBackRecordNeedleAnimation;
+}
 
 + (instancetype)sharedInstance
 {
@@ -194,8 +199,6 @@ static void *kSliderValueKVOKey = &kSliderValueKVOKey;
 
 - (void)configureViews
 {
-//    [self.view addSubview:self.backgroundImageView];
-//    [self.view addSubview:self.visualEffectView];
     [self.view addSubview:self.backgroundView];
     [self configureNavigationBar];
     [self.recordContainerView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -204,21 +207,6 @@ static void *kSliderValueKVOKey = &kSliderValueKVOKey;
         make.top.equalTo(self.fakeBar.mas_bottom);
         make.bottom.equalTo(self.view.mas_bottom).offset(offsetY3);
     }];
-    
-//    [self.view addSubview:self.bbView];
-//    [self.bbView mas_makeConstraints:^(MASConstraintMaker *make){
-//        make.centerX.equalTo(self.view.mas_centerX);
-//        make.centerY.equalTo(self.view.mas_top).with.offset((self.view.height - 64 + offsetY3)/2 + 64);
-//        make.width.equalTo(@(bbViewWidth));
-//        make.height.equalTo(@(bbViewWidth));
-//    }];
-//    [self.view addSubview:self.recordBackgroundView];
-//    [self.recordBackgroundView mas_makeConstraints:^(MASConstraintMaker *make){
-//        make.centerX.equalTo(self.view.mas_centerX);
-//        make.centerY.equalTo(self.view.mas_top).with.offset((self.view.height - 64 + offsetY3)/2 + 64);
-//        make.width.equalTo(@(diskWidth));
-//        make.height.equalTo(@(diskWidth));
-//    }];
     
     [self addChildViewController:self.recordPageVC];
     self.recordPageVC.view.frame = self.view.bounds;
@@ -233,40 +221,6 @@ static void *kSliderValueKVOKey = &kSliderValueKVOKey;
     
     [self.recordContainerView bringSubviewToFront:self.recordNeddleView];
     
-//    [self.view addSubview:self.recordNeddleView];
-//    [self.recordNeddleView mas_makeConstraints:^(MASConstraintMaker *make){
-//        if (kScreenWidth == 320)
-//        {
-//            make.top.equalTo(self.view.mas_top).with.offset(48);
-//            make.centerX.equalTo(self.view.mas_centerX).with.offset(self.recordNeddleView.width * 0.3);
-//        }
-//        else
-//        {
-//            make.top.equalTo(self.view.mas_top).with.offset(36);
-//            make.centerX.equalTo(self.view.mas_centerX).with.offset(self.recordNeddleView.width * 0.25);
-//        }
-//    }];
-    
-//    [self.view addSubview:self.beginTimeLabel];
-//    [self.view addSubview:self.musicSlider];
-//    [self.view addSubview:self.endTimeLabel];
-//    float space = 0.075 * kScreenWidth;
-//    float sliderWidth = 0.72 * kScreenWidth;
-//    //    y = kScreenHeight - distanceToBottom2;
-//    //其他控件都根据musicSlider的位置布局
-//    [self.musicSlider mas_makeConstraints:^(MASConstraintMaker *make){
-//        make.centerX.equalTo(self.view.mas_centerX);
-//        make.centerY.equalTo(self.view.mas_bottom).with.offset(offsetY2);
-//        make.width.equalTo(@(sliderWidth));
-//    }];
-//    [self.beginTimeLabel mas_makeConstraints:^(MASConstraintMaker *make){
-//        make.centerX.equalTo(self.view.mas_left).with.offset(space);
-//        make.centerY.equalTo(self.view.mas_bottom).with.offset(offsetY2);
-//    }];
-//    [self.endTimeLabel mas_makeConstraints:^(MASConstraintMaker *make){
-//        make.centerX.equalTo(self.view.mas_right).with.offset(-space);
-//        make.centerY.equalTo(self.view.mas_bottom).with.offset(offsetY2);
-//    }];
     [self.sliderContainerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view.mas_left);
         make.right.equalTo(self.view.mas_right);
@@ -274,43 +228,6 @@ static void *kSliderValueKVOKey = &kSliderValueKVOKey;
         make.height.equalTo(self.musicSlider.mas_height);
     }];
 
-    
-//    [self.view addSubview:self.loveButton];
-//    [self.view addSubview:self.downloadButton];
-//    [self.view addSubview:self.commentButton];
-//    [self.view addSubview:self.moreButton];
-//    
-//    space = (sliderWidth - 4 * self.loveButton.width) / 3.0;
-//    NSLog(@"space: %f", space);
-//    NSLog(@"kScreenWidth: %f", kScreenWidth);
-//
-//    [self.loveButton mas_makeConstraints:^(MASConstraintMaker *make){
-//        make.left.equalTo(self.musicSlider.mas_left).with.offset(0);
-//        make.centerY.equalTo(self.view.mas_bottom).with.offset(offsetY3);
-//        make.width.equalTo(@(40));
-//        make.height.equalTo(@(40));
-//    }];
-//    //NSLog(@"loveButton centerX: %@", NSStringFromCGRect(self.loveButton.frame));
-//    [self.downloadButton mas_makeConstraints:^(MASConstraintMaker *make){
-//        make.left.equalTo(self.loveButton.mas_right).with.offset(space);
-//        make.centerY.equalTo(self.view.mas_bottom).with.offset(offsetY3);
-//        make.width.equalTo(@(40));
-//        make.height.equalTo(@(40));
-//    }];
-//    //NSLog(@"downloadButton centerX: %f", self.downloadButton.center.x);
-//    [self.commentButton mas_makeConstraints:^(MASConstraintMaker *make){
-//        make.left.equalTo(self.downloadButton.mas_right).with.offset(space);
-//        make.centerY.equalTo(self.view.mas_bottom).with.offset(offsetY3);
-//        make.width.equalTo(@(40));
-//        make.height.equalTo(@(40));
-//    }];
-//    //NSLog(@"commentButton centerX: %f", self.commentButton.center.x);
-//    [self.moreButton mas_makeConstraints:^(MASConstraintMaker *make){
-//        make.left.equalTo(self.commentButton.mas_right).with.offset(space);
-//        make.centerY.equalTo(self.view.mas_bottom).with.offset(offsetY3);
-//        make.width.equalTo(@(40));
-//        make.height.equalTo(@(40));
-//    }];
     [self.commentBtnContainerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view.mas_left);
         make.right.equalTo(self.view.mas_right);
@@ -318,44 +235,6 @@ static void *kSliderValueKVOKey = &kSliderValueKVOKey;
         make.height.equalTo(self.commentButton.mas_height);
     }];
     
-//    [self.view addSubview:self.tooglePlayModeButton];
-//    [self.view addSubview:self.previousMusicButton];
-//    [self.view addSubview:self.tooglePlayPauseButton];
-//    [self.view addSubview:self.nextMusicButton];
-//    [self.view addSubview:self.musicListButton];
-//    
-//    //self.tooglePlayModeButton.backgroundColor = [UIColor redColor];
-//    //y = kScreenHeight - distanceToBottom1;
-//    [self.tooglePlayModeButton mas_makeConstraints:^(MASConstraintMaker *make){
-//        make.centerY.equalTo(self.view.mas_bottom).with.offset(offsetY1);
-//        make.right.equalTo(self.musicSlider.mas_left).offset(0);
-//        make.width.equalTo(@(44));
-//        make.height.equalTo(@(44));
-//    }];
-//    [self.previousMusicButton mas_makeConstraints:^(MASConstraintMaker *make){
-//        make.centerY.equalTo(self.view.mas_bottom).with.offset(offsetY1);
-//        make.centerX.equalTo(self.musicSlider.mas_left).with.offset(sliderWidth / 5);
-//        make.width.equalTo(@(49));
-//        make.height.equalTo(@(49));
-//    }];
-//    [self.nextMusicButton mas_makeConstraints:^(MASConstraintMaker *make){
-//        make.centerY.equalTo(self.view.mas_bottom).with.offset(offsetY1);
-//        make.centerX.equalTo(self.musicSlider.mas_right).with.offset(-sliderWidth / 5);
-//        make.width.equalTo(@(49));
-//        make.height.equalTo(@(49));
-//    }];
-//    [self.tooglePlayPauseButton mas_makeConstraints:^(MASConstraintMaker *make){
-//        make.centerY.equalTo(self.view.mas_bottom).with.offset(offsetY1);
-//        make.centerX.equalTo(self.view.mas_left).with.offset(self.view.width / 2);
-//        make.width.equalTo(@(68));
-//        make.height.equalTo(@(68));
-//    }];
-//    [self.musicListButton mas_makeConstraints:^(MASConstraintMaker *make){
-//        make.centerY.equalTo(self.view.mas_bottom).with.offset(offsetY1);
-//        make.left.equalTo(self.musicSlider.mas_right).offset(0);
-//        make.width.equalTo(@(44));
-//        make.height.equalTo(@(44));
-//    }];
     [self.tooglePlayBtnContainerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view.mas_left);
         make.right.equalTo(self.view.mas_right);
@@ -374,8 +253,9 @@ static void *kSliderValueKVOKey = &kSliderValueKVOKey;
 #pragma play music
 - (void)checkAndPlayMusicOfIndex:(NSInteger)index {
     self.currentIndex = index;
-    RecordViewController *presentVC = (RecordViewController *)(self.recordPageVC.viewControllers[0]);
-    presentVC.index = index;
+    [self updateIndex];
+    [self.previousRecordVC stopRotating];
+    [self.nextRecordVC stopRotating];
     MusicEntity *musicEntity = self.musicEntities[index];
     if (musicEntity.musicUrl)
         [self playMusicOfIndex:index];
@@ -419,22 +299,34 @@ static void *kSliderValueKVOKey = &kSliderValueKVOKey;
 //    NSLog(@"***%@", musicEntity.name);
     self.musicTitleView.musicTitle = musicEntity.name;
     self.musicTitleView.authorName = musicEntity.artistName;
-    [self stopRotatingRecordView];
-    [self startRotatingRecordView];
-    if (self.streamer != nil)
-    {
-        [self removeStreamerObserver];
-        self.streamer = nil;
-    }
+    //[self stopRotatingRecordView];
+
     Track *track = [[Track alloc] init];
     NSURL *fileURL = nil;
     if (musicEntity.filePath != nil) {
         NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:musicEntity.filePath ofType:@"mp3"];
         fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
-    } else if (musicEntity.musicUrl != nil) {
+    } else if (musicEntity.musicUrl != nil && [musicEntity.musicUrl isKindOfClass:[NSString class]]) {
         fileURL = [NSURL URLWithString:musicEntity.musicUrl];
-    } else return;
-    
+    } else {
+        [self.musicSlider setValue:0];
+        [self.streamer stop];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"error" message:@"该歌曲不可播放!" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+            
+        }];
+        [alert addAction:action];
+        [self presentViewController:alert animated:YES completion:^(){
+            
+        }];
+
+        return;
+    }
+    if (self.streamer != nil)
+    {
+        [self removeStreamerObserver];
+        self.streamer = nil;
+    }
     track.audioFileURL = fileURL;
     NSLog(@"*****%@", fileURL);
     self.streamer = [DOUAudioStreamer streamerWithAudioFile:track];
@@ -444,6 +336,8 @@ static void *kSliderValueKVOKey = &kSliderValueKVOKey;
     [self.musicSlider setValue:0];
     
     [self.streamer play];
+    
+    [self startRotatingRecordView];
     self.isMusicTimerEffective = YES;
 
     self.isPlaying = YES;
@@ -580,27 +474,39 @@ static void *kSliderValueKVOKey = &kSliderValueKVOKey;
 - (void)playPreviousMusic
 {
     self.isMusicTimerEffective = NO;
-    NSInteger previousMusicIndex = [self previousMusicIndex];
-    RecordViewController *previousRecordVC = [self recordVCWithIndex:previousMusicIndex];
-    [self renderRecordImageForRecordVC:previousRecordVC];
-    [self.recordPageVC setViewControllers:@[previousRecordVC] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:^(BOOL finished){
-        if (finished)
-            [previousRecordVC startRotating];
+    [self renderRecordImageForRecordVC:self.previousRecordVC];
+    [self rotateAwayAndBackRecordNeedleView];
+    __weak typeof(self) wself = self;
+    [self.recordPageVC setViewControllers:@[self.previousRecordVC] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:^(BOOL finished){
+        __strong typeof(self) sself = wself;
+        if (finished && sself) {
+            RecordViewController *temp = sself.presentRecordVC;
+            sself.presentRecordVC = sself.previousRecordVC;
+            sself.previousRecordVC = sself.nextRecordVC;
+            sself.nextRecordVC = temp;
+            [sself checkAndPlayMusicOfIndex:sself.presentRecordVC.index];
+        }
     }];
-    [self checkAndPlayMusicOfIndex:previousMusicIndex];
+    
 }
 
 - (void)playNextMusic
 {
     self.isMusicTimerEffective = NO;
-    NSInteger nextMusicIndex = [self nextMusicIndex];
-    RecordViewController *nextRecordVC = [self recordVCWithIndex:nextMusicIndex];
-    [self renderRecordImageForRecordVC:nextRecordVC];
-    [self.recordPageVC setViewControllers:@[nextRecordVC] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished){
-        if (finished)
-            [nextRecordVC startRotating];
+    
+    [self renderRecordImageForRecordVC:self.nextRecordVC];
+    [self rotateAwayAndBackRecordNeedleView];
+    __weak typeof(self) wself = self;
+    [self.recordPageVC setViewControllers:@[self.nextRecordVC] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished){
+        __strong typeof(self) sself = wself;
+        if (finished && sself) {
+            RecordViewController *temp = sself.presentRecordVC;
+            sself.presentRecordVC = sself.nextRecordVC;
+            sself.nextRecordVC = sself.previousRecordVC;
+            sself.previousRecordVC = temp;
+            [sself checkAndPlayMusicOfIndex:sself.presentRecordVC.index];
+        }
     }];
-    [self checkAndPlayMusicOfIndex:nextMusicIndex];
 }
 
 - (void)renderRecordImageForRecordVC:(RecordViewController *)recordViewController {
@@ -610,6 +516,7 @@ static void *kSliderValueKVOKey = &kSliderValueKVOKey;
     if (picurl) {
         [recordViewController setCoverWithURL:[NSURL URLWithString:picurl]];
     } else {
+        [recordViewController setCoverWithURL:nil];
         [musicEntity getPicUrlWithCompletionBlock:^(NSString *imgurl) {
             [recordViewController setCoverWithURL:[NSURL URLWithString:imgurl]];
         }];
@@ -689,19 +596,21 @@ static void *kSliderValueKVOKey = &kSliderValueKVOKey;
 #pragma mark - UIPageViewControllerDataSource
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
 {
-    NSInteger index = [self previousMusicIndex];
-    NSLog(@"previousIndex: %ld", (long)index);
-    RecordViewController *recordVC = [self recordVCWithIndex:index];
-    return recordVC;
+//    NSInteger index = [self previousMusicIndex];
+//    NSLog(@"previousIndex: %ld", (long)index);
+//    RecordViewController *recordVC = [self recordVCWithIndex:index];
+//    return recordVC;
+    return self.previousRecordVC;
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
 {
     
-    NSInteger index = [self nextMusicIndex];
-    NSLog(@"nextIndex: %ld", (long)index);
-    RecordViewController *recordVC = [self recordVCWithIndex:index];
-    return recordVC;
+//    NSInteger index = [self nextMusicIndex];
+//    NSLog(@"nextIndex: %ld", (long)index);
+//    RecordViewController *recordVC = [self recordVCWithIndex:index];
+//    return recordVC;
+    return self.nextRecordVC;
 }
 
 - (RecordViewController *)recordVCWithIndex:(NSInteger)index
@@ -726,58 +635,126 @@ static void *kSliderValueKVOKey = &kSliderValueKVOKey;
     return self.currentIndex == 0 ? self.musicEntities.count - 1 : self.currentIndex - 1;
 }
 
+- (void)updateIndex {
+    self.presentRecordVC.index = self.currentIndex;
+    self.previousRecordVC.index = [self previousMusicIndex];
+    self.nextRecordVC.index = [self nextMusicIndex];
+}
+
 #pragma mark - UIPageViewControllerDelegate
-- (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers
-{
+- (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers {
     [self stopRotatingRecordView];
-    [self rotateAwayRecordNeedleView];
     RecordViewController *pendingViewController = (RecordViewController *)pendingViewControllers[0];
     [self renderRecordImageForRecordVC:pendingViewController];
     
 }
 
-- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers transitionCompleted:(BOOL)completed
-{
+- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers transitionCompleted:(BOOL)completed {
     NSLog(@"%s", __FUNCTION__);
     [self startRotatingRecordView];
     if (completed == YES)
     {
         RecordViewController *presentVC = (RecordViewController *)(self.recordPageVC.viewControllers[0]);
+        if (presentVC == self.previousRecordVC) {
+            self.previousRecordVC = self.nextRecordVC;
+            self.nextRecordVC = self.presentRecordVC;
+            self.presentRecordVC = presentVC;
+        } else {
+            self.nextRecordVC = self.previousRecordVC;
+            self.previousRecordVC = self.presentRecordVC;
+            self.presentRecordVC = presentVC;
+        }
         [self checkAndPlayMusicOfIndex:presentVC.index];
     }
-    [self rotateBackRecordNeedleView];
 }
 
 #pragma mark - rotating record view
 - (void)startRotatingRecordView
 {
     RecordViewController *presentVC = (RecordViewController *)(self.recordPageVC.viewControllers[0]);
-    [presentVC startRotating];
+    [self rotateBackRecordNeedleViewWithBlock:^() {
+        [presentVC startRotating];
+    }];
 }
 
 - (void)stopRotatingRecordView
 {
     RecordViewController *presentVC = (RecordViewController *)(self.recordPageVC.viewControllers[0]);
     [presentVC stopRotating];
+    [self rotateAwayRecordNeedleView];
 }
 
 - (void)rotateAwayRecordNeedleView {
-    CGFloat centerX = self.recordNeddleView.center.x;
-    CGFloat centerY = self.recordNeddleView.center.y;
-    CGFloat x = self.view.bounds.size.width/2;
-    CGFloat y = 0;
-    CGAffineTransform trans = CGAffineTransformMakeTranslation(x-centerX, y-centerY);
-    trans = CGAffineTransformRotate(trans, -M_PI/4);
-    trans = CGAffineTransformTranslate(trans, centerX-x, centerY-y);
-    [UIView animateWithDuration:0.25 animations:^(){
-        self.recordNeddleView.transform = trans;
+    [self.recordNeddleView setAnchorPointWithoutTranslation:CGPointMake(0.268, 0.162)];
+//    if ([self.recordNeddleView.layer animationForKey:kRotateBackRecordNeedleView]) {
+//        //self.recordNeddleView.layer.transform = self.recordNeddleView.layer.presentationLayer.transform;
+//        [self.recordNeddleView.layer removeAnimationForKey:kRotateAwayRecordNeedleView];
+//    }
+    CABasicAnimation *animation = [[CABasicAnimation alloc] init];
+    animation.keyPath = @"transform.rotation";
+    animation.duration = 0.3;
+    animation.toValue = @(-M_PI/6);
+    animation.delegate = self;
+    animation.fillMode = kCAFillModeForwards;
+    animation.removedOnCompletion = NO;
+    [self.recordNeddleView.layer addAnimation:animation forKey:kRotateAwayRecordNeedleView];
+    _rotateAwayRecordNeedleAnimation = animation;
+//    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^(){
+//        self.recordNeddleView.transform = CGAffineTransformMakeRotation(-M_PI/6);
+//    }completion:^(BOOL finished) {
+//        if (finished)
+//            [self.recordNeddleView setAnchorPointWithoutTranslation:CGPointMake(0.5, 0.5)];
+//    }];
+}
+
+- (void)rotateBackRecordNeedleViewWithBlock:(void(^)())blk {
+    [self.recordNeddleView setAnchorPointWithoutTranslation:CGPointMake(0.268, 0.162)];
+    if ([self.recordNeddleView.layer animationForKey:kRotateAwayRecordNeedleView]) {
+        self.recordNeddleView.layer.transform = self.recordNeddleView.layer.presentationLayer.transform;
+        [self.recordNeddleView.layer removeAnimationForKey:kRotateAwayRecordNeedleView];
+    }
+    
+//    CABasicAnimation *animation = [[CABasicAnimation alloc] init];
+//    animation.keyPath = @"transform.rotation";
+//    animation.duration = 0.3;
+//    animation.toValue = @(0);
+//    animation.delegate = self;
+//    animation.fillMode = kCAFillModeForwards;
+//    animation.removedOnCompletion = NO;
+//    [self.recordNeddleView.layer addAnimation:animation forKey:kRotateBackRecordNeedleView];
+//    _rotateBackRecordNeedleAnimation = animation;
+    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^(){
+        self.recordNeddleView.transform = CGAffineTransformIdentity;
+    }completion:^(BOOL finished) {
+        if (finished) {
+            //[self.recordNeddleView setAnchorPointWithoutTranslation:CGPointMake(0.5, 0.5)];
+            blk();
+        }
     }];
 }
 
-- (void)rotateBackRecordNeedleView {
-    [UIView animateWithDuration:0.25 animations:^(){
-        self.recordNeddleView.transform = CGAffineTransformIdentity;
+- (void)rotateAwayAndBackRecordNeedleView {
+    [self.recordNeddleView setAnchorPointWithoutTranslation:CGPointMake(0.268, 0.162)];
+    [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^(){
+        self.recordNeddleView.transform = CGAffineTransformMakeRotation(-M_PI/6);
+    }completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^(){
+            self.recordNeddleView.transform = CGAffineTransformIdentity;
+        }completion:^(BOOL finished) {
+            //if (finished)
+            //    [self.recordNeddleView setAnchorPointWithoutTranslation:CGPointMake(0.5, 0.5)];
+        }];
     }];
+}
+
+#pragma mark - CAAnimationDelegate
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
+    if (flag) {
+        //self.recordNeddleView.transform = CGAffineTransformMakeRotation(-M_PI/6);
+        //[self.recordNeddleView setAnchorPointWithoutTranslation:CGPointMake(0.5, 0.5)];
+        if (anim == _rotateBackRecordNeedleAnimation)
+            [self.presentRecordVC startRotating];
+    }
 }
 
 #pragma mark - Accessor Getter Methods
@@ -793,14 +770,7 @@ static void *kSliderValueKVOKey = &kSliderValueKVOKey;
     }
     return _recordVCsBuffer;
 }
-//- (RecordView *)recordView
-//{
-//    if (_recordView == nil)
-//    {
-//        _recordView = [[RecordView alloc] initWithFrame:CGRectMake(0, 0, 238, 238)];
-//    }
-//    return _recordView;
-//}
+
 - (UIView *)recordContainerView {
     if (!_recordContainerView) {
         _recordContainerView = [[UIView alloc] init];
@@ -831,6 +801,12 @@ static void *kSliderValueKVOKey = &kSliderValueKVOKey;
                 make.centerX.equalTo(self.view.mas_centerX).with.offset(26);
             }
         }];
+//        self.recordNeddleView.backgroundColor = [UIColor redColor];
+//        if (kScreenWidth == 320) {
+//            self.recordNeddleView.frame = CGRectMake(144, -17, 80, 140);
+//        } else {
+//            self.recordNeddleView.frame = CGRectMake(158, -29, 111, 183);
+//        }
         _recordContainerView.clipsToBounds = YES;
     }
     return _recordContainerView;
@@ -1243,7 +1219,12 @@ static void *kSliderValueKVOKey = &kSliderValueKVOKey;
         _recordPageVC = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
         _recordPageVC.dataSource = self;
         _recordPageVC.delegate = self;
-        RecordViewController *recordVC = [self recordVCWithIndex:self.currentIndex];
+        //RecordViewController *recordVC = [self recordVCWithIndex:self.currentIndex];
+        RecordViewController *recordVC = self.recordVCsBuffer[1];
+        self.presentRecordVC = recordVC;
+        self.previousRecordVC = self.recordVCsBuffer[0];
+        self.nextRecordVC = self.recordVCsBuffer[2];
+        [self updateIndex];
         MusicEntity *musicEntity = self.musicEntities[self.currentIndex];
         if (musicEntity.picUrl) {
             [recordVC setCoverWithURL:[NSURL URLWithString:musicEntity.picUrl]];

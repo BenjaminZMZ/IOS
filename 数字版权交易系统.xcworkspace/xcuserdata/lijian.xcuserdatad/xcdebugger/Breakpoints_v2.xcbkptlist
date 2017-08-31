@@ -312,15 +312,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x6570;&#x5b57;&#x7248;&#x6743;&#x4ea4;&#x6613;&#x7cfb;&#x7edf;/PlayingViewController.m"
-            timestampString = "525788311.011461"
+            timestampString = "525851787.700204"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "379"
-            endingLineNumber = "379"
+            startingLineNumber = "259"
+            endingLineNumber = "259"
             landmarkName = "-checkAndPlayMusicOfIndex:"
             landmarkType = "7">
          </BreakpointContent>
@@ -332,11 +332,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x6570;&#x5b57;&#x7248;&#x6743;&#x4ea4;&#x6613;&#x7cfb;&#x7edf;/PlayingViewController.m"
-            timestampString = "525788311.011461"
+            timestampString = "525851787.700204"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "387"
-            endingLineNumber = "387"
+            startingLineNumber = "267"
+            endingLineNumber = "267"
             landmarkName = "-checkAndPlayMusicOfIndex:"
             landmarkType = "7">
          </BreakpointContent>
@@ -348,11 +348,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x6570;&#x5b57;&#x7248;&#x6743;&#x4ea4;&#x6613;&#x7cfb;&#x7edf;/PlayingViewController.m"
-            timestampString = "525788311.011461"
+            timestampString = "525851787.700204"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "400"
-            endingLineNumber = "400"
+            startingLineNumber = "280"
+            endingLineNumber = "280"
             landmarkName = "-checkAndPlayMusicOfIndex:"
             landmarkType = "7">
          </BreakpointContent>
@@ -360,15 +360,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x6570;&#x5b57;&#x7248;&#x6743;&#x4ea4;&#x6613;&#x7cfb;&#x7edf;/PlayingViewController.m"
-            timestampString = "525788311.011461"
+            timestampString = "525851787.700204"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "746"
-            endingLineNumber = "746"
+            startingLineNumber = "667"
+            endingLineNumber = "667"
             landmarkName = "-pageViewController:didFinishAnimating:previousViewControllers:transitionCompleted:"
             landmarkType = "7">
          </BreakpointContent>
@@ -376,31 +376,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x6570;&#x5b57;&#x7248;&#x6743;&#x4ea4;&#x6613;&#x7cfb;&#x7edf;/PlayingViewController.m"
-            timestampString = "525788311.011461"
+            timestampString = "525851787.700204"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "695"
-            endingLineNumber = "695"
-            landmarkName = "-pageViewController:viewControllerBeforeViewController:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x6570;&#x5b57;&#x7248;&#x6743;&#x4ea4;&#x6613;&#x7cfb;&#x7edf;/PlayingViewController.m"
-            timestampString = "525788311.011461"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "724"
-            endingLineNumber = "724"
+            startingLineNumber = "633"
+            endingLineNumber = "633"
             landmarkName = "-previousMusicIndex"
             landmarkType = "7">
          </BreakpointContent>
@@ -408,15 +392,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x6570;&#x5b57;&#x7248;&#x6743;&#x4ea4;&#x6613;&#x7cfb;&#x7edf;/PlayingViewController.m"
-            timestampString = "525788311.011461"
+            timestampString = "525851787.700204"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "417"
-            endingLineNumber = "417"
+            startingLineNumber = "297"
+            endingLineNumber = "297"
             landmarkName = "-playMusicOfIndex:"
             landmarkType = "7">
          </BreakpointContent>
@@ -438,11 +422,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x6570;&#x5b57;&#x7248;&#x6743;&#x4ea4;&#x6613;&#x7cfb;&#x7edf;/PlayingViewController.m"
-            timestampString = "525788311.011461"
+            timestampString = "525851787.700204"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "564"
-            endingLineNumber = "564"
+            startingLineNumber = "458"
+            endingLineNumber = "458"
             landmarkName = "-tooglePlayPause"
             landmarkType = "7">
          </BreakpointContent>
@@ -450,31 +434,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x6570;&#x5b57;&#x7248;&#x6743;&#x4ea4;&#x6613;&#x7cfb;&#x7edf;/PlayingViewController.m"
-            timestampString = "525788311.011461"
+            timestampString = "525851787.700204"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "733"
-            endingLineNumber = "733"
-            landmarkName = "-pageViewController:willTransitionToViewControllers:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x6570;&#x5b57;&#x7248;&#x6743;&#x4ea4;&#x6613;&#x7cfb;&#x7edf;/PlayingViewController.m"
-            timestampString = "525788311.011461"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1248"
-            endingLineNumber = "1248"
+            startingLineNumber = "1229"
+            endingLineNumber = "1229"
             landmarkName = "-recordPageVC"
             landmarkType = "7">
          </BreakpointContent>
@@ -482,7 +450,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x6570;&#x5b57;&#x7248;&#x6743;&#x4ea4;&#x6613;&#x7cfb;&#x7edf;/SearchResultsSongVC.m"
@@ -492,6 +460,86 @@
             startingLineNumber = "142"
             endingLineNumber = "142"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x6570;&#x5b57;&#x7248;&#x6743;&#x4ea4;&#x6613;&#x7cfb;&#x7edf;/PlayingViewController.m"
+            timestampString = "525851787.700204"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "711"
+            endingLineNumber = "711"
+            landmarkName = "-rotateBackRecordNeedleViewWithBlock:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x6570;&#x5b57;&#x7248;&#x6743;&#x4ea4;&#x6613;&#x7cfb;&#x7edf;/PlayingViewController.m"
+            timestampString = "525851787.700204"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "688"
+            endingLineNumber = "688"
+            landmarkName = "-rotateAwayRecordNeedleView"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x6570;&#x5b57;&#x7248;&#x6743;&#x4ea4;&#x6613;&#x7cfb;&#x7edf;/PlayingViewController.m"
+            timestampString = "525851787.700204"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "731"
+            endingLineNumber = "731"
+            landmarkName = "-rotateBackRecordNeedleViewWithBlock:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x6570;&#x5b57;&#x7248;&#x6743;&#x4ea4;&#x6613;&#x7cfb;&#x7edf;/PlayingViewController.m"
+            timestampString = "525852152.731918"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "756"
+            endingLineNumber = "756"
+            landmarkName = "-animationDidStop:finished:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x6570;&#x5b57;&#x7248;&#x6743;&#x4ea4;&#x6613;&#x7cfb;&#x7edf;/PlayingViewController.m"
+            timestampString = "525852184.199242"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "752"
+            endingLineNumber = "752"
+            landmarkName = "-animationDidStop:finished:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

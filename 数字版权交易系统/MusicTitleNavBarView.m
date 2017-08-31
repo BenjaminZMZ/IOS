@@ -40,11 +40,13 @@
     [self.musicTitleLabel mas_makeConstraints:^(MASConstraintMaker *make){
         make.top.equalTo(self.mas_top);
         make.centerX.equalTo(self.mas_centerX);
+        make.width.equalTo(@200);
     }];
     [self addSubview:self.authorNameLabel];
     [self.authorNameLabel mas_makeConstraints:^(MASConstraintMaker *make){
         make.top.equalTo(self.musicTitleLabel.mas_bottom);
         make.centerX.equalTo(self.mas_centerX);
+        make.width.equalTo(@200);
     }];
 }
 
@@ -58,6 +60,10 @@
         _musicTitleLabel.font = [UIFont systemFontOfSize:17];
         _musicTitleLabel.textColor = [UIColor whiteColor];
         //_musicTitleLabel.backgroundColor = [UIColor clearColor];
+        _musicTitleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        _musicTitleLabel.textAlignment = NSTextAlignmentCenter;
+        _musicTitleLabel.clipsToBounds = YES;
+        
     }
     return _musicTitleLabel;
 }
@@ -70,6 +76,9 @@
         _authorNameLabel.font = [UIFont systemFontOfSize:12];
         _authorNameLabel.textColor = [UIColor whiteColor];
         _authorNameLabel.backgroundColor = [UIColor clearColor];
+        _authorNameLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        _authorNameLabel.textAlignment = NSTextAlignmentCenter;
+        _authorNameLabel.clipsToBounds = YES;
     }
     return _authorNameLabel;
 }
@@ -77,17 +86,23 @@
 - (void)setMusicTitle:(NSString *)musicTitle
 {
     _musicTitle = musicTitle;
+    if (musicTitle.length > 12) {
+        musicTitle = [NSString stringWithFormat:@"%@...", [musicTitle substringToIndex:12]];
+    }
     self.musicTitleLabel.text = musicTitle;
-    [self.musicTitleLabel sizeToFit];
-    [self layoutIfNeeded];
+    //[self.musicTitleLabel sizeToFit];
+    //[self layoutIfNeeded];
 }
 
 - (void)setAuthorName:(NSString *)authorName
 {
     _authorName = authorName;
+    if (authorName.length > 12) {
+        authorName = [NSString stringWithFormat:@"%@...", [authorName substringToIndex:12]];
+    }
     self.authorNameLabel.text = authorName;
-    [self.authorNameLabel sizeToFit];
-    [self layoutIfNeeded];
+    //[self.authorNameLabel sizeToFit];
+    //[self layoutIfNeeded];
 }
 
 @end
