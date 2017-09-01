@@ -19,12 +19,17 @@
 #import "MusicTitleNavBarView.h"
 #import "RecordViewController.h"
 
-typedef NS_ENUM(NSInteger, MusicPlayingMode)
-{
+typedef NS_ENUM(NSInteger, MusicPlayingMode) {
     MusicPlayingModeLoopAll = 0,
     MusicPlayingModeLoopSingle = 1,
     MusicPlayingModeShuffle = 2,
 };
+//
+//typedef NS_ENUM(NSInteger, RecordNeedleViewRotateType) {
+//    RecordNeedleViewRotateAway = 0,
+//    RecordNeedleViewRotateBack,
+//    RecordNeedleViewRotateAwayAndBack,
+//};
 
 @interface PlayingViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource, CAAnimationDelegate>
 
@@ -93,14 +98,16 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 
 static void *kSliderValueKVOKey = &kSliderValueKVOKey;
 
+static NSString *kRecordNeedleViewRotateType = @"kRecordNeedleViewRotateType";
 static NSString *kRotateAwayRecordNeedleView = @"kRotateAwayRecordNeedleView";
 static NSString *kRotateBackRecordNeedleView = @"kRotateBackRecordNeedleView";
+static NSString *kRotateAwayAndBackRecordNeedleView = @"kRotateAwayAndBackRecordNeedleView";
 
 
 @implementation PlayingViewController
 {
-    CABasicAnimation *_rotateAwayRecordNeedleAnimation;
-    CABasicAnimation *_rotateBackRecordNeedleAnimation;
+    BOOL _isRecordPageVCTransitioning;
+    BOOL _trackPlayable;
 }
 
 + (instancetype)sharedInstance
@@ -112,7 +119,6 @@ static NSString *kRotateBackRecordNeedleView = @"kRotateBackRecordNeedleView";
         //sharedPlayingVC.streamer = [[DOUAudioStreamer alloc] init];
         sharedPlayingVC.isPlaying = NO;
         sharedPlayingVC.musicPlayingMode = MusicPlayingModeLoopAll;
-        
     });
     
     return sharedPlayingVC;
@@ -192,13 +198,11 @@ static NSString *kRotateBackRecordNeedleView = @"kRotateBackRecordNeedleView";
     }];
 }
 
-- (void)backItemTapped
-{
+- (void)backItemTapped {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)configureViews
-{
+- (void)configureViews {
     [self.view addSubview:self.backgroundView];
     [self configureNavigationBar];
     [self.recordContainerView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -269,14 +273,14 @@ static NSString *kRotateBackRecordNeedleView = @"kRotateBackRecordNeedleView";
         }];
     }
     if (musicEntity.picUrl) {
-        //[self.backgroundImageView sd_setImageWithURL:[NSURL URLWithString:musicEntity.picUrl] placeholderImage:[UIImage imageNamed:@"cm2_default_play_bg"]];
+        [self.backgroundImageView sd_setImageWithURL:[NSURL URLWithString:musicEntity.picUrl] placeholderImage:[UIImage imageNamed:@"cm2_default_play_bg"]];
         [self renderImageWithUrl:musicEntity.picUrl atIndex:index];
     } else {
         __weak typeof(self) weakSelf = self;
         [musicEntity getPicUrlWithCompletionBlock:^(NSString *imgurl){
             __strong typeof(self) strongSelf = weakSelf;
             if (strongSelf) {
-                //[self.backgroundImageView sd_setImageWithURL:[NSURL URLWithString:imgurl] placeholderImage:[UIImage imageNamed:@"cm2_default_play_bg"]];
+                [self.backgroundImageView sd_setImageWithURL:[NSURL URLWithString:imgurl] placeholderImage:[UIImage imageNamed:@"cm2_default_play_bg"]];
                 [strongSelf renderImageWithUrl:imgurl atIndex:index];
             }
         }];
@@ -300,7 +304,7 @@ static NSString *kRotateBackRecordNeedleView = @"kRotateBackRecordNeedleView";
     self.musicTitleView.musicTitle = musicEntity.name;
     self.musicTitleView.authorName = musicEntity.artistName;
     //[self stopRotatingRecordView];
-
+    [self.presentRecordVC stopRotating];
     Track *track = [[Track alloc] init];
     NSURL *fileURL = nil;
     if (musicEntity.filePath != nil) {
@@ -310,7 +314,7 @@ static NSString *kRotateBackRecordNeedleView = @"kRotateBackRecordNeedleView";
         fileURL = [NSURL URLWithString:musicEntity.musicUrl];
     } else {
         [self.musicSlider setValue:0];
-        [self.streamer stop];
+        [self stopPlay];
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"error" message:@"该歌曲不可播放!" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
             
@@ -319,14 +323,14 @@ static NSString *kRotateBackRecordNeedleView = @"kRotateBackRecordNeedleView";
         [self presentViewController:alert animated:YES completion:^(){
             
         }];
-
+        _trackPlayable = NO;
         return;
     }
-    if (self.streamer != nil)
-    {
+    if (self.streamer != nil) {
         [self removeStreamerObserver];
         self.streamer = nil;
     }
+    _trackPlayable = YES;
     track.audioFileURL = fileURL;
     NSLog(@"*****%@", fileURL);
     self.streamer = [DOUAudioStreamer streamerWithAudioFile:track];
@@ -336,7 +340,6 @@ static NSString *kRotateBackRecordNeedleView = @"kRotateBackRecordNeedleView";
     [self.musicSlider setValue:0];
     
     [self.streamer play];
-    
     [self startRotatingRecordView];
     self.isMusicTimerEffective = YES;
 
@@ -359,20 +362,13 @@ static NSString *kRotateBackRecordNeedleView = @"kRotateBackRecordNeedleView";
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
 {
-    if (context == kStatusKVOKey)
-    {
+    if (context == kStatusKVOKey) {
         [self streamerStatusChanged];
-    }
-    else if (context == kDurationKVOKey)
-    {
+    } else if (context == kDurationKVOKey) {
         
-    }
-    else if (context == kBufferingRatioKVOKey)
-    {
+    } else if (context == kBufferingRatioKVOKey) {
         
-    }
-    else if (context == kSliderValueKVOKey)//用户开始拖动歌曲进度条
-    {
+    } else if (context == kSliderValueKVOKey) { //用户开始拖动歌曲进度条
         self.sliderValueTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(sliderValueStartChanging) userInfo:nil repeats:YES];
         NSTimer *timer = [NSTimer timerWithTimeInterval:0.1
                                                  target:self
@@ -383,9 +379,7 @@ static NSString *kRotateBackRecordNeedleView = @"kRotateBackRecordNeedleView";
 //        NSLog(@"kSliderValueKVOKey");
         self.isMusicTimerEffective = NO;
 //        self.beginTimeLabel.text = [NSString timeIntervalToMMSSFormat:self.streamer.duration * [change[NSKeyValueChangeNewKey] floatValue]];
-    }
-    else
-    {
+    } else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
 }
@@ -455,15 +449,12 @@ static NSString *kRotateBackRecordNeedleView = @"kRotateBackRecordNeedleView";
 #pragma mark target-action methods
 - (void)tooglePlayPause
 {
-    if (!self.isPlaying)
-    {
+    if (!self.isPlaying && _trackPlayable) {
         //[self.tooglePlayPauseButton setImage:[UIImage imageNamed:@"cm2_fm_btn_pause"] forState:UIControlStateNormal];
         [self startRotatingRecordView];
         [_streamer play];
         self.isPlaying = YES;
-    }
-    else
-    {
+    } else {
         //[self.tooglePlayPauseButton setImage:[UIImage imageNamed:@"cm2_fm_btn_play"] forState:UIControlStateNormal];
         [self stopRotatingRecordView];
         [_streamer pause];
@@ -474,8 +465,10 @@ static NSString *kRotateBackRecordNeedleView = @"kRotateBackRecordNeedleView";
 - (void)playPreviousMusic
 {
     self.isMusicTimerEffective = NO;
+    [self stopPlay];
     [self renderRecordImageForRecordVC:self.previousRecordVC];
-    [self rotateAwayAndBackRecordNeedleView];
+    //[self rotateAwayAndBackRecordNeedleView];
+    [self stopRotatingRecordView];
     __weak typeof(self) wself = self;
     [self.recordPageVC setViewControllers:@[self.previousRecordVC] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:^(BOOL finished){
         __strong typeof(self) sself = wself;
@@ -493,9 +486,10 @@ static NSString *kRotateBackRecordNeedleView = @"kRotateBackRecordNeedleView";
 - (void)playNextMusic
 {
     self.isMusicTimerEffective = NO;
-    
+    [self stopPlay];
     [self renderRecordImageForRecordVC:self.nextRecordVC];
-    [self rotateAwayAndBackRecordNeedleView];
+    //[self rotateAwayAndBackRecordNeedleView];
+    [self stopRotatingRecordView];
     __weak typeof(self) wself = self;
     [self.recordPageVC setViewControllers:@[self.nextRecordVC] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished){
         __strong typeof(self) sself = wself;
@@ -559,6 +553,16 @@ static NSString *kRotateBackRecordNeedleView = @"kRotateBackRecordNeedleView";
     [self.streamer setCurrentTime:self.streamer.duration * self.musicSlider.value];
     [self.streamer setVolume:currentVolume];
     
+}
+
+- (void)stopPlay {
+    [_streamer stop];
+    self.isPlaying = NO;
+}
+
+- (void)startPlay {
+    [_streamer play];
+    self.isPlaying = YES;
 }
 
 
@@ -643,17 +647,19 @@ static NSString *kRotateBackRecordNeedleView = @"kRotateBackRecordNeedleView";
 
 #pragma mark - UIPageViewControllerDelegate
 - (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers {
-    [self stopRotatingRecordView];
+    NSLog(@"&&&&&&&");
+    if (!_isRecordPageVCTransitioning)
+        [self stopRotatingRecordView];
     RecordViewController *pendingViewController = (RecordViewController *)pendingViewControllers[0];
     [self renderRecordImageForRecordVC:pendingViewController];
-    
+    _isRecordPageVCTransitioning = YES;
 }
 
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers transitionCompleted:(BOOL)completed {
     NSLog(@"%s", __FUNCTION__);
-    [self startRotatingRecordView];
-    if (completed == YES)
-    {
+    _isRecordPageVCTransitioning = NO;
+    
+    if (completed == YES) {
         RecordViewController *presentVC = (RecordViewController *)(self.recordPageVC.viewControllers[0]);
         if (presentVC == self.previousRecordVC) {
             self.previousRecordVC = self.nextRecordVC;
@@ -665,16 +671,15 @@ static NSString *kRotateBackRecordNeedleView = @"kRotateBackRecordNeedleView";
             self.presentRecordVC = presentVC;
         }
         [self checkAndPlayMusicOfIndex:presentVC.index];
-    }
+    } else
+        [self startRotatingRecordView];
+        
 }
 
 #pragma mark - rotating record view
 - (void)startRotatingRecordView
 {
-    RecordViewController *presentVC = (RecordViewController *)(self.recordPageVC.viewControllers[0]);
-    [self rotateBackRecordNeedleViewWithBlock:^() {
-        [presentVC startRotating];
-    }];
+    [self rotateBackRecordNeedleViewWithBlock];
 }
 
 - (void)stopRotatingRecordView
@@ -686,65 +691,76 @@ static NSString *kRotateBackRecordNeedleView = @"kRotateBackRecordNeedleView";
 
 - (void)rotateAwayRecordNeedleView {
     [self.recordNeddleView setAnchorPointWithoutTranslation:CGPointMake(0.268, 0.162)];
-//    if ([self.recordNeddleView.layer animationForKey:kRotateBackRecordNeedleView]) {
-//        //self.recordNeddleView.layer.transform = self.recordNeddleView.layer.presentationLayer.transform;
-//        [self.recordNeddleView.layer removeAnimationForKey:kRotateAwayRecordNeedleView];
-//    }
+    if ([self.recordNeddleView.layer animationForKey:kRotateBackRecordNeedleView]) {
+        [self.recordNeddleView.layer removeAnimationForKey:kRotateBackRecordNeedleView];
+    }
+    CATransform3D transform = self.recordNeddleView.layer.presentationLayer.transform;
+    CGFloat fromVal = atan2(transform.m12, transform.m11);
+    self.recordNeddleView.layer.transform = CATransform3DMakeRotation(fromVal, 0, 0, 1);
     CABasicAnimation *animation = [[CABasicAnimation alloc] init];
     animation.keyPath = @"transform.rotation";
-    animation.duration = 0.3;
+    animation.duration = 0.4;
+    animation.fromValue = @(fromVal);
     animation.toValue = @(-M_PI/6);
     animation.delegate = self;
-    animation.fillMode = kCAFillModeForwards;
-    animation.removedOnCompletion = NO;
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    [animation setValue:kRotateAwayRecordNeedleView forKey:kRecordNeedleViewRotateType];
     [self.recordNeddleView.layer addAnimation:animation forKey:kRotateAwayRecordNeedleView];
-    _rotateAwayRecordNeedleAnimation = animation;
-//    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^(){
-//        self.recordNeddleView.transform = CGAffineTransformMakeRotation(-M_PI/6);
-//    }completion:^(BOOL finished) {
-//        if (finished)
-//            [self.recordNeddleView setAnchorPointWithoutTranslation:CGPointMake(0.5, 0.5)];
-//    }];
+    self.recordNeddleView.layer.transform = CATransform3DMakeRotation(-M_PI/6, 0, 0, 1);
+
 }
 
-- (void)rotateBackRecordNeedleViewWithBlock:(void(^)())blk {
+- (void)rotateBackRecordNeedleViewWithBlock {
     [self.recordNeddleView setAnchorPointWithoutTranslation:CGPointMake(0.268, 0.162)];
     if ([self.recordNeddleView.layer animationForKey:kRotateAwayRecordNeedleView]) {
-        self.recordNeddleView.layer.transform = self.recordNeddleView.layer.presentationLayer.transform;
         [self.recordNeddleView.layer removeAnimationForKey:kRotateAwayRecordNeedleView];
     }
-    
-//    CABasicAnimation *animation = [[CABasicAnimation alloc] init];
-//    animation.keyPath = @"transform.rotation";
-//    animation.duration = 0.3;
-//    animation.toValue = @(0);
-//    animation.delegate = self;
-//    animation.fillMode = kCAFillModeForwards;
-//    animation.removedOnCompletion = NO;
-//    [self.recordNeddleView.layer addAnimation:animation forKey:kRotateBackRecordNeedleView];
-//    _rotateBackRecordNeedleAnimation = animation;
-    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^(){
-        self.recordNeddleView.transform = CGAffineTransformIdentity;
-    }completion:^(BOOL finished) {
-        if (finished) {
-            //[self.recordNeddleView setAnchorPointWithoutTranslation:CGPointMake(0.5, 0.5)];
-            blk();
-        }
-    }];
+    CATransform3D transform = self.recordNeddleView.layer.presentationLayer.transform;
+    CGFloat fromVal = atan2(transform.m12, transform.m11);
+    self.recordNeddleView.layer.transform = CATransform3DMakeRotation(fromVal, 0, 0, 1);
+    CABasicAnimation *animation = [[CABasicAnimation alloc] init];
+    animation.keyPath = @"transform.rotation";
+    animation.duration = 0.4;
+    animation.fromValue = @(fromVal);
+    animation.toValue = @(0);
+    animation.delegate = self;
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    [animation setValue:kRotateBackRecordNeedleView forKey:kRecordNeedleViewRotateType];
+    [self.recordNeddleView.layer addAnimation:animation forKey:kRotateBackRecordNeedleView];
+    self.recordNeddleView.layer.transform = CATransform3DIdentity;
+
 }
 
 - (void)rotateAwayAndBackRecordNeedleView {
     [self.recordNeddleView setAnchorPointWithoutTranslation:CGPointMake(0.268, 0.162)];
-    [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^(){
-        self.recordNeddleView.transform = CGAffineTransformMakeRotation(-M_PI/6);
-    }completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^(){
-            self.recordNeddleView.transform = CGAffineTransformIdentity;
-        }completion:^(BOOL finished) {
-            //if (finished)
-            //    [self.recordNeddleView setAnchorPointWithoutTranslation:CGPointMake(0.5, 0.5)];
-        }];
-    }];
+    if ([self.recordNeddleView.layer animationForKey:kRotateAwayAndBackRecordNeedleView]) {
+        [self.recordNeddleView.layer removeAnimationForKey:kRotateAwayAndBackRecordNeedleView];
+    }
+    CATransform3D transform = self.recordNeddleView.layer.presentationLayer.transform;
+    CGFloat fromVal = atan2(transform.m12, transform.m11);
+    self.recordNeddleView.layer.transform = CATransform3DMakeRotation(fromVal, 0, 0, 1);
+    CAKeyframeAnimation *animation = [[CAKeyframeAnimation alloc] init];
+    animation.delegate = self;
+    animation.keyPath = @"transform.rotation";
+    NSNumber *startValue = @(fromVal);
+    animation.values = @[startValue, @(-M_PI/6), @0];
+    NSNumber *time = @(0.5-startValue.floatValue/(-M_PI/6));
+    animation.keyTimes = @[@0, @(time.floatValue/(time.floatValue+0.5)), @1];
+    animation.timingFunctions = @[[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut], [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+    animation.duration = 0.6*(0.5+ time.floatValue);
+    [self.recordNeddleView.layer addAnimation:animation forKey:kRotateAwayAndBackRecordNeedleView];
+    self.recordNeddleView.layer.transform = CATransform3DIdentity;
+    
+//    [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^(){
+//        self.recordNeddleView.transform = CGAffineTransformMakeRotation(-M_PI/6);
+//    }completion:^(BOOL finished) {
+//        [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^(){
+//            self.recordNeddleView.transform = CGAffineTransformIdentity;
+//        }completion:^(BOOL finished) {
+//            //if (finished)
+//            //    [self.recordNeddleView setAnchorPointWithoutTranslation:CGPointMake(0.5, 0.5)];
+//        }];
+//    }];
 }
 
 #pragma mark - CAAnimationDelegate
@@ -752,7 +768,8 @@ static NSString *kRotateBackRecordNeedleView = @"kRotateBackRecordNeedleView";
     if (flag) {
         //self.recordNeddleView.transform = CGAffineTransformMakeRotation(-M_PI/6);
         //[self.recordNeddleView setAnchorPointWithoutTranslation:CGPointMake(0.5, 0.5)];
-        if (anim == _rotateBackRecordNeedleAnimation)
+        NSLog(@"****%@", [anim valueForKey:kRecordNeedleViewRotateType]);
+        if ([[anim valueForKey:kRecordNeedleViewRotateType] isEqualToString:kRotateBackRecordNeedleView])
             [self.presentRecordVC startRotating];
     }
 }

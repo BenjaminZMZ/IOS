@@ -86,8 +86,8 @@
 - (void)setMusicTitle:(NSString *)musicTitle
 {
     _musicTitle = musicTitle;
-    if (musicTitle.length > 12) {
-        musicTitle = [NSString stringWithFormat:@"%@...", [musicTitle substringToIndex:12]];
+    if (musicTitle.length > 15) {
+        musicTitle = [NSString stringWithFormat:@"%@...", [musicTitle substringToIndex:15]];
     }
     self.musicTitleLabel.text = musicTitle;
     //[self.musicTitleLabel sizeToFit];
@@ -97,8 +97,8 @@
 - (void)setAuthorName:(NSString *)authorName
 {
     _authorName = authorName;
-    if (authorName.length > 12) {
-        authorName = [NSString stringWithFormat:@"%@...", [authorName substringToIndex:12]];
+    if (authorName.length > 15) {
+        authorName = [NSString stringWithFormat:@"%@...", [authorName substringToIndex:15]];
     }
     self.authorNameLabel.text = authorName;
     //[self.authorNameLabel sizeToFit];

@@ -180,6 +180,7 @@
     [self.searchBar resignFirstResponder];
     [self hideShelterView];
     [self removeSearchResultsVC];
+    self.isSearchResultsVCOn = NO;
 }
 
 - (void) removeSearchResultsVC {
@@ -203,6 +204,8 @@
         [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(indent)-[view]|" options:0 metrics:@{@"indent": @(kStatusBarHeight+kNavigationBarHeight)} views:@{@"view": self.searchResultsVC.view}]];
         [self.searchResultsVC didMoveToParentViewController:self];
         self.isSearchResultsVCOn = YES;
+    } else {
+        [self.searchResultsVC reloadVCsExceptSelected:NO];
     }
     
 }
